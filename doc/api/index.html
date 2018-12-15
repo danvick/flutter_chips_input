@@ -21,7 +21,7 @@
 
 <header id="title">
   <ol class="breadcrumbs gt-separated dark hidden-xs">
-    <li class="self-crumb">flutter_chips_input package</li>
+    <li><a href="https://github.com/danvick/flutter_chips_input">flutter_chips_input package</a></li>
   </ol>
   <div class="self-name">flutter_chips_input</div>
   <form class="search navbar-right" role="search">
@@ -43,14 +43,64 @@
       <section class="desc markdown">
         <h1>flutter_chips_input</h1>
 <p>Chips Input for Flutter </p>
-<h2>Getting Started</h2>
-<p>This project is a starting point for a Dart
-<a href="https://flutter.io/developing-packages/">package</a>,
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.</p>
-<p>For help getting started with Flutter, view our 
-<a href="https://flutter.io/docs">online documentation</a>, which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.</p>
+<h2>Usage</h2>
+<h3>Installation</h3>
+<p>Follow installation instructions <a href="https://pub.dartlang.org/packages/flutter_chips_input#-installing-tab-">here</a></p>
+<h3>Example</h3>
+<p><code>ChipsInput(
+  initialValue: [
+    AppProfile('John Doe', 'jdoe@flutter.io',
+        'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg')
+  ],
+  decoration: InputDecoration(
+    labelText: "Select People",
+  ),
+  findSuggestions: (String query) {
+    if (query.length != 0) {
+      var lowercaseQuery = query.toLowerCase();
+      return mockResults.where((profile) {
+        return profile.name
+                .toLowerCase()
+                .contains(query.toLowerCase()) ||
+            profile.email
+                .toLowerCase()
+                .contains(query.toLowerCase());
+      }).toList(growable: false)
+        ..sort((a, b) =&gt; a.name
+            .toLowerCase()
+            .indexOf(lowercaseQuery)
+            .compareTo(
+                b.name.toLowerCase().indexOf(lowercaseQuery)));
+    } else {
+      return const &lt;AppProfile&gt;[];
+    }
+  },
+  onChanged: (data) {
+    print(data);
+  },
+  chipBuilder: (context, state, profile) {
+    return InputChip(
+      key: ObjectKey(profile),
+      label: Text(profile.name),
+      avatar: CircleAvatar(
+        backgroundImage: NetworkImage(profile.imageUrl),
+      ),
+      onDeleted: () =&gt; state.deleteChip(profile),
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+    );
+  },
+  suggestionBuilder: (context, state, profile) {
+    return ListTile(
+      key: ObjectKey(profile),
+      leading: CircleAvatar(
+        backgroundImage: NetworkImage(profile.imageUrl),
+      ),
+      title: Text(profile.name),
+      subtitle: Text(profile.email),
+      onTap: () =&gt; state.selectSuggestion(profile),
+    );
+  },
+)</code></p>
       </section>
       
         <section class="summary">
@@ -70,7 +120,7 @@ samples, guidance on mobile development, and a full API reference.</p>
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 0.0.1
+    flutter_chips_input 1.0.1
   </span>
 
 </footer>
