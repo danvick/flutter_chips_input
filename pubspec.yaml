@@ -1,8 +1,8 @@
 name: flutter_chips_input
 description: Chips Input for Flutter 
-version: 0.0.1
-author:
-homepage:
+version: 1.0.0
+author: Danvick Miller <danvickmiller@gmail.com>
+homepage: https://github.com/danvick/flutter_chips_input
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
