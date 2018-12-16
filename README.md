@@ -59,5 +59,5 @@ ChipsInput(
 ```
 
 ## Known Issues
-* Overlay for ChipsInput doesn't move when input height changes i.e. when chips wrap
-* For some reason Overlay for ChipsInput floats above AppBar when scrolling
+* Overlay doesn't move when input height changes i.e. when chips wrap
+* For some reason Overlay floats above AppBar when scrolling

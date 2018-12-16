@@ -1,6 +1,6 @@
 name: flutter_chips_input
 description: Flutter library for building input fields with InputChips as input options.
-version: 1.0.2
+version: 1.0.3
 author: Danvick Miller <danvickmiller@gmail.com>
 homepage: https://github.com/danvick/flutter_chips_input
 
