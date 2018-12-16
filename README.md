@@ -8,7 +8,7 @@ Flutter library for building input fields with InputChips as input options.
 Follow installation instructions [here](https://pub.dartlang.org/packages/flutter_chips_input#-installing-tab-)
 
 ### Example
-`
+```
 ChipsInput(
     initialValue: [
         AppProfile('John Doe', 'jdoe@flutter.io', 'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg')
@@ -55,8 +55,8 @@ ChipsInput(
             onTap: () => state.selectSuggestion(profile),
         );
     },
-),
-`
+)
+```
 
 ## Known Issues
 * Overlay for ChipsInput doesn't move when input height changes i.e. when chips wrap
