@@ -55,9 +55,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   void initState() {
     super.initState();
     _chips.addAll(widget.initialValue);
-    /*widget.initialValue.forEach((data){
-      selectSuggestion(data);
-    });*/
+    _updateTextInputState();
     this._focusNode = FocusNode();
     this._suggestionsBoxController = _SuggestionsBoxController(context);
     this._suggestionsStreamController = StreamController<List<T>>.broadcast();
@@ -101,7 +99,6 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     }
 
     size = renderBox.size;
-    print(size);
 
     this._suggestionsBoxController._overlayEntry = OverlayEntry(
       builder: (context) {
@@ -241,6 +238,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     setState(() {
       if (newCount < oldCount) {
         _chips = Set.from(_chips.take(newCount));
+        widget.onChanged(_chips.toList(growable: false));
       }
       _value = value;
     });
@@ -280,6 +278,11 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
           .toList(growable: false));
     }
     _suggestionsStreamController.add(_suggestions);
+  }
+
+  @override
+  void updateFloatingCursor(RawFloatingCursorPoint point) {
+    print(point);
   }
 }
 

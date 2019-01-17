@@ -41,7 +41,7 @@ ChipsInput(
                 backgroundImage: NetworkImage(profile.imageUrl),
             ),
             onDeleted: () => state.deleteChip(profile),
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         );
     },
     suggestionBuilder: (context, state, profile) {
@@ -59,5 +59,6 @@ ChipsInput(
 ```
 
 ## Known Issues
+* Deleting chips with keyboard on IOS makes app to crush (Flutter Issue with special characters used as replacement characters). Already reported [#2](https://github.com/danvick/flutter_chips_input/issues/2)
 * Overlay doesn't move when input height changes i.e. when chips wrap
 * For some reason Overlay floats above AppBar when scrolling

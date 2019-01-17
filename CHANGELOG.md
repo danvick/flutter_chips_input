@@ -1,4 +1,9 @@
-## [1.0.2] - 16-Dec-2018
+## [1.0.4] - 17-Jan-2019
+* Fixed bug in later versions of Flutter where implementation of abstract method `void updateFloatingCursor(RawFloatingCursorPoint point);` missing
+* Fixed bug where `initialValue` chips cannot be deleted with keyboard
+* Fixed bug where `onChanged()` not fired when deleting chip using keyboard
+
+## [1.0.3] - 16-Dec-2018
 * Minor improvements in documentation
 
 ## [1.0.2] - 16-Dec-2018
