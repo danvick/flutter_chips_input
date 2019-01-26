@@ -1,3 +1,6 @@
+## [1.1.0] - 26-Jan-2019
+* Input can now be disabled by setting `enabled` attribute to `false`
+
 ## [1.0.4] - 17-Jan-2019
 * Fixed bug in later versions of Flutter where implementation of abstract method `void updateFloatingCursor(RawFloatingCursorPoint point);` missing
 * Fixed bug where `initialValue` chips cannot be deleted with keyboard
