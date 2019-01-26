@@ -59,6 +59,7 @@
       <li><a href="flutter_chips_input/ChipsInputState/requestKeyboard.html">requestKeyboard</a></li>
       <li><a href="flutter_chips_input/ChipsInputState/selectSuggestion.html">selectSuggestion</a></li>
       <li><a href="flutter_chips_input/ChipsInputState/updateEditingValue.html">updateEditingValue</a></li>
+      <li><a href="flutter_chips_input/ChipsInputState/updateFloatingCursor.html">updateFloatingCursor</a></li>
       <li class="inherited"><a href="flutter_chips_input/ChipsInputState/noSuchMethod.html">noSuchMethod</a></li>
       <li class="inherited"><a href="flutter_chips_input/ChipsInputState/toString.html">toString</a></li>
     
@@ -98,6 +99,7 @@ void updateEditingValue(TextEditingValue value) {
   setState(() {
     if (newCount &lt; oldCount) {
       _chips = Set.from(_chips.take(newCount));
+      widget.onChanged(_chips.toList(growable: false));
     }
     _value = value;
   });
@@ -114,7 +116,7 @@ void updateEditingValue(TextEditingValue value) {
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.0.1
+    flutter_chips_input 1.0.4
   </span>
 
 </footer>

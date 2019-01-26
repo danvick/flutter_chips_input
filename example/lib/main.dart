@@ -65,12 +65,14 @@ class _MyHomePageState extends State<MyHomePage> {
             ChipsInput(
               initialValue: [
                 AppProfile('John Doe', 'jdoe@flutter.io',
-                    'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg')
+                    'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg'),
               ],
+              enabled: false,
               decoration: InputDecoration(
                 // prefixIcon: Icon(Icons.search),
                 // hintText: formControl.hint,
                 labelText: "Select People",
+                // enabled: false,
                 // errorText: field.errorText,
               ),
               findSuggestions: (String query) {

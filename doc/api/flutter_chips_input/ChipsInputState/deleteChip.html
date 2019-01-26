@@ -59,6 +59,7 @@
       <li><a href="flutter_chips_input/ChipsInputState/requestKeyboard.html">requestKeyboard</a></li>
       <li><a href="flutter_chips_input/ChipsInputState/selectSuggestion.html">selectSuggestion</a></li>
       <li><a href="flutter_chips_input/ChipsInputState/updateEditingValue.html">updateEditingValue</a></li>
+      <li><a href="flutter_chips_input/ChipsInputState/updateFloatingCursor.html">updateFloatingCursor</a></li>
       <li class="inherited"><a href="flutter_chips_input/ChipsInputState/noSuchMethod.html">noSuchMethod</a></li>
       <li class="inherited"><a href="flutter_chips_input/ChipsInputState/toString.html">toString</a></li>
     
@@ -84,11 +85,13 @@
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span> </h2>
       <pre class="language-dart"><code class="language-dart">void deleteChip(T data) {
-  setState(() {
-    _chips.remove(data);
-    _updateTextInputState();
-  });
-  widget.onChanged(_chips.toList(growable: false));
+  if (widget.enabled) {
+    setState(() {
+      _chips.remove(data);
+      _updateTextInputState();
+    });
+    widget.onChanged(_chips.toList(growable: false));
+  }
 }</code></pre>
     </section>
 
@@ -101,7 +104,7 @@
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.0.1
+    flutter_chips_input 1.0.4
   </span>
 
 </footer>

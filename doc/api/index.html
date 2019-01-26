@@ -42,65 +42,60 @@
   <div class="col-xs-12 col-sm-9 col-md-8 main-content">
       <section class="desc markdown">
         <h1>flutter_chips_input</h1>
-<p>Chips Input for Flutter </p>
+<p>Flutter library for building input fields with InputChips as input options.</p>
 <h2>Usage</h2>
 <h3>Installation</h3>
 <p>Follow installation instructions <a href="https://pub.dartlang.org/packages/flutter_chips_input#-installing-tab-">here</a></p>
 <h3>Example</h3>
-<p><code>ChipsInput(
-  initialValue: [
-    AppProfile('John Doe', 'jdoe@flutter.io',
-        'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg')
-  ],
-  decoration: InputDecoration(
-    labelText: "Select People",
-  ),
-  findSuggestions: (String query) {
-    if (query.length != 0) {
-      var lowercaseQuery = query.toLowerCase();
-      return mockResults.where((profile) {
-        return profile.name
-                .toLowerCase()
-                .contains(query.toLowerCase()) ||
-            profile.email
-                .toLowerCase()
-                .contains(query.toLowerCase());
-      }).toList(growable: false)
-        ..sort((a, b) =&gt; a.name
-            .toLowerCase()
-            .indexOf(lowercaseQuery)
-            .compareTo(
-                b.name.toLowerCase().indexOf(lowercaseQuery)));
-    } else {
-      return const &lt;AppProfile&gt;[];
-    }
-  },
-  onChanged: (data) {
-    print(data);
-  },
-  chipBuilder: (context, state, profile) {
-    return InputChip(
-      key: ObjectKey(profile),
-      label: Text(profile.name),
-      avatar: CircleAvatar(
-        backgroundImage: NetworkImage(profile.imageUrl),
-      ),
-      onDeleted: () =&gt; state.deleteChip(profile),
-      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-    );
-  },
-  suggestionBuilder: (context, state, profile) {
-    return ListTile(
-      key: ObjectKey(profile),
-      leading: CircleAvatar(
-        backgroundImage: NetworkImage(profile.imageUrl),
-      ),
-      title: Text(profile.name),
-      subtitle: Text(profile.email),
-      onTap: () =&gt; state.selectSuggestion(profile),
-    );
-  },
-)</code></p>
+<pre class="language-dart"><code>ChipsInput(
+    initialValue: [
+        AppProfile('John Doe', 'jdoe@flutter.io', 'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg')
+    ],
+    decoration: InputDecoration(
+        labelText: "Select People",
+    ),
+    findSuggestions: (String query) {
+        if (query.length != 0) {
+            var lowercaseQuery = query.toLowerCase();
+            return mockResults.where((profile) {
+                return profile.name.toLowerCase().contains(query.toLowerCase()) || profile.email.toLowerCase().contains(query.toLowerCase());
+            }).toList(growable: false)
+                ..sort((a, b) =&gt; a.name
+                    .toLowerCase()
+                    .indexOf(lowercaseQuery)
+                    .compareTo(b.name.toLowerCase().indexOf(lowercaseQuery)));
+        } else {
+            return const &lt;AppProfile&gt;[];
+        }
+    },
+    onChanged: (data) {
+        print(data);
+    },
+    chipBuilder: (context, state, profile) {
+        return InputChip(
+            key: ObjectKey(profile),
+            label: Text(profile.name),
+            avatar: CircleAvatar(
+                backgroundImage: NetworkImage(profile.imageUrl),
+            ),
+            onDeleted: () =&gt; state.deleteChip(profile),
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        );
+    },
+    suggestionBuilder: (context, state, profile) {
+        return ListTile(
+            key: ObjectKey(profile),
+            leading: CircleAvatar(
+                backgroundImage: NetworkImage(profile.imageUrl),
+            ),
+            title: Text(profile.name),
+            subtitle: Text(profile.email),
+            onTap: () =&gt; state.selectSuggestion(profile),
+        );
+    },
+)
+</code></pre>
+<h2>Known Issues</h2><ul><li>Deleting chips with keyboard on IOS makes app to crush (Flutter Issue with special characters used as replacement characters). Already reported <a href="https://github.com/danvick/flutter_chips_input/issues/2">#2</a></li><li>Overlay doesn't move when input height changes i.e. when chips wrap</li><li>For some reason Overlay floats above AppBar when scrolling</li></ul>
       </section>
       
         <section class="summary">
@@ -120,7 +115,7 @@
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.0.1
+    flutter_chips_input 1.0.4
   </span>
 
 </footer>

@@ -8,8 +8,51 @@
   <component name="ChangeListManager">
     <list default="true" id="ccea7879-7873-4656-9a21-d45675016680" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipSelected.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipSelected.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsBuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsBuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput-class.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput-class.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/ChipsInput.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/ChipsInput.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/chipBuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/chipBuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/createElement.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/createElement.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/createState.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/createState.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/debugFillProperties.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/debugFillProperties.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/decoration.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/decoration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/findSuggestions.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/findSuggestions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/hashCode.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/hashCode.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/initialValue.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/initialValue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/key.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/key.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/noSuchMethod.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/noSuchMethod.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/onChanged.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/onChanged.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/onChipTapped.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/onChipTapped.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/operator_equals.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/operator_equals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/runtimeType.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/runtimeType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/suggestionBuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/suggestionBuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/toString.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/toString.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/toStringShort.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/toStringShort.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState-class.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState-class.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/ChipsInputState.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/ChipsInputState.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/build.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/build.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/deleteChip.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/deleteChip.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/dispose.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/dispose.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/hashCode.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/hashCode.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/initState.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/initState.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/kObjectReplacementChar-constant.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/kObjectReplacementChar-constant.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/noSuchMethod.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/noSuchMethod.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/operator_equals.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/operator_equals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/performAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/performAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/requestKeyboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/requestKeyboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/runtimeType.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/runtimeType.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/selectSuggestion.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/selectSuggestion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/size.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/size.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/text.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/text.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/toString.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/toString.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/updateEditingValue.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/updateEditingValue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputSuggestions.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputSuggestions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/flutter_chips_input-library.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/flutter_chips_input-library.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/index.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/flutter_chips_input.iml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_chips_input.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/chips_input.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/chips_input.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
@@ -17,19 +60,50 @@
     <ignored path="$PROJECT_DIR$/.pub/" />
     <ignored path="$PROJECT_DIR$/build/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="993657207">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="dart" value="1" />
+          <entry key="gitignore" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Dart" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dart" value="151" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Dart" value="151" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.dart" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="95" column="20" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
+            <state relative-caret-position="220">
+              <caret line="69" column="14" lean-forward="true" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -37,34 +111,64 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chips_input.dart" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-296" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/src/chips_input.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="260" column="69" selection-start-line="260" selection-start-column="47" selection-end-line="260" selection-end-column="69" />
+            <state relative-caret-position="303">
+              <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/material/input_decorator.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="1965" column="8" selection-start-line="1965" selection-start-column="8" selection-end-line="1965" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/flutter_chips_input.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="27" selection-start-column="27" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="61" column="152" selection-start-line="61" selection-start-column="152" selection-end-line="61" selection-end-column="152" />
+            <state relative-caret-position="915">
+              <caret line="61" column="206" selection-start-line="61" selection-start-column="206" selection-end-line="61" selection-end-column="206" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="text_input.dart" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/services/text_input.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="720" column="55" lean-forward="true" selection-start-line="720" selection-start-column="55" selection-end-line="720" selection-end-column="55" />
+            <state relative-caret-position="-337">
+              <caret line="593" column="57" selection-start-line="593" selection-start-column="51" selection-end-line="593" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CHANGELOG.md" pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
@@ -73,11 +177,19 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>field</find>
       <find>updateFloatingCursor</find>
       <find>caret</find>
       <find>_TextCa</find>
@@ -90,6 +202,10 @@
       <find>textinputac</find>
       <find>_ios</find>
       <find>kObjectReplacementChar</find>
+      <find>field</find>
+      <find>enable</find>
+      <find>_focusNode</find>
+      <find>chipBuilder</find>
     </findStrings>
     <dirStrings>
       <dir>$USER_HOME$/flutter/packages/flutter/lib</dir>
@@ -103,21 +219,21 @@
       <list>
         <option value="$PROJECT_DIR$/test/flutter_chips_input_test.dart" />
         <option value="$PROJECT_DIR$/example/pubspec.yaml" />
-        <option value="$PROJECT_DIR$/example/lib/main.dart" />
         <option value="$PROJECT_DIR$/LICENSE" />
         <option value="$PROJECT_DIR$/lib/flutter_chips_input.dart" />
         <option value="$PROJECT_DIR$/example/test/widget_test.dart" />
-        <option value="$PROJECT_DIR$/pubspec.yaml" />
-        <option value="$PROJECT_DIR$/lib/src/chips_input.dart" />
         <option value="$PROJECT_DIR$/CHANGELOG.md" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/pubspec.yaml" />
+        <option value="$PROJECT_DIR$/lib/src/chips_input.dart" />
+        <option value="$PROJECT_DIR$/example/lib/main.dart" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1164" />
-    <option name="height" value="952" />
+    <option name="width" value="1163" />
+    <option name="height" value="942" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -126,6 +242,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -136,13 +253,13 @@
             <path>
               <item name="flutter_chips_input" type="b2602c69:ProjectViewProjectNode" />
               <item name="flutter_chips_input" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="flutter_chips_input" type="b2602c69:ProjectViewProjectNode" />
               <item name="flutter_chips_input" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="flutter_chips_input" type="b2602c69:ProjectViewProjectNode" />
@@ -153,7 +270,6 @@
         </subPane>
         <option name="show-excluded-files" value="false" />
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -182,53 +298,27 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
-    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
-      <option name="filePath" value="$PROJECT_DIR$/example/lib/main.dart" />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <properties />
-      <listeners />
-    </configuration>
     <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/example/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
   </component>
   <component name="SvnConfiguration">
@@ -245,269 +335,46 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1164" height="952" extended-state="0" />
+    <frame x="0" y="23" width="1163" height="942" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info id="Image Layers" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Flutter Performance" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Dart Analysis" order="7" weight="0.32788798" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2998833" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3298122" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32205367" />
-      <window_info anchor="right" id="Flutter Outline" order="3" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2950089" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30508474" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Build Variants" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Captures" order="6" side_tool="true" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.29882354" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="right" id="Flutter Inspector" order="3" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Dart Analysis" order="7" weight="0.32788798" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Logcat" order="10" />
+      <window_info anchor="bottom" id="Flutter Performance" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.3298122" />
+      <window_info anchor="bottom" id="Terminal" order="13" visible="true" weight="0.32" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Flutter Inspector" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Device File Explorer" order="5" side_tool="true" />
+      <window_info anchor="right" id="Flutter Outline" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="1" />
-    </breakpoint-manager>
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="120" column="14" selection-start-line="64" selection-start-column="12" selection-end-line="120" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/flutter_chips_input_test.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/test/widget_test.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.lock">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/flutter_chips_input.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="27" selection-start-column="27" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="120" column="14" selection-start-line="64" selection-start-column="12" selection-end-line="120" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/flutter_chips_input_test.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="31" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="25" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/test/widget_test.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.lock">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/flutter_chips_input.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="27" selection-start-column="27" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="72" column="43" lean-forward="true" selection-start-line="72" selection-start-column="43" selection-end-line="72" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/flutter_chips_input_test.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/test/widget_test.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="9" selection-start-column="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.metadata">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.lock">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/flutter_chips_input.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="27" selection-start-column="27" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="56" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/flutter_chips_input.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="32" lean-forward="true" selection-start-column="32" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/flutter_chips_input_test.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/chips_input.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -516,19 +383,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.metadata">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/pubspec.lock">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/test/flutter_chips_input_test.dart">
       <provider selected="true" editor-type-id="text-editor">
@@ -538,23 +396,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example/test/widget_test.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/flutter_chips_input.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="27" selection-start-column="27" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/widgets/editable_text.dart">
       <provider selected="true" editor-type-id="text-editor">
@@ -571,9 +413,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state />
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$USER_HOME$/flutter/bin/cache/pkg/sky_engine/lib/core/iterable.dart">
       <provider selected="true" editor-type-id="text-editor">
@@ -582,27 +422,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
+    <entry file="file://$PROJECT_DIR$/flutter_chips_input.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/flutter_chips_input.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="95" column="20" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="27" selection-start-column="27" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/services/text_input.dart">
+    <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="720" column="55" lean-forward="true" selection-start-line="720" selection-start-column="55" selection-end-line="720" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/chips_input.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="260" column="69" selection-start-line="260" selection-start-column="47" selection-end-line="260" selection-end-column="69" />
+        <state relative-caret-position="915">
+          <caret line="61" column="206" selection-start-line="61" selection-start-column="206" selection-end-line="61" selection-end-column="206" />
         </state>
       </provider>
     </entry>
@@ -613,10 +446,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
+    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="61" column="152" selection-start-line="61" selection-start-column="152" selection-end-line="61" selection-end-column="152" />
+        <state relative-caret-position="30">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/material/input_decorator.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="1965" column="8" selection-start-line="1965" selection-start-column="8" selection-end-line="1965" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/flutter/packages/flutter/lib/src/services/text_input.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-337">
+          <caret line="593" column="57" selection-start-line="593" selection-start-column="51" selection-end-line="593" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/chips_input.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-296" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="69" column="14" lean-forward="true" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

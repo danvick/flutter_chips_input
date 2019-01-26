@@ -47,6 +47,7 @@
       </li>
       <li><a href="flutter_chips_input/ChipsInput/chipBuilder.html">chipBuilder</a></li>
       <li><a href="flutter_chips_input/ChipsInput/decoration.html">decoration</a></li>
+      <li><a href="flutter_chips_input/ChipsInput/enabled.html">enabled</a></li>
       <li><a href="flutter_chips_input/ChipsInput/findSuggestions.html">findSuggestions</a></li>
       <li><a href="flutter_chips_input/ChipsInput/initialValue.html">initialValue</a></li>
       <li><a href="flutter_chips_input/ChipsInput/onChanged.html">onChanged</a></li>
@@ -77,7 +78,7 @@
 
     <section class="multi-line-signature">
       const
-      <span class="name ">ChipsInput&lt;<wbr><span class="type-parameter">T</span>&gt;</span>(<wbr>{<span class="parameter" id="-param-key"><span class="type-annotation">Key</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="-param-initialValue"><span class="type-annotation">List<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">initialValue</span>: <span class="default-value">const []</span>, </span> <span class="parameter" id="-param-decoration"><span class="type-annotation">InputDecoration</span> <span class="parameter-name">decoration</span>: <span class="default-value">const InputDecoration()</span>, </span> <span class="parameter" id="-param-chipBuilder"><span>@required</span> <span class="type-annotation"><a href="flutter_chips_input/ChipsBuilder.html">ChipsBuilder</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">chipBuilder</span>, </span> <span class="parameter" id="-param-suggestionBuilder"><span>@required</span> <span class="type-annotation"><a href="flutter_chips_input/ChipsBuilder.html">ChipsBuilder</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">suggestionBuilder</span>, </span> <span class="parameter" id="-param-findSuggestions"><span>@required</span> <span class="type-annotation"><a href="flutter_chips_input/ChipsInputSuggestions.html">ChipsInputSuggestions</a></span> <span class="parameter-name">findSuggestions</span>, </span> <span class="parameter" id="-param-onChanged"><span>@required</span> <span class="type-annotation">ValueChanged<span class="signature">&lt;<wbr><span class="type-parameter">List<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">onChanged</span>, </span> <span class="parameter" id="-param-onChipTapped"><span class="type-annotation">ValueChanged<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">onChipTapped</span></span> })
+      <span class="name ">ChipsInput&lt;<wbr><span class="type-parameter">T</span>&gt;</span>(<wbr>{<span class="parameter" id="-param-key"><span class="type-annotation">Key</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="-param-initialValue"><span class="type-annotation">List<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">initialValue</span>: <span class="default-value">const []</span>, </span> <span class="parameter" id="-param-decoration"><span class="type-annotation">InputDecoration</span> <span class="parameter-name">decoration</span>: <span class="default-value">const InputDecoration()</span>, </span> <span class="parameter" id="-param-enabled"><span class="type-annotation">bool</span> <span class="parameter-name">enabled</span>: <span class="default-value">true</span>, </span> <span class="parameter" id="-param-chipBuilder"><span>@required</span> <span class="type-annotation"><a href="flutter_chips_input/ChipsBuilder.html">ChipsBuilder</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">chipBuilder</span>, </span> <span class="parameter" id="-param-suggestionBuilder"><span>@required</span> <span class="type-annotation"><a href="flutter_chips_input/ChipsBuilder.html">ChipsBuilder</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">suggestionBuilder</span>, </span> <span class="parameter" id="-param-findSuggestions"><span>@required</span> <span class="type-annotation"><a href="flutter_chips_input/ChipsInputSuggestions.html">ChipsInputSuggestions</a></span> <span class="parameter-name">findSuggestions</span>, </span> <span class="parameter" id="-param-onChanged"><span>@required</span> <span class="type-annotation">ValueChanged<span class="signature">&lt;<wbr><span class="type-parameter">List<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">onChanged</span>, </span> <span class="parameter" id="-param-onChipTapped"><span class="type-annotation">ValueChanged<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">onChipTapped</span></span> })
     </section>
 
     
@@ -87,6 +88,7 @@
   Key key,
   this.initialValue = const [],
   this.decoration = const InputDecoration(),
+  this.enabled = true,
   @required this.chipBuilder,
   @required this.suggestionBuilder,
   @required this.findSuggestions,
@@ -104,7 +106,7 @@
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.0.1
+    flutter_chips_input 1.0.4
   </span>
 
 </footer>

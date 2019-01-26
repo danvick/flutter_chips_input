@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -12,6 +13,7 @@ class ChipsInput<T> extends StatefulWidget {
     Key key,
     this.initialValue = const [],
     this.decoration = const InputDecoration(),
+    this.enabled = true,
     @required this.chipBuilder,
     @required this.suggestionBuilder,
     @required this.findSuggestions,
@@ -20,6 +22,7 @@ class ChipsInput<T> extends StatefulWidget {
   }) : super(key: key);
 
   final InputDecoration decoration;
+  final bool enabled;
   final ChipsInputSuggestions findSuggestions;
   final ValueChanged<List<T>> onChanged;
   final ValueChanged<T> onChipTapped;
@@ -56,7 +59,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     super.initState();
     _chips.addAll(widget.initialValue);
     _updateTextInputState();
-    this._focusNode = FocusNode();
+    _initFocusNode();
     this._suggestionsBoxController = _SuggestionsBoxController(context);
     this._suggestionsStreamController = StreamController<List<T>>.broadcast();
 
@@ -68,6 +71,10 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         this._suggestionsBoxController.open();
       }
     })();
+  }
+
+  _initFocusNode() {
+    this._focusNode = widget.enabled ? FocusNode() : AlwaysDisabledFocusNode();
   }
 
   void _onFocusChanged() {
@@ -161,11 +168,13 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   }
 
   void deleteChip(T data) {
-    setState(() {
-      _chips.remove(data);
-      _updateTextInputState();
-    });
-    widget.onChanged(_chips.toList(growable: false));
+    if (widget.enabled) {
+      setState(() {
+        _chips.remove(data);
+        _updateTextInputState();
+      });
+      widget.onChanged(_chips.toList(growable: false));
+    }
   }
 
   void _openInputConnection() {
@@ -284,6 +293,11 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   void updateFloatingCursor(RawFloatingCursorPoint point) {
     print(point);
   }
+}
+
+class AlwaysDisabledFocusNode extends FocusNode {
+  @override
+  bool get hasFocus => false;
 }
 
 class _TextCaret extends StatefulWidget {

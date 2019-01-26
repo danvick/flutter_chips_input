@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="API docs for the size property from the ChipsInputState class, for the Dart programming language.">
-  <title>size property - ChipsInputState class - flutter_chips_input library - Dart API</title>
+  <meta name="description" content="API docs for the updateFloatingCursor method from the ChipsInputState class, for the Dart programming language.">
+  <title>updateFloatingCursor method - ChipsInputState class - flutter_chips_input library - Dart API</title>
   <!-- required because all the links are pseudo-absolute -->
   <base href="../..">
 
@@ -26,9 +26,9 @@
     <li><a href="index.html">flutter_chips_input</a></li>
     <li><a href="flutter_chips_input/flutter_chips_input-library.html">flutter_chips_input</a></li>
     <li><a href="flutter_chips_input/ChipsInputState-class.html">ChipsInputState<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
-    <li class="self-crumb">size property</li>
+    <li class="self-crumb">updateFloatingCursor method</li>
   </ol>
-  <div class="self-name">size</div>
+  <div class="self-name">updateFloatingCursor</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -74,19 +74,29 @@
   </div><!--/.sidebar-offcanvas-->
 
   <div class="col-xs-12 col-sm-9 col-md-8 main-content">
-    <h1>size property</h1>
+    <h1>updateFloatingCursor method</h1>
 
-        <section class="multi-line-signature">
-          <span class="returntype">Size</span>
-          <span class="name ">size</span>
-          <div class="features">read / write</div>
-        </section>
-                <section class="summary source-code" id="source">
-          <h2><span>Implementation</span> </h2>
-          <pre class="language-dart"><code class="language-dart">Size size
-
-</code></pre>
-        </section>
+    <section class="multi-line-signature">
+      <div>
+        <ol class="annotation-list">
+          <li>@override</li>
+        </ol>
+      </div>
+      <span class="returntype">void</span>
+      <span class="name ">updateFloatingCursor</span>
+(<wbr><span class="parameter" id="updateFloatingCursor-param-point"><span class="type-annotation">RawFloatingCursorPoint</span> <span class="parameter-name">point</span></span>)
+    </section>
+    <section class="desc markdown">
+      <p>Updates the floating cursor position and state.</p>
+    </section>
+    
+    <section class="summary source-code" id="source">
+      <h2><span>Implementation</span> </h2>
+      <pre class="language-dart"><code class="language-dart">@override
+void updateFloatingCursor(RawFloatingCursorPoint point) {
+  print(point);
+}</code></pre>
+    </section>
 
   </div> <!-- /.main-content -->
 
