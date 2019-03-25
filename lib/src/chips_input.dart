@@ -9,7 +9,7 @@ typedef ChipsBuilder<T> = Widget Function(
     BuildContext context, ChipsInputState<T> state, T data);
 
 class ChipsInput<T> extends StatefulWidget {
-  const ChipsInput({
+  ChipsInput({
     Key key,
     this.initialValue = const [],
     this.decoration = const InputDecoration(),
@@ -19,7 +19,9 @@ class ChipsInput<T> extends StatefulWidget {
     @required this.findSuggestions,
     @required this.onChanged,
     this.onChipTapped,
-  }) : super(key: key);
+    this.maxChips,
+  }) : assert(maxChips == null || initialValue.length <= maxChips),
+        super(key: key);
 
   final InputDecoration decoration;
   final bool enabled;
@@ -29,6 +31,7 @@ class ChipsInput<T> extends StatefulWidget {
   final ChipsBuilder<T> chipBuilder;
   final ChipsBuilder<T> suggestionBuilder;
   final List<T> initialValue;
+  final int maxChips;
 
   @override
   ChipsInputState<T> createState() => ChipsInputState<T>();
@@ -62,19 +65,29 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     _initFocusNode();
     this._suggestionsBoxController = _SuggestionsBoxController(context);
     this._suggestionsStreamController = StreamController<List<T>>.broadcast();
-
-    (() async {
-      await this._initOverlayEntry();
-      this._focusNode.addListener(_onFocusChanged);
-      // in case we already missed the focus event
-      if (this._focusNode.hasFocus) {
-        this._suggestionsBoxController.open();
-      }
-    })();
   }
 
   _initFocusNode() {
-    this._focusNode = widget.enabled ? FocusNode() : AlwaysDisabledFocusNode();
+    setState(() {
+      debugPrint("Initializing focus node");
+      if (widget.enabled) {
+        if (widget.maxChips == null || _chips.length < widget.maxChips){
+          this._focusNode = FocusNode();
+          (() async {
+            await this._initOverlayEntry();
+            this._focusNode.addListener(_onFocusChanged);
+            // in case we already missed the focus event
+            if (this._focusNode.hasFocus) {
+              this._suggestionsBoxController.open();
+            }
+          })();
+        }
+        else
+          this._focusNode = AlwaysDisabledFocusNode();
+      } else
+        this._focusNode = AlwaysDisabledFocusNode();
+    });
+    debugPrint(this._focusNode.toString());
   }
 
   void _onFocusChanged() {
@@ -160,6 +173,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   void selectSuggestion(T data) {
     setState(() {
       _chips.add(data);
+      if (widget.maxChips != null) _initFocusNode();
       _updateTextInputState();
       _suggestions = null;
       _suggestionsStreamController.add(_suggestions);
@@ -173,6 +187,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         _chips.remove(data);
         _updateTextInputState();
       });
+      if (widget.maxChips != null) _initFocusNode();
       widget.onChanged(_chips.toList(growable: false));
     }
   }

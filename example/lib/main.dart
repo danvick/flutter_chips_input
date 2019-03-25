@@ -67,7 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 AppProfile('John Doe', 'jdoe@flutter.io',
                     'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg'),
               ],
-              enabled: false,
+              enabled: true,
+              maxChips: 2,
               decoration: InputDecoration(
                 // prefixIcon: Icon(Icons.search),
                 // hintText: formControl.hint,

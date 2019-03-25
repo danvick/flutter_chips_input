@@ -7,8 +7,14 @@ Flutter library for building input fields with InputChips as input options.
 ### Installation
 Follow installation instructions [here](https://pub.dartlang.org/packages/flutter_chips_input#-installing-tab-)
 
-### Example
+### Import
+```dart
+import 'package:flutter_chips_input/flutter_chips_input.dart';
 ```
+
+### Example
+#### ChipsInput
+```dart
 ChipsInput(
     initialValue: [
         AppProfile('John Doe', 'jdoe@flutter.io', 'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg')
@@ -16,6 +22,7 @@ ChipsInput(
     decoration: InputDecoration(
         labelText: "Select People",
     ),
+    maxChips: 3,
     findSuggestions: (String query) {
         if (query.length != 0) {
             var lowercaseQuery = query.toLowerCase();
