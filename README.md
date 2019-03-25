@@ -66,7 +66,7 @@ ChipsInput(
 ```
 
 ## To-do list
-[ ] Ability to limit the number of chips
+[X] Ability to limit the number of chips
 [ ] Create a `FormField` implementation (`ChipsInputField`) to be used within Flutter Form Widget 
 
 ## Known Issues
