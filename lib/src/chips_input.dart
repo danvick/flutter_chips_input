@@ -20,7 +20,7 @@ class ChipsInput<T> extends StatefulWidget {
     @required this.onChanged,
     this.onChipTapped,
     this.maxChips,
-  }) : assert(maxChips == null || initialValue.length <= maxChips),
+  })  : assert(maxChips == null || initialValue.length <= maxChips),
         super(key: key);
 
   final InputDecoration decoration;
@@ -71,7 +71,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     setState(() {
       debugPrint("Initializing focus node");
       if (widget.enabled) {
-        if (widget.maxChips == null || _chips.length < widget.maxChips){
+        if (widget.maxChips == null || _chips.length < widget.maxChips) {
           this._focusNode = FocusNode();
           (() async {
             await this._initOverlayEntry();
@@ -81,8 +81,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
               this._suggestionsBoxController.open();
             }
           })();
-        }
-        else
+        } else
           this._focusNode = AlwaysDisabledFocusNode();
       } else
         this._focusNode = AlwaysDisabledFocusNode();

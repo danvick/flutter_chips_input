@@ -122,6 +122,66 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
             ),
+            ChipsInputFormField(
+              initialValue: [
+                AppProfile('John Doe', 'jdoe@flutter.io',
+                    'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg'),
+              ],
+              enabled: true,
+              maxChips: 2,
+              decoration: InputDecoration(
+                // prefixIcon: Icon(Icons.search),
+                // hintText: formControl.hint,
+                labelText: "Select People",
+                // enabled: false,
+                // errorText: field.errorText,
+              ),
+              findSuggestions: (String query) {
+                if (query.length != 0) {
+                  var lowercaseQuery = query.toLowerCase();
+                  return mockResults.where((profile) {
+                    return profile.name
+                        .toLowerCase()
+                        .contains(query.toLowerCase()) ||
+                        profile.email
+                            .toLowerCase()
+                            .contains(query.toLowerCase());
+                  }).toList(growable: false)
+                    ..sort((a, b) => a.name
+                        .toLowerCase()
+                        .indexOf(lowercaseQuery)
+                        .compareTo(
+                        b.name.toLowerCase().indexOf(lowercaseQuery)));
+                } else {
+                  return const <AppProfile>[];
+                }
+              },
+              onChanged: (data) {
+                print(data);
+              },
+              chipBuilder: (context, state, profile) {
+                return InputChip(
+                  key: ObjectKey(profile),
+                  label: Text(profile.name),
+                  avatar: CircleAvatar(
+                    backgroundImage: NetworkImage(profile.imageUrl),
+                  ),
+                  onDeleted: () => state.deleteChip(profile),
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                );
+              },
+              suggestionBuilder: (context, state, profile) {
+                return ListTile(
+                  key: ObjectKey(profile),
+                  leading: CircleAvatar(
+                    backgroundImage: NetworkImage(profile.imageUrl),
+                  ),
+                  title: Text(profile.name),
+                  subtitle: Text(profile.email),
+                  onTap: () => state.selectSuggestion(profile),
+                );
+              },
+            ),
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
