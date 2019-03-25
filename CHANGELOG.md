@@ -1,5 +1,5 @@
-## [1.1.1] - 25-Mar-2019
-* Number of chips can now be limited using `maxChips` attribute
+## [1.2.0] - 25-Mar-2019
+* Max number of chips can now be set using `maxChips` attribute
 
 ## [1.1.0] - 26-Jan-2019
 * Input can now be disabled by setting `enabled` attribute to `false`
