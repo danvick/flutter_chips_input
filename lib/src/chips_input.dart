@@ -137,6 +137,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                     elevation: 4.0,
                     child: ListView.builder(
                       shrinkWrap: true,
+                      padding: EdgeInsets.zero,
                       itemCount: snapshot.data?.length ?? 0,
                       itemBuilder: (BuildContext context, int index) {
                         return widget.suggestionBuilder(
