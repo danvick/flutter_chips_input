@@ -20,10 +20,12 @@ class ChipsInput<T> extends StatefulWidget {
     @required this.onChanged,
     this.onChipTapped,
     this.maxChips,
+    this.textStyle,
   })  : assert(maxChips == null || initialValue.length <= maxChips),
         super(key: key);
 
   final InputDecoration decoration;
+  final TextStyle textStyle;
   final bool enabled;
   final ChipsInputSuggestions findSuggestions;
   final ValueChanged<List<T>> onChanged;
@@ -224,9 +226,8 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
           children: <Widget>[
             Text(
               text,
-              style: theme.textTheme.subhead.copyWith(
-                height: 1.5,
-              ),
+              style: widget.textStyle ??
+                  theme.textTheme.subhead.copyWith(height: 1.5),
             ),
             _TextCaret(
               resumed: _focusNode.hasFocus,

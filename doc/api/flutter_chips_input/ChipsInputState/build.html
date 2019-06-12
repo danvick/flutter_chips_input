@@ -207,9 +207,8 @@ Widget build(BuildContext context) {
         children: &lt;Widget&gt;[
           Text(
             text,
-            style: theme.textTheme.subhead.copyWith(
-              height: 1.5,
-            ),
+            style: widget.textStyle ??
+                theme.textTheme.subhead.copyWith(height: 1.5),
           ),
           _TextCaret(
             resumed: _focusNode.hasFocus,
@@ -248,7 +247,7 @@ Widget build(BuildContext context) {
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.2.1
+    flutter_chips_input 1.3.0
   </span>
 
   

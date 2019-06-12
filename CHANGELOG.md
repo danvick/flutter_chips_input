@@ -1,3 +1,6 @@
+## [1.3.0] - 12-Jun-2019
+* New attribute `textStyle` allows changing the `TextStyle` of the TextInput
+
 ## [1.2.1] - 12-Jun-2019
 * Removed unwanted top and bottom padding from ListView in suggestions overlay. Credit [Kenneth Gulbrandsøy](https://github.com/kengu)
 
