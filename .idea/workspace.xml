@@ -7,12 +7,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ccea7879-7873-4656-9a21-d45675016680" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode-class.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode-class.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/AlwaysDisabledFocusNode.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/AlwaysDisabledFocusNode.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/addListener.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/addListener.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/consumeKeyboardToken.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/consumeKeyboardToken.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/dispose.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/dispose.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/hasFocus.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/hasFocus.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/hasListeners.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/hasListeners.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/notifyListeners.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/notifyListeners.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/removeListener.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/removeListener.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/toString.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/toString.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/unfocus.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/AlwaysDisabledFocusNode/unfocus.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipSelected.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipSelected.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsBuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsBuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput-class.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput-class.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/ChipsInput.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/ChipsInput.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/chipBuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/chipBuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/createElement.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/createElement.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/createState.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/createState.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/debugFillProperties.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/debugFillProperties.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/decoration.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/decoration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/enabled.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/enabled.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/findSuggestions.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/findSuggestions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/initialValue.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/initialValue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/key.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/key.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/onChanged.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/onChanged.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/onChipTapped.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/onChipTapped.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/suggestionBuilder.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/suggestionBuilder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/toString.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/toString.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/toStringShort.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInput/toStringShort.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState-class.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState-class.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/ChipsInputState.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/ChipsInputState.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/build.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/build.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/deleteChip.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/deleteChip.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/dispose.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/dispose.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/initState.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/initState.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/kObjectReplacementChar-constant.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/kObjectReplacementChar-constant.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/performAction.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/performAction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/requestKeyboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/requestKeyboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/selectSuggestion.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/selectSuggestion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/size.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/size.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/text.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/text.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/toString.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/toString.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/updateEditingValue.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/updateEditingValue.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/updateFloatingCursor.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputState/updateFloatingCursor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputSuggestions.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/ChipsInputSuggestions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/flutter_chips_input/flutter_chips_input-library.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/flutter_chips_input/flutter_chips_input-library.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/index.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/static-assets/highlight.pack.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/static-assets/highlight.pack.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/static-assets/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/static-assets/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/doc/api/static-assets/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/doc/api/static-assets/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/chips_input.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/chips_input.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.dart_tool/" />
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -41,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/src/chips_input.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="90" selection-start-line="90" selection-end-line="90" />
+            <state relative-caret-position="-3270">
+              <caret line="89" selection-start-line="89" selection-end-line="89" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -53,15 +100,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pubspec.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-449">
+            <state relative-caret-position="-441">
               <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/README.md">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -99,8 +141,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="9" selection-start-column="9" selection-end-column="9" />
+            <state relative-caret-position="17">
+              <caret line="1" column="133" selection-start-line="1" selection-start-column="133" selection-end-line="1" selection-end-column="133" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/flutter_chips_input_test.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -214,6 +265,11 @@
             </path>
             <path>
               <item name="flutter_chips_input" type="b2602c69:ProjectViewProjectNode" />
+              <item name="flutter_chips_input" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="flutter_chips_input" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -288,8 +344,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1863" height="977" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13783635" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13783635" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" side_tool="true" />
@@ -310,7 +367,7 @@
       <window_info anchor="bottom" id="Logcat" order="10" />
       <window_info anchor="bottom" id="Flutter Performance" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="12" weight="0.3298122" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="13" sideWeight="0.49972543" visible="true" weight="0.319774" />
+      <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49972543" visible="true" weight="0.319774" />
       <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.49972543" weight="0.32881355" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -326,13 +383,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.metadata">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/flutter_chips_input_test.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example/test/widget_test.dart">
       <provider selected="true" editor-type-id="text-editor" />
@@ -425,16 +475,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/chips_input.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="90" selection-start-line="90" selection-end-line="90" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/example/lib/main.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-226">
@@ -445,17 +485,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/flutter_chips_input_test.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/chips_input.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3270">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pubspec.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-449">
+        <state relative-caret-position="-441">
           <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CHANGELOG.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="9" selection-start-column="9" selection-end-column="9" />
+        <state relative-caret-position="17">
+          <caret line="1" column="133" selection-start-line="1" selection-start-column="133" selection-end-line="1" selection-end-column="133" />
         </state>
       </provider>
     </entry>

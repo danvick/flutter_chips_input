@@ -1,5 +1,5 @@
 ## [1.2.1] - 12-Jun-2019
-* Removed unwanted top and bottom padding from ListView in suggestions overlay
+* Removed unwanted top and bottom padding from ListView in suggestions overlay. Credit [Kenneth Gulbrandsøy](https://github.com/kengu)
 
 ## [1.2.0] - 25-Mar-2019
 * Max number of chips can now be set using `maxChips` attribute
