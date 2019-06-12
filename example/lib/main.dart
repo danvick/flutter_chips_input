@@ -73,6 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 // prefixIcon: Icon(Icons.search),
                 // hintText: formControl.hint,
                 labelText: "Select People",
+
                 // enabled: false,
                 // errorText: field.errorText,
               ),

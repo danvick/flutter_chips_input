@@ -40,7 +40,7 @@ class ChipsInput<T> extends StatefulWidget {
 class ChipsInputState<T> extends State<ChipsInput<T>>
     implements TextInputClient {
   static const kObjectReplacementChar = 0xFFFC;
-  Set<T> _chips = Set<T>();
+  Set<T> _chips;
   List<T> _suggestions;
   StreamController<List<T>> _suggestionsStreamController;
   int _searchId = 0;
@@ -59,12 +59,13 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
 
   @override
   void initState() {
-    super.initState();
+    _chips = Set<T>();
     _chips.addAll(widget.initialValue);
     _updateTextInputState();
     _initFocusNode();
     this._suggestionsBoxController = _SuggestionsBoxController(context);
     this._suggestionsStreamController = StreamController<List<T>>.broadcast();
+    super.initState();
   }
 
   _initFocusNode() {
