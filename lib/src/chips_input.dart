@@ -64,37 +64,33 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     super.initState();
     _chips.addAll(widget.initialValue);
     _updateTextInputState();
-    _initFocusNode();
     this._suggestionsBoxController = _SuggestionsBoxController(context);
     this._suggestionsStreamController = StreamController<List<T>>.broadcast();
+    _initFocusNode();
   }
 
   _initFocusNode() {
-    setState(() {
-      debugPrint("Initializing focus node");
-      if (widget.enabled) {
-        if (widget.maxChips == null || _chips.length < widget.maxChips) {
-          this._focusNode = FocusNode();
-          (() async {
-            await this._initOverlayEntry();
-            this._focusNode.addListener(_onFocusChanged);
-            // in case we already missed the focus event
-            if (this._focusNode.hasFocus) {
-              this._suggestionsBoxController.open();
-            }
-          })();
-        } else
-          this._focusNode = AlwaysDisabledFocusNode();
+    debugPrint("Initializing focus node");
+    if (widget.enabled) {
+      this._suggestionsBoxController.close();
+      if (widget.maxChips == null || _chips.length < widget.maxChips) {
+        this._focusNode = FocusNode();
+        this._focusNode.addListener(_onFocusChanged);
+        // in case we already missed the focus event
+        if (this._focusNode.hasFocus) {
+          this._suggestionsBoxController.open();
+        }
       } else
         this._focusNode = AlwaysDisabledFocusNode();
-    });
+    } else
+      this._focusNode = AlwaysDisabledFocusNode();
     debugPrint(this._focusNode.toString());
   }
 
   void _onFocusChanged() {
     if (_focusNode.hasFocus) {
       _openInputConnection();
-      // if()
+      this._initOverlayEntry();
       this._suggestionsBoxController.open();
     } else {
       _closeInputConnectionIfNeeded();
@@ -105,52 +101,43 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     });
   }
 
-  Future<void> _initOverlayEntry() async {
+  void _initOverlayEntry() {
     RenderBox renderBox = context.findRenderObject();
-    // TODO: See if after_layout mixin (https://pub.dartlang.org/packages/after_layout) works instead of keep checking if rendered
-
-    while (renderBox == null) {
-      await Future.delayed(Duration(milliseconds: 10));
-
-      renderBox = context.findRenderObject();
-    }
-
-    while (!renderBox.hasSize) {
-      await Future.delayed(Duration(milliseconds: 10));
-    }
-
+    var size = renderBox.size;
+    var offset = renderBox.localToGlobal(Offset.zero);
     size = renderBox.size;
 
+    this._suggestionsBoxController.close();
     this._suggestionsBoxController._overlayEntry = OverlayEntry(
       builder: (context) {
-        return StreamBuilder(
-          stream: _suggestionsStreamController.stream,
-          builder:
-              (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
-            if (snapshot.data != null && snapshot.data?.length != 0)
-              return Positioned(
-                width: size.width,
-                child: CompositedTransformFollower(
-                  link: this._layerLink,
-                  showWhenUnlinked: false,
-                  offset: Offset(0.0, size.height + 5.0),
-                  child: Material(
-                    elevation: 4.0,
-                    child: ListView.builder(
-                      shrinkWrap: true,
-                      padding: EdgeInsets.zero,
-                      itemCount: snapshot.data?.length ?? 0,
-                      itemBuilder: (BuildContext context, int index) {
-                        return widget.suggestionBuilder(
-                            context, this, _suggestions[index]);
-                      },
-                    ),
-                  ),
-                ),
-              );
-            else
-              return Container();
-          },
+        return Positioned(
+          left: offset.dx,
+          top: offset.dy + size.height + 5.0,
+          width: size.width,
+          child: StreamBuilder(
+              stream: _suggestionsStreamController.stream,
+              builder: (BuildContext context,
+                  AsyncSnapshot<List<dynamic>> snapshot) {
+                return (snapshot.data != null && snapshot.data?.length != 0)
+                    ? CompositedTransformFollower(
+                        link: this._layerLink,
+                        showWhenUnlinked: false,
+                        offset: Offset(0.0, size.height + 5.0),
+                        child: Material(
+                          elevation: 4.0,
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            padding: EdgeInsets.zero,
+                            itemCount: snapshot.data?.length ?? 0,
+                            itemBuilder: (BuildContext context, int index) {
+                              return widget.suggestionBuilder(
+                                  context, this, _suggestions[index]);
+                            },
+                          ),
+                        ),
+                      )
+                    : Container();
+              }),
         );
       },
     );
@@ -161,6 +148,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     _focusNode?.dispose();
     _closeInputConnectionIfNeeded();
     _suggestionsStreamController.close();
+    _suggestionsBoxController.close();
     super.dispose();
   }
 

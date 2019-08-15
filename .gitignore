@@ -9,3 +9,6 @@ ios/.generated/
 ios/Flutter/Generated.xcconfig
 ios/Runner/GeneratedPluginRegistrant.*
 /.project
+/.idea
+/example/android/app/src/main/gen
+flutter_chips_input.iml

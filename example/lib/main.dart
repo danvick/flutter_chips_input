@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg'),
               ],
               enabled: true,
-              // maxChips: 2,
+              maxChips: 3,
               textStyle: TextStyle(height: 1.5, fontFamily: "Roboto", fontSize: 16),
               decoration: InputDecoration(
                 // prefixIcon: Icon(Icons.search),
