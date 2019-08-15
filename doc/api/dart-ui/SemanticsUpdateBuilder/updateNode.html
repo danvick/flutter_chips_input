@@ -168,8 +168,11 @@ node starts at <code>elevation</code> above the parent and ends at <code>elevati
   Int32List childrenInHitTestOrder,
   Int32List additionalActions,
 }) {
-  if (transform.length != 16)
-    throw new ArgumentError(&#39;transform argument must have 16 entries.&#39;);
+  assert(_matrix4IsValid(transform));
+  assert(
+    scrollChildren == 0 || scrollChildren == null || (scrollChildren &gt; 0 &amp;&amp; childrenInHitTestOrder != null),
+    &#39;If a node has scrollChildren, it must have childrenInHitTestOrder&#39;,
+  );
   _updateNode(
     id,
     flags,
@@ -211,7 +214,7 @@ node starts at <code>elevation</code> above the parent and ends at <code>elevati
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.3.0
+    flutter_chips_input 1.3.1
   </span>
 
   

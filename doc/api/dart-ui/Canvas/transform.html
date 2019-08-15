@@ -126,7 +126,7 @@ specified as a list of values in column-major order.</p>
       <pre class="language-dart"><code class="language-dart">void transform(Float64List matrix4) {
   assert(matrix4 != null);
   if (matrix4.length != 16)
-    throw new ArgumentError(&#39;&quot;matrix4&quot; must have 16 entries.&#39;);
+    throw ArgumentError(&#39;&quot;matrix4&quot; must have 16 entries.&#39;);
   _transform(matrix4);
 }</code></pre>
     </section>
@@ -140,7 +140,7 @@ specified as a list of values in column-major order.</p>
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.3.0
+    flutter_chips_input 1.3.1
   </span>
 
   

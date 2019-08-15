@@ -149,7 +149,7 @@ rounded rectangle:</p>
   Rect rect = Offset.zero &amp; size;
   canvas.save();
   canvas.clipRRect(new RRect.fromRectXY(rect, 100.0, 100.0));
-  canvas.saveLayer(rect, new Paint());
+  canvas.saveLayer(rect, Paint());
   canvas.drawPaint(new Paint()..color = Colors.red);
   canvas.drawPaint(new Paint()..color = Colors.white);
   canvas.restore();
@@ -229,7 +229,7 @@ for subsequent commands.</li><li><a href="dart-ui/BlendMode-class.html">BlendMod
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.3.0
+    flutter_chips_input 1.3.1
   </span>
 
   

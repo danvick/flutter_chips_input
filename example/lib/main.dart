@@ -94,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         .compareTo(
                             b.name.toLowerCase().indexOf(lowercaseQuery)));
                 } else {
-                  return const <AppProfile>[];
+                  return mockResults;
                 }
               },
               onChanged: (data) {

@@ -140,6 +140,7 @@ void dispose() {
   _focusNode?.dispose();
   _closeInputConnectionIfNeeded();
   _suggestionsStreamController.close();
+  _suggestionsBoxController.close();
   super.dispose();
 }</code></pre>
     </section>
@@ -153,7 +154,7 @@ void dispose() {
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.3.0
+    flutter_chips_input 1.3.1
   </span>
 
   

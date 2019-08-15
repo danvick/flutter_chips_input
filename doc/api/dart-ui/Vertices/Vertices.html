@@ -95,11 +95,11 @@
 }) : assert(mode != null),
      assert(positions != null) {
   if (textureCoordinates != null &amp;&amp; textureCoordinates.length != positions.length)
-    throw new ArgumentError(&#39;&quot;positions&quot; and &quot;textureCoordinates&quot; lengths must match.&#39;);
+    throw ArgumentError(&#39;&quot;positions&quot; and &quot;textureCoordinates&quot; lengths must match.&#39;);
   if (colors != null &amp;&amp; colors.length != positions.length)
-    throw new ArgumentError(&#39;&quot;positions&quot; and &quot;colors&quot; lengths must match.&#39;);
+    throw ArgumentError(&#39;&quot;positions&quot; and &quot;colors&quot; lengths must match.&#39;);
   if (indices != null &amp;&amp; indices.any((int i) =&gt; i &lt; 0 || i &gt;= positions.length))
-    throw new ArgumentError(&#39;&quot;indices&quot; values must be valid indices in the positions list.&#39;);
+    throw ArgumentError(&#39;&quot;indices&quot; values must be valid indices in the positions list.&#39;);
 
   final Float32List encodedPositions = _encodePointList(positions);
   final Float32List encodedTextureCoordinates = (textureCoordinates != null)
@@ -108,12 +108,13 @@
   final Int32List encodedColors = colors != null
     ? _encodeColorList(colors)
     : null;
-  final Int32List encodedIndices = indices != null
-    ? new Int32List.fromList(indices)
+  final Uint16List encodedIndices = indices != null
+    ? Uint16List.fromList(indices)
     : null;
 
   _constructor();
-  _init(mode.index, encodedPositions, encodedTextureCoordinates, encodedColors, encodedIndices);
+  if (!_init(mode.index, encodedPositions, encodedTextureCoordinates, encodedColors, encodedIndices))
+    throw ArgumentError(&#39;Invalid configuration for vertices.&#39;);
 }</code></pre>
     </section>
 
@@ -126,7 +127,7 @@
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.3.0
+    flutter_chips_input 1.3.1
   </span>
 
   

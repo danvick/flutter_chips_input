@@ -1,3 +1,6 @@
+## [1.3.1] - 15-Aug-2019
+* Resolve overlay assertion error `'_overlay != null': is not true`.
+
 ## [1.3.0] - 12-Jun-2019
 * New attribute `textStyle` allows changing the `TextStyle` of the TextInput
 

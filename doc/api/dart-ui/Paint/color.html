@@ -110,7 +110,7 @@
           <h2><span>Implementation</span></h2>
           <pre class="language-dart"><code class="language-dart">Color get color {
   final int encoded = _data.getInt32(_kColorOffset, _kFakeHostEndian);
-  return new Color(encoded ^ _kColorDefault);
+  return Color(encoded ^ _kColorDefault);
 }</code></pre>
         </section>
 </section>
@@ -142,7 +142,7 @@
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.3.0
+    flutter_chips_input 1.3.1
   </span>
 
   

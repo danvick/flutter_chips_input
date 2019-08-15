@@ -141,9 +141,9 @@ void initState() {
   super.initState();
   _chips.addAll(widget.initialValue);
   _updateTextInputState();
-  _initFocusNode();
   this._suggestionsBoxController = _SuggestionsBoxController(context);
   this._suggestionsStreamController = StreamController&lt;List&lt;T&gt;&gt;.broadcast();
+  _initFocusNode();
 }</code></pre>
     </section>
 
@@ -156,7 +156,7 @@ void initState() {
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.3.0
+    flutter_chips_input 1.3.1
   </span>
 
   
