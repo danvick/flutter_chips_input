@@ -275,7 +275,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     _value = TextEditingValue(
       text: text,
       selection: TextSelection.collapsed(offset: text.length),
-      composing: TextRange(start: 0, end: text.length),
+      //composing: TextRange(start: 0, end: text.length),
     );
     if (_connection == null)
       _connection = TextInput.attach(this, TextInputConfiguration());
