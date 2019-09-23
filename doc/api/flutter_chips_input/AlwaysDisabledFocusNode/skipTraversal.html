@@ -61,6 +61,7 @@
       </li>
       <li><a href="flutter_chips_input/AlwaysDisabledFocusNode/hasFocus.html">hasFocus</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/ancestors.html">ancestors</a></li>
+      <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/canRequestFocus.html">canRequestFocus</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/children.html">children</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/context.html">context</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/debugLabel.html">debugLabel</a></li>
@@ -69,6 +70,7 @@
       <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/hasListeners.html">hasListeners</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/hasPrimaryFocus.html">hasPrimaryFocus</a></li>
+      <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/highlightMode.html">highlightMode</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/nearestScope.html">nearestScope</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/offset.html">offset</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/onKey.html">onKey</a></li>
@@ -110,28 +112,53 @@
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
-      <div><h1>skipTraversal property</h1></div>
+      <div><h1><span class="kind-property">skipTraversal</span> property</h1></div>
 
+
+        <section id="getter">
+        
         <section class="multi-line-signature">
           <span class="returntype"><a href="dart-core/bool-class.html">bool</a></span>
-          <span class="name ">skipTraversal</span>
-          <div class="features">read / write, inherited</div>
-        </section>
-        <section class="desc markdown">
+                  <span class="name ">skipTraversal</span>
+          <div class="features">inherited</div>
+</section>
+        
+                <section class="desc markdown">
           <p>If true, tells the focus traversal policy to skip over this node for
 purposes of the traversal algorithm.</p>
 <p>This may be used to place nodes in the focus tree that may be focused, but
 not traversed, allowing them to receive key events as part of the focus
 chain, but not be traversed to via focus traversal.</p>
+<p>This is different from <a href="flutter_chips_input/AlwaysDisabledFocusNode/canRequestFocus.html">canRequestFocus</a> because it only implies that the
+node can't be reached via traversal, not that it can't be focused. It may
+still be focused explicitly.</p>
         </section>
                 <section class="summary source-code" id="source">
           <h2><span>Implementation</span></h2>
-          <pre class="language-dart"><code class="language-dart">bool skipTraversal
-
-</code></pre>
+          <pre class="language-dart"><code class="language-dart">bool get skipTraversal =&gt; _skipTraversal;</code></pre>
         </section>
-
-  </div> <!-- /.main-content -->
+</section>
+        
+        <section id="setter">
+        
+        <section class="multi-line-signature">
+          <span class="returntype">void</span>
+                    <span class="name ">skipTraversal=</span>
+<span class="signature">(<wbr><span class="parameter" id="skipTraversal=-param-value"><span class="type-annotation"><a href="dart-core/bool-class.html">bool</a></span> <span class="parameter-name">value</span></span>)</span>
+                  <div class="features">inherited</div>
+</section>
+        
+                        <section class="summary source-code" id="source">
+          <h2><span>Implementation</span></h2>
+          <pre class="language-dart"><code class="language-dart">set skipTraversal(bool value) {
+  if (value != _skipTraversal) {
+    _skipTraversal = value;
+    _notify();
+  }
+}</code></pre>
+        </section>
+</section>
+          </div> <!-- /.main-content -->
 
   <div id="dartdoc-sidebar-right" class="col-xs-6 col-sm-6 col-md-2 sidebar sidebar-offcanvas-right">
   </div><!--/.sidebar-offcanvas-->
@@ -140,7 +167,7 @@ chain, but not be traversed to via focus traversal.</p>
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.3.1
+    flutter_chips_input 1.4.0
   </span>
 
   

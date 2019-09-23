@@ -61,6 +61,7 @@
       </li>
       <li><a href="flutter_chips_input/AlwaysDisabledFocusNode/hasFocus.html">hasFocus</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/ancestors.html">ancestors</a></li>
+      <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/canRequestFocus.html">canRequestFocus</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/children.html">children</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/context.html">context</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/debugLabel.html">debugLabel</a></li>
@@ -69,6 +70,7 @@
       <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/hasListeners.html">hasListeners</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/hasPrimaryFocus.html">hasPrimaryFocus</a></li>
+      <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/highlightMode.html">highlightMode</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/nearestScope.html">nearestScope</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/offset.html">offset</a></li>
       <li class="inherited"><a href="flutter_chips_input/AlwaysDisabledFocusNode/onKey.html">onKey</a></li>
@@ -110,7 +112,7 @@
   </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
-      <div><h1>requestFocus method</h1></div>
+      <div><h1><span class="kind-method">requestFocus</span> method</h1></div>
 
     <section class="multi-line-signature">
       <span class="returntype">void</span>
@@ -140,8 +142,7 @@ microtask, so notification may lag the request by up to one frame.</p>
     if (node._parent == null) {
       _reparent(node);
     }
-    assert(node.ancestors.contains(this),
-      &#39;Focus was requested for a node that is not a descendant of the scope from which it was requested.&#39;);
+    assert(node.ancestors.contains(this), &#39;Focus was requested for a node that is not a descendant of the scope from which it was requested.&#39;);
     node._doRequestFocus();
     return;
   }
@@ -158,7 +159,7 @@ microtask, so notification may lag the request by up to one frame.</p>
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.3.1
+    flutter_chips_input 1.4.0
   </span>
 
   

@@ -68,6 +68,7 @@
       <li><a href="flutter_chips_input/ChipsInput/onChanged.html">onChanged</a></li>
       <li><a href="flutter_chips_input/ChipsInput/onChipTapped.html">onChipTapped</a></li>
       <li><a href="flutter_chips_input/ChipsInput/suggestionBuilder.html">suggestionBuilder</a></li>
+      <li><a href="flutter_chips_input/ChipsInput/suggestionsBoxMaxHeight.html">suggestionsBoxMaxHeight</a></li>
       <li><a href="flutter_chips_input/ChipsInput/textStyle.html">textStyle</a></li>
       <li class="inherited"><a href="dart-core/Object/hashCode.html">hashCode</a></li>
       <li class="inherited"><a href="flutter_chips_input/ChipsInput/key.html">key</a></li>
@@ -94,11 +95,11 @@
   </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-main-content" class="col-xs-12 col-sm-9 col-md-8 main-content">
-      <div><h1>ChipsInput&lt;<wbr><span class="type-parameter">T</span>&gt; constructor</h1></div>
+      <div><h1><span class="kind-constructor">ChipsInput&lt;<wbr><span class="type-parameter">T</span>&gt;</span> constructor</h1></div>
 
     <section class="multi-line-signature">
       
-      <span class="name ">ChipsInput&lt;<wbr><span class="type-parameter">T</span>&gt;</span>(<wbr>{<span class="parameter" id="-param-key"><span class="type-annotation">Key</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="-param-initialValue"><span class="type-annotation"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">initialValue</span>: <span class="default-value">const []</span>, </span> <span class="parameter" id="-param-decoration"><span class="type-annotation">InputDecoration</span> <span class="parameter-name">decoration</span>: <span class="default-value">const InputDecoration()</span>, </span> <span class="parameter" id="-param-enabled"><span class="type-annotation"><a href="dart-core/bool-class.html">bool</a></span> <span class="parameter-name">enabled</span>: <span class="default-value">true</span>, </span> <span class="parameter" id="-param-chipBuilder"><span>@required</span> <span class="type-annotation"><a href="flutter_chips_input/ChipsBuilder.html">ChipsBuilder</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">chipBuilder</span>, </span> <span class="parameter" id="-param-suggestionBuilder"><span>@required</span> <span class="type-annotation"><a href="flutter_chips_input/ChipsBuilder.html">ChipsBuilder</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">suggestionBuilder</span>, </span> <span class="parameter" id="-param-findSuggestions"><span>@required</span> <span class="type-annotation"><a href="flutter_chips_input/ChipsInputSuggestions.html">ChipsInputSuggestions</a></span> <span class="parameter-name">findSuggestions</span>, </span> <span class="parameter" id="-param-onChanged"><span>@required</span> <span class="type-annotation">ValueChanged<span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">onChanged</span>, </span> <span class="parameter" id="-param-onChipTapped"><span class="type-annotation">ValueChanged<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">onChipTapped</span>, </span> <span class="parameter" id="-param-maxChips"><span class="type-annotation"><a href="dart-core/int-class.html">int</a></span> <span class="parameter-name">maxChips</span>, </span> <span class="parameter" id="-param-textStyle"><span class="type-annotation">TextStyle</span> <span class="parameter-name">textStyle</span></span> })
+      <span class="name ">ChipsInput&lt;<wbr><span class="type-parameter">T</span>&gt;</span>(<wbr>{<span class="parameter" id="-param-key"><span class="type-annotation">Key</span> <span class="parameter-name">key</span>, </span> <span class="parameter" id="-param-initialValue"><span class="type-annotation"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">initialValue</span>: <span class="default-value">const []</span>, </span> <span class="parameter" id="-param-decoration"><span class="type-annotation">InputDecoration</span> <span class="parameter-name">decoration</span>: <span class="default-value">const InputDecoration()</span>, </span> <span class="parameter" id="-param-enabled"><span class="type-annotation"><a href="dart-core/bool-class.html">bool</a></span> <span class="parameter-name">enabled</span>: <span class="default-value">true</span>, </span> <span class="parameter" id="-param-chipBuilder"><span>@required</span> <span class="type-annotation"><a href="flutter_chips_input/ChipsBuilder.html">ChipsBuilder</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">chipBuilder</span>, </span> <span class="parameter" id="-param-suggestionBuilder"><span>@required</span> <span class="type-annotation"><a href="flutter_chips_input/ChipsBuilder.html">ChipsBuilder</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">suggestionBuilder</span>, </span> <span class="parameter" id="-param-findSuggestions"><span>@required</span> <span class="type-annotation"><a href="flutter_chips_input/ChipsInputSuggestions.html">ChipsInputSuggestions</a></span> <span class="parameter-name">findSuggestions</span>, </span> <span class="parameter" id="-param-onChanged"><span>@required</span> <span class="type-annotation">ValueChanged<span class="signature">&lt;<wbr><span class="type-parameter"><a href="dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>&gt;</span></span> <span class="parameter-name">onChanged</span>, </span> <span class="parameter" id="-param-onChipTapped"><span class="type-annotation">ValueChanged<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">onChipTapped</span>, </span> <span class="parameter" id="-param-maxChips"><span class="type-annotation"><a href="dart-core/int-class.html">int</a></span> <span class="parameter-name">maxChips</span>, </span> <span class="parameter" id="-param-textStyle"><span class="type-annotation">TextStyle</span> <span class="parameter-name">textStyle</span>, </span> <span class="parameter" id="-param-suggestionsBoxMaxHeight"><span class="type-annotation"><a href="dart-core/double-class.html">double</a></span> <span class="parameter-name">suggestionsBoxMaxHeight</span></span> })
     </section>
 
     
@@ -116,6 +117,7 @@
   this.onChipTapped,
   this.maxChips,
   this.textStyle,
+  this.suggestionsBoxMaxHeight,
 })  : assert(maxChips == null || initialValue.length &lt;= maxChips),
       super(key: key);</code></pre>
     </section>
@@ -129,7 +131,7 @@
 
 <footer>
   <span class="no-break">
-    flutter_chips_input 1.3.1
+    flutter_chips_input 1.4.0
   </span>
 
   
