@@ -22,6 +22,13 @@ class ChipsInput<T> extends StatefulWidget {
     this.maxChips,
     this.textStyle,
     this.suggestionsBoxMaxHeight,
+    this.inputType = TextInputType.text,
+    this.obscureText = false,
+    this.autocorrect = true,
+    this.actionLabel,
+    this.inputAction = TextInputAction.done,
+    this.keyboardAppearance = Brightness.light,
+    this.textCapitalization = TextCapitalization.none,
   })  : assert(maxChips == null || initialValue.length <= maxChips),
         super(key: key);
 
@@ -36,6 +43,15 @@ class ChipsInput<T> extends StatefulWidget {
   final List<T> initialValue;
   final int maxChips;
   final double suggestionsBoxMaxHeight;
+  final TextInputType inputType;
+  final bool obscureText;
+  final bool autocorrect;
+  final String actionLabel;
+  final TextInputAction inputAction;
+  final Brightness keyboardAppearance;
+  // final Color cursorColor;
+
+  final TextCapitalization textCapitalization;
 
   @override
   ChipsInputState<T> createState() => ChipsInputState<T>();
@@ -201,7 +217,15 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
 
   void _openInputConnection() {
     if (!_hasInputConnection) {
-      _connection = TextInput.attach(this, TextInputConfiguration());
+      _connection = TextInput.attach(this, TextInputConfiguration(
+        inputType: widget.inputType,
+        obscureText: widget.obscureText,
+        autocorrect: widget.autocorrect,
+        actionLabel: widget.actionLabel,
+        inputAction: widget.inputAction,
+        keyboardAppearance: widget.keyboardAppearance,
+        textCapitalization: widget.textCapitalization,
+      ));
       _connection.setEditingState(_value);
     }
     _connection.show();
@@ -297,7 +321,15 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       //composing: TextRange(start: 0, end: text.length),
     );
     if (_connection == null) {
-      _connection = TextInput.attach(this, TextInputConfiguration());
+      _connection = TextInput.attach(this, TextInputConfiguration(
+        inputType: widget.inputType,
+        obscureText: widget.obscureText,
+        autocorrect: widget.autocorrect,
+        actionLabel: widget.actionLabel,
+        inputAction: widget.inputAction,
+        keyboardAppearance: widget.keyboardAppearance,
+        textCapitalization: widget.textCapitalization,
+      ));
     }
     _connection.setEditingState(_value);
   }
@@ -368,7 +400,7 @@ class _TextCursorState extends State<_TextCaret>
         opacity: _displayed && widget.resumed ? 1.0 : 0.0,
         child: Container(
           width: 2.0,
-          color: theme.primaryColor,
+          color: theme.cursorColor,
         ),
       ),
     );

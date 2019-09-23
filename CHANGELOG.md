@@ -1,3 +1,7 @@
+## [1.5.0] - 23-Sep-2019
+* Added TextInputConfiguration options - `inputType`, `obscureText`, `autocorrect`, `actionLabel`, `inputAction`, `keyboardAppearance`.
+* Use theme's cursorColor instead of primaryColor
+
 ## [1.4.0] - 23-Sep-2019
 * Resize the suggestions overlay when on-screen keyboard appears
 * Fixed iOS crash when deleting a chip with the keyboard. Closes [#1](https://github.com/danvick/flutter_chips_input/issues/1). Thanks to [Dmitry Korchagin](https://github.com/dgsc-fav)

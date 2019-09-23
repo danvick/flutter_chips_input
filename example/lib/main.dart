@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_chips_input/flutter_chips_input.dart';
 
 void main() => runApp(MyApp());
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Chips Input',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        // brightness: Brightness.dark,
       ),
       home: MyHomePage(),
     );
@@ -68,6 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 AppProfile('John Doe', 'jdoe@flutter.io',
                     'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg'),
               ],
+              keyboardAppearance: Brightness.dark,
+              textCapitalization: TextCapitalization.words,
               enabled: true,
               maxChips: 3,
               textStyle:
