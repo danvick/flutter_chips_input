@@ -1,3 +1,7 @@
+## [1.4.0] - 23-Sep-2019
+* Resize the suggestions overlay when on-screen keyboard appears
+* Fixed iOS crash when deleting a chip with the keyboard. Closes [#1](https://github.com/danvick/flutter_chips_input/issues/1). Thanks to [Dmitry Korchagin](https://github.com/dgsc-fav)
+
 ## [1.3.1] - 15-Aug-2019
 * Resolve overlay assertion error `'_overlay != null': is not true`.
 

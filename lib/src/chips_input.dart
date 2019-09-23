@@ -21,6 +21,7 @@ class ChipsInput<T> extends StatefulWidget {
     this.onChipTapped,
     this.maxChips,
     this.textStyle,
+    this.suggestionsBoxMaxHeight,
   })  : assert(maxChips == null || initialValue.length <= maxChips),
         super(key: key);
 
@@ -34,6 +35,7 @@ class ChipsInput<T> extends StatefulWidget {
   final ChipsBuilder<T> suggestionBuilder;
   final List<T> initialValue;
   final int maxChips;
+  final double suggestionsBoxMaxHeight;
 
   @override
   ChipsInputState<T> createState() => ChipsInputState<T>();
@@ -46,6 +48,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   List<T> _suggestions;
   StreamController<List<T>> _suggestionsStreamController;
   int _searchId = 0;
+  double _suggestionBoxHeight;
   FocusNode _focusNode;
   TextEditingValue _value = TextEditingValue();
   TextInputConnection _connection;
@@ -84,7 +87,6 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         this._focusNode = AlwaysDisabledFocusNode();
     } else
       this._focusNode = AlwaysDisabledFocusNode();
-    debugPrint(this._focusNode.toString());
   }
 
   void _onFocusChanged() {
@@ -101,18 +103,24 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     });
   }
 
+  _recalculateSuggestionsBoxHeight() {
+    setState(() {
+      _suggestionBoxHeight = MediaQuery.of(context).size.height -
+          MediaQuery.of(context).viewInsets.bottom;
+    });
+  }
+
   void _initOverlayEntry() {
     RenderBox renderBox = context.findRenderObject();
     var size = renderBox.size;
     var offset = renderBox.localToGlobal(Offset.zero);
-    size = renderBox.size;
-
+    var top = offset.dy + size.height + 5.0;
     this._suggestionsBoxController.close();
     this._suggestionsBoxController._overlayEntry = OverlayEntry(
       builder: (context) {
         return Positioned(
           left: offset.dx,
-          top: offset.dy + size.height + 5.0,
+          top: top,
           width: size.width,
           child: StreamBuilder(
               stream: _suggestionsStreamController.stream,
@@ -125,14 +133,22 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                         offset: Offset(0.0, size.height + 5.0),
                         child: Material(
                           elevation: 4.0,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            padding: EdgeInsets.zero,
-                            itemCount: snapshot.data?.length ?? 0,
-                            itemBuilder: (BuildContext context, int index) {
-                              return widget.suggestionBuilder(
-                                  context, this, _suggestions[index]);
-                            },
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxHeight: widget.suggestionsBoxMaxHeight ??
+                                  (_suggestionBoxHeight - top > 0
+                                      ? _suggestionBoxHeight - top
+                                      : 400),
+                            ),
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              padding: EdgeInsets.zero,
+                              itemCount: snapshot.data?.length ?? 0,
+                              itemBuilder: (BuildContext context, int index) {
+                                return widget.suggestionBuilder(
+                                    context, this, _suggestions[index]);
+                              },
+                            ),
                           ),
                         ),
                       )
@@ -158,6 +174,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     } else {
       FocusScope.of(context).requestFocus(_focusNode);
     }
+    _recalculateSuggestionsBoxHeight();
   }
 
   void selectSuggestion(T data) {
@@ -188,6 +205,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       _connection.setEditingState(_value);
     }
     _connection.show();
+    _recalculateSuggestionsBoxHeight();
   }
 
   void _closeInputConnectionIfNeeded() {
@@ -195,6 +213,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       _connection.close();
       _connection = null;
     }
+    _recalculateSuggestionsBoxHeight();
   }
 
   @override
@@ -277,8 +296,9 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       selection: TextSelection.collapsed(offset: text.length),
       //composing: TextRange(start: 0, end: text.length),
     );
-    if (_connection == null)
+    if (_connection == null) {
       _connection = TextInput.attach(this, TextInputConfiguration());
+    }
     _connection.setEditingState(_value);
   }
 
