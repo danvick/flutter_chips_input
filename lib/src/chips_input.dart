@@ -111,7 +111,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       this._initOverlayEntry();
       this._suggestionsBoxController.open();
     } else {
-      _closeInputConnectionIfNeeded();
+      _closeInputConnectionIfNeeded(true);
       this._suggestionsBoxController.close();
     }
     setState(() {
@@ -178,7 +178,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   @override
   void dispose() {
     _focusNode?.dispose();
-    _closeInputConnectionIfNeeded();
+    _closeInputConnectionIfNeeded(false);
     _suggestionsStreamController.close();
     _suggestionsBoxController.close();
     super.dispose();
@@ -217,27 +217,29 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
 
   void _openInputConnection() {
     if (!_hasInputConnection) {
-      _connection = TextInput.attach(this, TextInputConfiguration(
-        inputType: widget.inputType,
-        obscureText: widget.obscureText,
-        autocorrect: widget.autocorrect,
-        actionLabel: widget.actionLabel,
-        inputAction: widget.inputAction,
-        keyboardAppearance: widget.keyboardAppearance,
-        textCapitalization: widget.textCapitalization,
-      ));
+      _connection = TextInput.attach(
+          this,
+          TextInputConfiguration(
+            inputType: widget.inputType,
+            obscureText: widget.obscureText,
+            autocorrect: widget.autocorrect,
+            actionLabel: widget.actionLabel,
+            inputAction: widget.inputAction,
+            keyboardAppearance: widget.keyboardAppearance,
+            textCapitalization: widget.textCapitalization,
+          ));
       _connection.setEditingState(_value);
     }
     _connection.show();
     _recalculateSuggestionsBoxHeight();
   }
 
-  void _closeInputConnectionIfNeeded() {
+  void _closeInputConnectionIfNeeded(bool recalculate) {
     if (_hasInputConnection) {
       _connection.close();
       _connection = null;
     }
-    _recalculateSuggestionsBoxHeight();
+    if (recalculate) _recalculateSuggestionsBoxHeight();
   }
 
   @override
@@ -321,17 +323,19 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       //composing: TextRange(start: 0, end: text.length),
     );
     if (_connection == null) {
-      _connection = TextInput.attach(this, TextInputConfiguration(
-        inputType: widget.inputType,
-        obscureText: widget.obscureText,
-        autocorrect: widget.autocorrect,
-        actionLabel: widget.actionLabel,
-        inputAction: widget.inputAction,
-        keyboardAppearance: widget.keyboardAppearance,
-        textCapitalization: widget.textCapitalization,
-      ));
+      _connection = TextInput.attach(
+          this,
+          TextInputConfiguration(
+            inputType: widget.inputType,
+            obscureText: widget.obscureText,
+            autocorrect: widget.autocorrect,
+            actionLabel: widget.actionLabel,
+            inputAction: widget.inputAction,
+            keyboardAppearance: widget.keyboardAppearance,
+            textCapitalization: widget.textCapitalization,
+          ));
     }
-    _connection.setEditingState(_value);
+    if (_connection.attached) _connection.setEditingState(_value);
   }
 
   void _onSearchChanged(String value) async {
