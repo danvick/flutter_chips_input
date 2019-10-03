@@ -1,3 +1,6 @@
+## [1.5.1] - 02-Oct-2019
+* Fix setEditingState error. Close #16
+
 ## [1.5.0] - 23-Sep-2019
 * Added TextInputConfiguration options - `inputType`, `obscureText`, `autocorrect`, `actionLabel`, `inputAction`, `keyboardAppearance`.
 * Use theme's cursorColor instead of primaryColor
