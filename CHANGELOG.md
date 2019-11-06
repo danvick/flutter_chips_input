@@ -1,3 +1,6 @@
+## [1.5.3] - 07-Nov-2019
+* Reintroduced `onChipTapped` to avoid breaking changes.
+
 ## [1.5.2] - 06-Nov-2019
 * Implemented `TextInputClient`'s `connectionClosed()` method override - compatibility with Flutter versions > 1.9 
 * Remove unused/unimplemented attribute `onChipTapped`. Closes [#22](https://github.com/danvick/flutter_chips_input/issues/22)
