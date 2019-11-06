@@ -18,7 +18,6 @@ class ChipsInput<T> extends StatefulWidget {
     @required this.suggestionBuilder,
     @required this.findSuggestions,
     @required this.onChanged,
-    this.onChipTapped,
     this.maxChips,
     this.textStyle,
     this.suggestionsBoxMaxHeight,
@@ -37,7 +36,6 @@ class ChipsInput<T> extends StatefulWidget {
   final bool enabled;
   final ChipsInputSuggestions findSuggestions;
   final ValueChanged<List<T>> onChanged;
-  final ValueChanged<T> onChipTapped;
   final ChipsBuilder<T> chipBuilder;
   final ChipsBuilder<T> suggestionBuilder;
   final List<T> initialValue;
