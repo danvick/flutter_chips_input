@@ -1,7 +1,7 @@
-## [1.6.0] - 07-Nov-2019
+## [1.6.0] - 06-Nov-2019
 * Finally gracefully removed unused/unimplemented attribute `onChipTapped`.
 
-## [1.5.3] - 07-Nov-2019
+## [1.5.3] - 06-Nov-2019
 * Reintroduced `onChipTapped` to avoid breaking changes.
 
 ## [1.5.2] - 06-Nov-2019
