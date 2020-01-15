@@ -18,6 +18,7 @@ class ChipsInput<T> extends StatefulWidget {
     @required this.suggestionBuilder,
     @required this.findSuggestions,
     @required this.onChanged,
+    this.onChipTapped,
     this.maxChips,
     this.textStyle,
     this.suggestionsBoxMaxHeight,
@@ -36,6 +37,8 @@ class ChipsInput<T> extends StatefulWidget {
   final bool enabled;
   final ChipsInputSuggestions findSuggestions;
   final ValueChanged<List<T>> onChanged;
+  @Deprecated("Will be removed in the next major version")
+  final ValueChanged<T> onChipTapped;
   final ChipsBuilder<T> chipBuilder;
   final ChipsBuilder<T> suggestionBuilder;
   final List<T> initialValue;
@@ -47,6 +50,7 @@ class ChipsInput<T> extends StatefulWidget {
   final String actionLabel;
   final TextInputAction inputAction;
   final Brightness keyboardAppearance;
+
   // final Color cursorColor;
 
   final TextCapitalization textCapitalization;
@@ -356,6 +360,9 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   void connectionClosed() {
     print('TextInputClient.connectionCLosed()');
   }
+
+  @override
+  TextEditingValue get currentTextEditingValue => _value;
 }
 
 class AlwaysDisabledFocusNode extends FocusNode {

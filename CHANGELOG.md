@@ -1,5 +1,11 @@
+## [1.7.0] - 15-Jan-2020
+* Fixed bug: `The non-abstract class 'ChipsInputState' is missing implementations` in Flutter >= 1.13.*
+
+## [1.6.1] - 05-Dec-2019
+* Deprecated `onChipTapped` function.
+
 ## [1.6.0] - 06-Nov-2019
-* Finally gracefully removed unused/unimplemented attribute `onChipTapped`.
+* Removed unused/unimplemented attribute `onChipTapped`.
 
 ## [1.5.3] - 06-Nov-2019
 * Reintroduced `onChipTapped` to avoid breaking changes.
