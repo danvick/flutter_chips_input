@@ -23,6 +23,7 @@ class ChipsInput<T> extends StatefulWidget {
     this.textStyle,
     this.suggestionsBoxMaxHeight,
     this.inputType = TextInputType.text,
+    this.textOverflow = TextOverflow.clip,
     this.obscureText = false,
     this.autocorrect = true,
     this.actionLabel,
@@ -45,6 +46,7 @@ class ChipsInput<T> extends StatefulWidget {
   final int maxChips;
   final double suggestionsBoxMaxHeight;
   final TextInputType inputType;
+  final TextOverflow textOverflow;
   final bool obscureText;
   final bool autocorrect;
   final String actionLabel;
@@ -56,7 +58,7 @@ class ChipsInput<T> extends StatefulWidget {
   final TextCapitalization textCapitalization;
 
   @override
-  ChipsInputState<T> createState() => ChipsInputState<T>();
+  ChipsInputState<T> createState() => ChipsInputState<T>(textOverflow);
 }
 
 class ChipsInputState<T> extends State<ChipsInput<T>>
@@ -73,6 +75,11 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   _SuggestionsBoxController _suggestionsBoxController;
   LayerLink _layerLink = LayerLink();
   Size size;
+  TextOverflow textOverflow;
+
+  ChipsInputState(TextOverflow textOverflow) {
+    this.textOverflow = textOverflow;
+  }
 
   String get text => String.fromCharCodes(
         _value.text.codeUnits.where((ch) => ch != kObjectReplacementChar),
@@ -259,13 +266,21 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Text(
-              text,
-              style: widget.textStyle ??
-                  theme.textTheme.subhead.copyWith(height: 1.5),
+            Flexible(
+              flex: 1,
+              child: Text(
+                text,
+                maxLines: 1,
+                overflow: this.textOverflow,
+                style: widget.textStyle ??
+                    theme.textTheme.subhead.copyWith(height: 1.5),
+              ),
             ),
-            _TextCaret(
-              resumed: _focusNode.hasFocus,
+            Flexible(
+              flex: 0,
+              child: _TextCaret(
+                resumed: _focusNode.hasFocus,
+              ),
             ),
           ],
         ),
