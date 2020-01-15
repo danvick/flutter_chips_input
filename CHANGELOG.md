@@ -1,5 +1,6 @@
 ## [1.7.0] - 15-Jan-2020
-* Fixed bug: `The non-abstract class 'ChipsInputState' is missing implementations` in Flutter >= 1.13.*
+* Fixed bug: `The non-abstract class 'ChipsInputState' is missing implementations` in Flutter >= 1.13.*. Closes [#27](https://github.com/danvick/flutter_chips_input/issues/27)
+* Fix text overflow. Closes[#18](https://github.com/danvick/flutter_chips_input/issues/18). Thanks to [artembakhanov](https://github.com/artembakhanov)
 
 ## [1.6.1] - 05-Dec-2019
 * Deprecated `onChipTapped` function.
