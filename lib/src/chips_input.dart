@@ -378,6 +378,10 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
 
   @override
   TextEditingValue get currentTextEditingValue => _value;
+
+  @override
+  void showAutocorrectionPromptRect(int start, int end) {
+  }
 }
 
 class AlwaysDisabledFocusNode extends FocusNode {
