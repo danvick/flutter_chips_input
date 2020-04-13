@@ -73,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
               keyboardAppearance: Brightness.dark,
               textCapitalization: TextCapitalization.words,
               enabled: true,
-              maxChips: 3,
+              maxChips: 5,
               textStyle:
                   TextStyle(height: 1.5, fontFamily: "Roboto", fontSize: 16),
               decoration: InputDecoration(
@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         .compareTo(
                             b.name.toLowerCase().indexOf(lowercaseQuery)));
                 }
-                return mockResults;
+                return <AppProfile>[];
               },
               onChanged: (data) {
                 print(data);
@@ -128,6 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
             ),
+            // TextField(),
             /*ChipsInput(
               initialValue: [
                 AppProfile('John Doe', 'jdoe@flutter.io',

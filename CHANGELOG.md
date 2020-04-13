@@ -1,3 +1,7 @@
+## [1.8.0] - 13-Apr-2020
+* Fixed bug: `The non-abstract class 'ChipsInputState' is missing implementations for these members: - TextInputClient.showAutocorrectionPromptRect` in Flutter >= 1.18.* on channel master.
+* Fix bug where focus is lost when user selects option. Closes [#32](https://github.com/danvick/flutter_chips_input/issues/32)
+ 
 ## [1.7.0] - 15-Jan-2020
 * Fixed bug: `The non-abstract class 'ChipsInputState' is missing implementations` in Flutter >= 1.13.*. Closes [#27](https://github.com/danvick/flutter_chips_input/issues/27)
 * Fix text overflow. Closes[#18](https://github.com/danvick/flutter_chips_input/issues/18). Thanks to [artembakhanov](https://github.com/artembakhanov)
