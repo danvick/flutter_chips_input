@@ -98,20 +98,22 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   }
 
   _initFocusNode() {
-    debugPrint("Initializing focus node");
-    if (widget.enabled) {
+    if (widget.enabled &&
+        (widget.maxChips == null || _chips.length < widget.maxChips)) {
       this._suggestionsBoxController.close();
-      if (widget.maxChips == null || _chips.length < widget.maxChips) {
+      if (_focusNode == null ||
+          _focusNode.runtimeType == AlwaysDisabledFocusNode) {
         this._focusNode = FocusNode();
         this._focusNode.addListener(_onFocusChanged);
-        // in case we already missed the focus event
-        if (this._focusNode.hasFocus) {
-          this._suggestionsBoxController.open();
-        }
-      } else
+      }
+      this._focusNode.requestFocus();
+      if (this._focusNode.hasFocus) {
+        this._suggestionsBoxController.open();
+      }
+    } else {
+      if (_focusNode.runtimeType != AlwaysDisabledFocusNode)
         this._focusNode = AlwaysDisabledFocusNode();
-    } else
-      this._focusNode = AlwaysDisabledFocusNode();
+    }
   }
 
   void _onFocusChanged() {
@@ -148,37 +150,38 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
           top: top,
           width: size.width,
           child: StreamBuilder(
-              stream: _suggestionsStreamController.stream,
-              builder: (BuildContext context,
-                  AsyncSnapshot<List<dynamic>> snapshot) {
-                return (snapshot.data != null && snapshot.data?.length != 0)
-                    ? CompositedTransformFollower(
-                        link: this._layerLink,
-                        showWhenUnlinked: false,
-                        offset: Offset(0.0, size.height + 5.0),
-                        child: Material(
-                          elevation: 4.0,
-                          child: ConstrainedBox(
-                            constraints: BoxConstraints(
-                              maxHeight: widget.suggestionsBoxMaxHeight ??
-                                  (_suggestionBoxHeight - top > 0
-                                      ? _suggestionBoxHeight - top
-                                      : 400),
-                            ),
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              padding: EdgeInsets.zero,
-                              itemCount: snapshot.data?.length ?? 0,
-                              itemBuilder: (BuildContext context, int index) {
-                                return widget.suggestionBuilder(
-                                    context, this, _suggestions[index]);
-                              },
-                            ),
+            stream: _suggestionsStreamController.stream,
+            builder:
+                (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
+              return (snapshot.data != null && snapshot.data?.length != 0)
+                  ? CompositedTransformFollower(
+                      link: this._layerLink,
+                      showWhenUnlinked: false,
+                      offset: Offset(0.0, size.height + 5.0),
+                      child: Material(
+                        elevation: 4.0,
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            maxHeight: widget.suggestionsBoxMaxHeight ??
+                                (_suggestionBoxHeight - top > 0
+                                    ? _suggestionBoxHeight - top
+                                    : 400),
+                          ),
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            padding: EdgeInsets.zero,
+                            itemCount: snapshot.data?.length ?? 0,
+                            itemBuilder: (BuildContext context, int index) {
+                              return widget.suggestionBuilder(
+                                  context, this, _suggestions[index]);
+                            },
                           ),
                         ),
-                      )
-                    : Container();
-              }),
+                      ),
+                    )
+                  : Container();
+            },
+          ),
         );
       },
     );
@@ -219,7 +222,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         _chips.remove(data);
         _updateTextInputState();
       });
-      if (widget.maxChips != null) _initFocusNode();
+      _initFocusNode();
       widget.onChanged(_chips.toList(growable: false));
     }
   }
