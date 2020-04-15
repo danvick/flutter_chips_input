@@ -67,9 +67,9 @@ ChipsInput(
 
 ## To-do list
 - [X] Ability to limit the number of chips
+- [X] Overlay doesn't move when input height changes i.e. when chips wrap
 - [ ] Create a `FormField` implementation (`ChipsInputField`) to be used within Flutter Form Widget 
 
 ## Known Issues
 * Deleting chips with keyboard on IOS makes app to crush (Flutter Issue with special characters used as replacement characters). Already reported [#1](https://github.com/danvick/flutter_chips_input/issues/1)
-* Overlay doesn't move when input height changes i.e. when chips wrap
 * For some reason Overlay floats above AppBar when scrolling

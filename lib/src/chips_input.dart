@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_chips_input/src/suggestions_box_controller.dart';
 
 typedef ChipsInputSuggestions<T> = FutureOr<List<T>> Function(String query);
 typedef ChipSelected<T> = void Function(T data, bool selected);
@@ -72,7 +73,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   FocusNode _focusNode;
   TextEditingValue _value = TextEditingValue();
   TextInputConnection _connection;
-  _SuggestionsBoxController _suggestionsBoxController;
+  SuggestionsBoxController _suggestionsBoxController;
   LayerLink _layerLink = LayerLink();
   Size size;
   TextOverflow textOverflow;
@@ -92,24 +93,24 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     super.initState();
     _chips.addAll(widget.initialValue);
     _updateTextInputState();
-    this._suggestionsBoxController = _SuggestionsBoxController(context);
+    this._suggestionsBoxController = SuggestionsBoxController(context);
     this._suggestionsStreamController = StreamController<List<T>>.broadcast();
     _initFocusNode();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      _initOverlayEntry();
+    });
   }
 
   _initFocusNode() {
     if (widget.enabled &&
         (widget.maxChips == null || _chips.length < widget.maxChips)) {
-      this._suggestionsBoxController.close();
+      // this._suggestionsBoxController.close();
       if (_focusNode == null ||
           _focusNode.runtimeType == AlwaysDisabledFocusNode) {
         this._focusNode = FocusNode();
         this._focusNode.addListener(_onFocusChanged);
       }
       this._focusNode.requestFocus();
-      if (this._focusNode.hasFocus) {
-        this._suggestionsBoxController.open();
-      }
     } else {
       if (_focusNode.runtimeType != AlwaysDisabledFocusNode)
         this._focusNode = AlwaysDisabledFocusNode();
@@ -119,7 +120,6 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   void _onFocusChanged() {
     if (_focusNode.hasFocus) {
       _openInputConnection();
-      this._initOverlayEntry();
       this._suggestionsBoxController.open();
     } else {
       _closeInputConnectionIfNeeded(true);
@@ -137,49 +137,60 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     });
   }
 
+  RenderBox _getRenderBox() {
+    return context.findRenderObject();
+  }
+
   void _initOverlayEntry() {
-    RenderBox renderBox = context.findRenderObject();
-    var size = renderBox.size;
-    var offset = renderBox.localToGlobal(Offset.zero);
-    var top = offset.dy + size.height + 5.0;
-    this._suggestionsBoxController.close();
-    this._suggestionsBoxController._overlayEntry = OverlayEntry(
+    // this._suggestionsBoxController.close();
+    this._suggestionsBoxController.overlayEntry = OverlayEntry(
       builder: (context) {
+        RenderBox renderBox = _getRenderBox();
+        var size = renderBox.size;
+        var offset = renderBox.localToGlobal(Offset.zero);
+        var top = offset.dy + size.height + 5.0;
+
         return Positioned(
           left: offset.dx,
           top: top,
           width: size.width,
           child: StreamBuilder(
             stream: _suggestionsStreamController.stream,
-            builder:
-                (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
-              return (snapshot.data != null && snapshot.data?.length != 0)
-                  ? CompositedTransformFollower(
-                      link: this._layerLink,
-                      showWhenUnlinked: false,
-                      offset: Offset(0.0, size.height + 5.0),
-                      child: Material(
-                        elevation: 4.0,
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(
-                            maxHeight: widget.suggestionsBoxMaxHeight ??
-                                (_suggestionBoxHeight - top > 0
-                                    ? _suggestionBoxHeight - top
-                                    : 400),
-                          ),
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            padding: EdgeInsets.zero,
-                            itemCount: snapshot.data?.length ?? 0,
-                            itemBuilder: (BuildContext context, int index) {
-                              return widget.suggestionBuilder(
-                                  context, this, _suggestions[index]);
-                            },
-                          ),
-                        ),
+            builder: (
+              BuildContext context,
+              AsyncSnapshot<List<dynamic>> snapshot,
+            ) {
+              if (snapshot.hasData && snapshot.data?.length != 0) {
+                return CompositedTransformFollower(
+                  link: this._layerLink,
+                  showWhenUnlinked: false,
+                  offset: Offset(0.0, size.height + 5.0),
+                  child: Material(
+                    elevation: 4.0,
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxHeight: widget.suggestionsBoxMaxHeight ??
+                            (_suggestionBoxHeight - top > 0
+                                ? _suggestionBoxHeight - top
+                                : 400),
                       ),
-                    )
-                  : Container();
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        padding: EdgeInsets.zero,
+                        itemCount: snapshot.data?.length ?? 0,
+                        itemBuilder: (BuildContext context, int index) {
+                          return widget.suggestionBuilder(
+                            context,
+                            this,
+                            _suggestions[index],
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                );
+              }
+              return Container();
             },
           ),
         );
@@ -207,11 +218,15 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
 
   void selectSuggestion(T data) {
     setState(() {
-      _chips.add(data);
-      if (widget.maxChips != null) _initFocusNode();
-      _updateTextInputState();
-      _suggestions = null;
-      _suggestionsStreamController.add(_suggestions);
+      if (widget.maxChips == null || widget.maxChips > _chips.length) {
+        _chips.add(data);
+        _initFocusNode();
+        _updateTextInputState();
+        _suggestions = null;
+        _suggestionsStreamController.add(_suggestions);
+        if (widget.maxChips == _chips.length) _suggestionsBoxController.close();
+      } else
+        _suggestionsBoxController.close();
     });
     widget.onChanged(_chips.toList(growable: false));
   }
@@ -244,6 +259,13 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     }
     _connection.show();
     _recalculateSuggestionsBoxHeight();
+
+    Future.delayed(Duration(milliseconds: 100), () {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        RenderBox renderBox = context.findRenderObject();
+        Scrollable.of(context)?.position?.ensureVisible(renderBox);
+      });
+    });
   }
 
   void _closeInputConnectionIfNeeded(bool recalculate) {
@@ -290,19 +312,29 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       ),
     );
 
-    return CompositedTransformTarget(
-      link: this._layerLink,
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: requestKeyboard,
-        child: InputDecorator(
-          decoration: widget.decoration,
-          isFocused: _focusNode.hasFocus,
-          isEmpty: _value.text.length == 0 && _chips.length == 0,
-          child: Wrap(
-            children: chipsChildren,
-            spacing: 4.0,
-            runSpacing: 4.0,
+    return NotificationListener<SizeChangedLayoutNotification>(
+      onNotification: (SizeChangedLayoutNotification val) {
+        WidgetsBinding.instance.addPostFrameCallback((_) async {
+          _suggestionsBoxController.overlayEntry.markNeedsBuild();
+        });
+        return true;
+      },
+      child: SizeChangedLayoutNotifier(
+        child: CompositedTransformTarget(
+          link: this._layerLink,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: requestKeyboard,
+            child: InputDecorator(
+              decoration: widget.decoration,
+              isFocused: _focusNode.hasFocus,
+              isEmpty: _value.text.length == 0 && _chips.length == 0,
+              child: Wrap(
+                children: chipsChildren,
+                spacing: 4.0,
+                runSpacing: 4.0,
+              ),
+            ),
           ),
         ),
       ),
@@ -439,37 +471,5 @@ class _TextCursorState extends State<_TextCaret>
         ),
       ),
     );
-  }
-}
-
-class _SuggestionsBoxController {
-  final BuildContext context;
-
-  OverlayEntry _overlayEntry;
-
-  bool _isOpened = false;
-
-  _SuggestionsBoxController(this.context);
-
-  open() {
-    if (this._isOpened) return;
-    assert(this._overlayEntry != null);
-    Overlay.of(context).insert(this._overlayEntry);
-    this._isOpened = true;
-  }
-
-  close() {
-    if (!this._isOpened) return;
-    assert(this._overlayEntry != null);
-    this._overlayEntry.remove();
-    this._isOpened = false;
-  }
-
-  toggle() {
-    if (this._isOpened) {
-      this.close();
-    } else {
-      this.open();
-    }
   }
 }
