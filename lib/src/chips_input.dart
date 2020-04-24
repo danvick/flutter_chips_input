@@ -416,6 +416,9 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
 
   @override
   void showAutocorrectionPromptRect(int start, int end) {}
+
+  @override
+  AutofillScope get currentAutofillScope => null;
 }
 
 class AlwaysDisabledFocusNode extends FocusNode {
