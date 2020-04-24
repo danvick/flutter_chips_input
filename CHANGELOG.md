@@ -1,3 +1,7 @@
+## [1.8.1] - 24-Apr-2020
+* Attempt to ensure to ensure field always visible. Closes #25
+* Also fixed issue when overlay position doesn't adjust with field height.
+
 ## [1.8.0] - 13-Apr-2020
 * Fixed bug: `The non-abstract class 'ChipsInputState' is missing implementations for these members: - TextInputClient.showAutocorrectionPromptRect` in Flutter >= 1.18.* on channel master.
 * Fix bug where focus is lost when user selects option. Closes [#32](https://github.com/danvick/flutter_chips_input/issues/32)
