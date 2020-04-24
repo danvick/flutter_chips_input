@@ -1,3 +1,6 @@
+## [1.9.0-dev.1] - 24-Apr-2020
+* Fixed bug: `Missing implementations for TextInputClient.currentAutofillScope`. Closes #37
+
 ## [1.8.1] - 24-Apr-2020
 * Attempt to ensure to ensure field always visible. Closes #25
 * Also fixed issue when overlay position doesn't adjust with field height.
