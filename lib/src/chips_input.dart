@@ -148,11 +148,15 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         RenderBox renderBox = _getRenderBox();
         var size = renderBox.size;
         var offset = renderBox.localToGlobal(Offset.zero);
-        var top = offset.dy + size.height + 5.0;
+        var bottom = offset.dy + size.height + 5.0;
+        var top = offset.dy - 5.0;
+        var screenHeight = MediaQuery.of(context).size.height;
+        var anchoredTop = (screenHeight - bottom) > top;
 
         return Positioned(
           left: offset.dx,
-          top: top,
+          top: anchoredTop ? null : bottom,
+          bottom: anchoredTop ? null : top,
           width: size.width,
           child: StreamBuilder(
             stream: _suggestionsStreamController.stream,
@@ -202,8 +206,8 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   void dispose() {
     _focusNode?.dispose();
     _closeInputConnectionIfNeeded(false);
-    _suggestionsStreamController.close();
-    _suggestionsBoxController.close();
+    _suggestionsStreamController?.close();
+    _suggestionsBoxController?.close();
     super.dispose();
   }
 
@@ -245,16 +249,17 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   void _openInputConnection() {
     if (!_hasInputConnection) {
       _connection = TextInput.attach(
-          this,
-          TextInputConfiguration(
-            inputType: widget.inputType,
-            obscureText: widget.obscureText,
-            autocorrect: widget.autocorrect,
-            actionLabel: widget.actionLabel,
-            inputAction: widget.inputAction,
-            keyboardAppearance: widget.keyboardAppearance,
-            textCapitalization: widget.textCapitalization,
-          ));
+        this,
+        TextInputConfiguration(
+          inputType: widget.inputType,
+          obscureText: widget.obscureText,
+          autocorrect: widget.autocorrect,
+          actionLabel: widget.actionLabel,
+          inputAction: widget.inputAction,
+          keyboardAppearance: widget.keyboardAppearance,
+          textCapitalization: widget.textCapitalization,
+        ),
+      );
       _connection.setEditingState(_value);
     }
     _connection.show();

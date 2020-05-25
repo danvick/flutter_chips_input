@@ -69,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 height: 800,
                 width: double.maxFinite,
+                color: Colors.red,
               ),
               ChipsInput(
                 initialValue: [
