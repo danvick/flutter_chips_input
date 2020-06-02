@@ -31,6 +31,7 @@ class ChipsInput<T> extends StatefulWidget {
     this.inputAction = TextInputAction.done,
     this.keyboardAppearance = Brightness.light,
     this.textCapitalization = TextCapitalization.none,
+    this.autofocus = false,
   })  : assert(maxChips == null || initialValue.length <= maxChips),
         super(key: key);
 
@@ -53,6 +54,7 @@ class ChipsInput<T> extends StatefulWidget {
   final String actionLabel;
   final TextInputAction inputAction;
   final Brightness keyboardAppearance;
+  final bool autofocus;
 
   // final Color cursorColor;
 
@@ -98,6 +100,9 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     _initFocusNode();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _initOverlayEntry();
+      if (mounted && widget.autofocus && _focusNode != null) {
+        FocusScope.of(context).autofocus(_focusNode);
+      }
     });
   }
 
@@ -245,16 +250,17 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   void _openInputConnection() {
     if (!_hasInputConnection) {
       _connection = TextInput.attach(
-          this,
-          TextInputConfiguration(
-            inputType: widget.inputType,
-            obscureText: widget.obscureText,
-            autocorrect: widget.autocorrect,
-            actionLabel: widget.actionLabel,
-            inputAction: widget.inputAction,
-            keyboardAppearance: widget.keyboardAppearance,
-            textCapitalization: widget.textCapitalization,
-          ));
+        this,
+        TextInputConfiguration(
+          inputType: widget.inputType,
+          obscureText: widget.obscureText,
+          autocorrect: widget.autocorrect,
+          actionLabel: widget.actionLabel,
+          inputAction: widget.inputAction,
+          keyboardAppearance: widget.keyboardAppearance,
+          textCapitalization: widget.textCapitalization,
+        ),
+      );
       _connection.setEditingState(_value);
     }
     _connection.show();

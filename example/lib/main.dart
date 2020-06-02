@@ -75,6 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   AppProfile('John Doe', 'jdoe@flutter.io',
                       'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg'),
                 ],
+                autofocus: true,
                 keyboardAppearance: Brightness.dark,
                 textCapitalization: TextCapitalization.words,
                 enabled: true,
