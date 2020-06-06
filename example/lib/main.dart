@@ -27,6 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  GlobalKey<ChipsInputState> _chipKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     const mockResults = <AppProfile>[
@@ -66,16 +67,14 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              Container(
-                height: 800,
-                width: double.maxFinite,
-              ),
               ChipsInput(
+                key: _chipKey,
                 initialValue: [
                   AppProfile('John Doe', 'jdoe@flutter.io',
                       'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg'),
                 ],
                 autofocus: true,
+                allowChipEditing: true,
                 keyboardAppearance: Brightness.dark,
                 textCapitalization: TextCapitalization.words,
                 enabled: true,
@@ -135,10 +134,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     onTap: () => state.selectSuggestion(profile),
                   );
                 },
-              ),
-              Container(
-                height: 600,
-                width: double.maxFinite,
               ),
               // TextField(),
               /*ChipsInput(
@@ -202,6 +197,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               ),*/
+              RaisedButton(
+                child: Text('Add Chip'),
+                onPressed: (){
+                  _chipKey.currentState.selectSuggestion(AppProfile('Gina', 'fred@flutter.io',
+                      'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'));
+                },
+              ),
             ],
           ),
         ),
