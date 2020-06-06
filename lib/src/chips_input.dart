@@ -172,7 +172,6 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                 return CompositedTransformFollower(
                   link: this._layerLink,
                   showWhenUnlinked: false,
-                  offset: Offset(0.0, size.height + 5.0),
                   child: Material(
                     elevation: 4.0,
                     child: ConstrainedBox(
@@ -205,8 +204,6 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       },
     );
   }
-
-
 
   void requestKeyboard() {
     if (_focusNode.hasFocus) {
@@ -327,22 +324,27 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         return true;
       },
       child: SizeChangedLayoutNotifier(
-        child: CompositedTransformTarget(
-          link: this._layerLink,
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: requestKeyboard,
-            child: InputDecorator(
-              decoration: widget.decoration,
-              isFocused: _focusNode.hasFocus,
-              isEmpty: _value.text.length == 0 && _chips.length == 0,
-              child: Wrap(
-                children: chipsChildren,
-                spacing: 4.0,
-                runSpacing: 4.0,
+        child: Column(
+          children: <Widget>[
+            GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: requestKeyboard,
+              child: InputDecorator(
+                decoration: widget.decoration,
+                isFocused: _focusNode.hasFocus,
+                isEmpty: _value.text.length == 0 && _chips.length == 0,
+                child: Wrap(
+                  children: chipsChildren,
+                  spacing: 4.0,
+                  runSpacing: 4.0,
+                ),
               ),
             ),
-          ),
+            CompositedTransformTarget(
+              link: _layerLink,
+              child: Container(),
+            )
+          ],
         ),
       ),
     );
