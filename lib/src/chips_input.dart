@@ -2,7 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_chips_input/src/suggestions_box_controller.dart';
+
+import 'always_disbled_focus_node.dart';
+import 'suggestions_box_controller.dart';
+import 'text_cursor.dart';
 
 typedef ChipsInputSuggestions<T> = FutureOr<List<T>> Function(String query);
 typedef ChipSelected<T> = void Function(T data, bool selected);
@@ -305,12 +308,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                     theme.textTheme.subhead.copyWith(height: 1.5),
               ),
             ),
-            Flexible(
-              flex: 0,
-              child: _TextCaret(
-                resumed: _focusNode.hasFocus,
-              ),
-            ),
+            Flexible(flex: 0, child: TextCursor(resumed: _focusNode.hasFocus)),
           ],
         ),
       ),
@@ -354,18 +352,17 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   void updateEditingValue(TextEditingValue value) {
     final oldCount = _countReplacements(_value);
     final newCount = _countReplacements(value);
-    setState(() {
-      if (newCount < oldCount) {
-        var removedChip = _chips.last;
-        _chips = Set.from(_chips.take(newCount));
-        if (widget.allowChipEditing && _enteredTexts.containsKey(removedChip)) {
-          _updateTextInputState(putText: _enteredTexts[removedChip]);
-          _enteredTexts.remove(removedChip);
-        }
-        widget.onChanged(_chips.toList(growable: false));
+    if (newCount < oldCount) {
+      var removedChip = _chips.last;
+      _chips = Set.from(_chips.take(newCount));
+      if (widget.allowChipEditing && _enteredTexts.containsKey(removedChip)) {
+        _updateTextInputState(putText: _enteredTexts[removedChip]);
+        _enteredTexts.remove(removedChip);
       }
-      _value = value;
-    });
+      widget.onChanged(_chips.toList(growable: false));
+    } else {
+      _updateTextInputState();
+    }
     _onSearchChanged(text);
   }
 
@@ -390,23 +387,27 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     final text =
         String.fromCharCodes(_chips.map((_) => kObjectReplacementChar)) +
             putText;
-    _value = TextEditingValue(
-      text: text,
-      selection: TextSelection.collapsed(offset: text.length),
-      //composing: TextRange(start: 0, end: text.length),
-    );
+    setState(() {
+      _value = _value.copyWith(
+        text: text,
+        selection: TextSelection.collapsed(offset: text.length),
+        //composing: TextRange(start: 0, end: text.length),
+      );
+    });
+
     if (_connection == null) {
       _connection = TextInput.attach(
-          this,
-          TextInputConfiguration(
-            inputType: widget.inputType,
-            obscureText: widget.obscureText,
-            autocorrect: widget.autocorrect,
-            actionLabel: widget.actionLabel,
-            inputAction: widget.inputAction,
-            keyboardAppearance: widget.keyboardAppearance,
-            textCapitalization: widget.textCapitalization,
-          ));
+        this,
+        TextInputConfiguration(
+          inputType: widget.inputType,
+          obscureText: widget.obscureText,
+          autocorrect: widget.autocorrect,
+          actionLabel: widget.actionLabel,
+          inputAction: widget.inputAction,
+          keyboardAppearance: widget.keyboardAppearance,
+          textCapitalization: widget.textCapitalization,
+        ),
+      );
     }
     if (_connection.attached) _connection.setEditingState(_value);
   }
@@ -433,7 +434,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
 
   @override
   void updateFloatingCursor(RawFloatingCursorPoint point) {
-    print(point);
+    // print(point);
   }
 
   @override
@@ -444,62 +445,6 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   @override
   TextEditingValue get currentTextEditingValue => _value;
 
-  @override
+  // @override
   void showAutocorrectionPromptRect(int start, int end) {}
-}
-
-class AlwaysDisabledFocusNode extends FocusNode {
-  @override
-  bool get hasFocus => false;
-}
-
-class _TextCaret extends StatefulWidget {
-  const _TextCaret({
-    Key key,
-    this.duration = const Duration(milliseconds: 500),
-    this.resumed = false,
-  }) : super(key: key);
-
-  final Duration duration;
-  final bool resumed;
-
-  @override
-  _TextCursorState createState() => _TextCursorState();
-}
-
-class _TextCursorState extends State<_TextCaret>
-    with SingleTickerProviderStateMixin {
-  bool _displayed = false;
-  Timer _timer;
-
-  @override
-  void initState() {
-    super.initState();
-    _timer = Timer.periodic(widget.duration, _onTimer);
-  }
-
-  void _onTimer(Timer timer) {
-    setState(() => _displayed = !_displayed);
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return FractionallySizedBox(
-      heightFactor: 0.7,
-      child: Opacity(
-        opacity: _displayed && widget.resumed ? 1.0 : 0.0,
-        child: Container(
-          width: 2.0,
-          color: theme.cursorColor,
-        ),
-      ),
-    );
-  }
 }
