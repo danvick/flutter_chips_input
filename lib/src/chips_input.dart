@@ -59,7 +59,7 @@ class ChipsInput<T> extends StatefulWidget {
   final TextInputAction inputAction;
   final Brightness keyboardAppearance;
   final bool autofocus;
-  final bool allowChipEditing; //TODO: Proper name
+  final bool allowChipEditing;
 
   // final Color cursorColor;
 
@@ -360,9 +360,10 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         _enteredTexts.remove(removedChip);
       }
       widget.onChanged(_chips.toList(growable: false));
-    } else {
-      _updateTextInputState();
     }
+    setState(() {
+      _value = value;
+    });
     _onSearchChanged(text);
   }
 
@@ -373,8 +374,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   }
 
   String _getNonReplacements() {
-    var charCodes =
-        this.text.codeUnits.where((ch) => ch != kObjectReplacementChar);
+    var charCodes = text.codeUnits.where((ch) => ch != kObjectReplacementChar);
     return String.fromCharCodes(charCodes);
   }
 
@@ -394,6 +394,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         //composing: TextRange(start: 0, end: text.length),
       );
     });
+    updateEditingValue(_value);
 
     if (_connection == null) {
       _connection = TextInput.attach(
@@ -409,7 +410,9 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         ),
       );
     }
-    if (_connection.attached) _connection.setEditingState(_value);
+    if (_connection.attached) {
+      _connection.setEditingState(_value);
+    }
   }
 
   void _onSearchChanged(String value) async {
