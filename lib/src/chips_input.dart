@@ -128,9 +128,9 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     super.initState();
     _chips.addAll(widget.initialValue);
     _focusAttachment = _effectiveFocusNode.attach(context);
-    this._suggestionsBoxController = SuggestionsBoxController(context);
-    this._suggestionsStreamController = StreamController<List<T>>.broadcast();
-    this._effectiveFocusNode.addListener(_handleFocusChanged);
+    _suggestionsBoxController = SuggestionsBoxController(context);
+    _suggestionsStreamController = StreamController<List<T>>.broadcast();
+    _effectiveFocusNode.addListener(_handleFocusChanged);
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _initOverlayEntry();
       if (mounted && widget.autofocus && _effectiveFocusNode != null) {
@@ -139,13 +139,19 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     });
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    //TODO: Implement
+  }
+
   void _handleFocusChanged() {
     if (_effectiveFocusNode.hasFocus) {
       _openInputConnection();
-      this._suggestionsBoxController.open();
+      _suggestionsBoxController.open();
     } else {
       _closeInputConnectionIfNeeded(true);
-      this._suggestionsBoxController.close();
+      _suggestionsBoxController.close();
     }
     setState(() {
       /*rebuild so that _TextCursor is hidden.*/
@@ -160,8 +166,8 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   }
 
   void _initOverlayEntry() {
-    // this._suggestionsBoxController.close();
-    this._suggestionsBoxController.overlayEntry = OverlayEntry(
+    // _suggestionsBoxController.close();
+    _suggestionsBoxController.overlayEntry = OverlayEntry(
       builder: (context) {
         var size = renderBox.size;
         var offset = renderBox.localToGlobal(Offset.zero);
@@ -179,7 +185,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
             ) {
               if (snapshot.hasData && snapshot.data?.length != 0) {
                 return CompositedTransformFollower(
-                  link: this._layerLink,
+                  link: _layerLink,
                   showWhenUnlinked: false,
                   child: Material(
                     elevation: 4.0,
@@ -324,7 +330,19 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
 
   @override
   void performAction(TextInputAction action) {
-    _effectiveFocusNode.unfocus();
+    switch (action) {
+      case TextInputAction.done:
+      case TextInputAction.go:
+      case TextInputAction.send:
+      case TextInputAction.search:
+        if(_suggestions != null && _suggestions.isNotEmpty){
+          selectSuggestion(_suggestions.first);
+        }
+        // _effectiveFocusNode.unfocus();
+        break;
+      default:
+        break;
+    }
   }
 
   @override
@@ -361,8 +379,6 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
 
   // @override
   void showAutocorrectionPromptRect(int start, int end) {}
-
-
 
   @override
   Widget build(BuildContext context) {
