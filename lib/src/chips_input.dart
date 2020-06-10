@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'always_disbled_focus_node.dart';
 import 'suggestions_box_controller.dart';
 import 'text_cursor.dart';
 
@@ -11,6 +10,20 @@ typedef ChipsInputSuggestions<T> = FutureOr<List<T>> Function(String query);
 typedef ChipSelected<T> = void Function(T data, bool selected);
 typedef ChipsBuilder<T> = Widget Function(
     BuildContext context, ChipsInputState<T> state, T data);
+
+const kObjectReplacementChar = 0xFFFD;
+
+extension on TextEditingValue {
+  String get normalCharactersText => String.fromCharCodes(
+        text.codeUnits.where((ch) => ch != kObjectReplacementChar),
+      );
+
+  List<int> get replacementCharacters => text.codeUnits
+      .where((ch) => ch == kObjectReplacementChar)
+      .toList(growable: false);
+
+  int get replacementCharactersCount => replacementCharacters.length;
+}
 
 class ChipsInput<T> extends StatefulWidget {
   ChipsInput({
@@ -36,6 +49,7 @@ class ChipsInput<T> extends StatefulWidget {
     this.textCapitalization = TextCapitalization.none,
     this.autofocus = false,
     this.allowChipEditing = false,
+    this.focusNode,
   })  : assert(maxChips == null || initialValue.length <= maxChips),
         super(key: key);
 
@@ -60,76 +74,73 @@ class ChipsInput<T> extends StatefulWidget {
   final Brightness keyboardAppearance;
   final bool autofocus;
   final bool allowChipEditing;
+  final FocusNode focusNode;
 
   // final Color cursorColor;
 
   final TextCapitalization textCapitalization;
 
   @override
-  ChipsInputState<T> createState() => ChipsInputState<T>(textOverflow);
+  ChipsInputState<T> createState() => ChipsInputState<T>();
 }
 
 class ChipsInputState<T> extends State<ChipsInput<T>>
     implements TextInputClient {
-  static const kObjectReplacementChar = 0xFFFC;
   Set<T> _chips = Set<T>();
   List<T> _suggestions;
   StreamController<List<T>> _suggestionsStreamController;
   int _searchId = 0;
   double _suggestionBoxHeight;
-  FocusNode _focusNode;
   TextEditingValue _value = TextEditingValue();
-  TextInputConnection _connection;
+  TextEditingValue _receivedRemoteTextEditingValue;
+  TextInputConnection _textInputConnection;
   SuggestionsBoxController _suggestionsBoxController;
   LayerLink _layerLink = LayerLink();
   Size size;
-  TextOverflow textOverflow;
   Map<T, String> _enteredTexts = {};
 
-  ChipsInputState(TextOverflow textOverflow) {
-    this.textOverflow = textOverflow;
-  }
-
-  String get text => String.fromCharCodes(
-        _value.text.codeUnits.where((ch) => ch != kObjectReplacementChar),
+  TextInputConfiguration get textInputConfiguration => TextInputConfiguration(
+        inputType: widget.inputType,
+        obscureText: widget.obscureText,
+        autocorrect: widget.autocorrect,
+        actionLabel: widget.actionLabel,
+        inputAction: widget.inputAction,
+        keyboardAppearance: widget.keyboardAppearance,
+        textCapitalization: widget.textCapitalization,
       );
 
-  bool get _hasInputConnection => _connection != null && _connection.attached;
+  bool get _hasInputConnection =>
+      _textInputConnection != null && _textInputConnection.attached;
+
+  bool get _hasReachedMaxChips =>
+      (widget.maxChips == null && _chips.length < widget.maxChips);
+
+  FocusAttachment _focusAttachment;
+  FocusNode _focusNode;
+
+  FocusNode get _effectiveFocusNode =>
+      widget.focusNode ?? (_focusNode ??= FocusNode());
+
+  RenderBox get renderBox => context.findRenderObject();
 
   @override
   void initState() {
     super.initState();
     _chips.addAll(widget.initialValue);
-    _updateTextInputState();
+    _focusAttachment = _effectiveFocusNode.attach(context);
     this._suggestionsBoxController = SuggestionsBoxController(context);
     this._suggestionsStreamController = StreamController<List<T>>.broadcast();
-    _initFocusNode();
+    this._effectiveFocusNode.addListener(_handleFocusChanged);
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       _initOverlayEntry();
-      if (mounted && widget.autofocus && _focusNode != null) {
-        FocusScope.of(context).autofocus(_focusNode);
+      if (mounted && widget.autofocus && _effectiveFocusNode != null) {
+        FocusScope.of(context).autofocus(_effectiveFocusNode);
       }
     });
   }
 
-  _initFocusNode() {
-    if (widget.enabled &&
-        (widget.maxChips == null || _chips.length < widget.maxChips)) {
-      // this._suggestionsBoxController.close();
-      if (_focusNode == null ||
-          _focusNode.runtimeType == AlwaysDisabledFocusNode) {
-        this._focusNode = FocusNode();
-        this._focusNode.addListener(_onFocusChanged);
-      }
-      this._focusNode.requestFocus();
-    } else {
-      if (_focusNode.runtimeType != AlwaysDisabledFocusNode)
-        this._focusNode = AlwaysDisabledFocusNode();
-    }
-  }
-
-  void _onFocusChanged() {
-    if (_focusNode.hasFocus) {
+  void _handleFocusChanged() {
+    if (_effectiveFocusNode.hasFocus) {
       _openInputConnection();
       this._suggestionsBoxController.open();
     } else {
@@ -142,21 +153,16 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   }
 
   _recalculateSuggestionsBoxHeight() {
-    setState(() {
-      _suggestionBoxHeight = MediaQuery.of(context).size.height -
-          MediaQuery.of(context).viewInsets.bottom;
-    });
-  }
-
-  RenderBox _getRenderBox() {
-    return context.findRenderObject();
+    // setState(() {
+    _suggestionBoxHeight = MediaQuery.of(context).size.height -
+        MediaQuery.of(context).viewInsets.bottom;
+    // });
   }
 
   void _initOverlayEntry() {
     // this._suggestionsBoxController.close();
     this._suggestionsBoxController.overlayEntry = OverlayEntry(
       builder: (context) {
-        RenderBox renderBox = _getRenderBox();
         var size = renderBox.size;
         var offset = renderBox.localToGlobal(Offset.zero);
         var top = offset.dy + size.height + 5.0;
@@ -208,63 +214,37 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     );
   }
 
-  void requestKeyboard() {
-    if (_focusNode.hasFocus) {
-      _openInputConnection();
-    } else {
-      FocusScope.of(context).requestFocus(_focusNode);
-    }
-    _recalculateSuggestionsBoxHeight();
-  }
-
   void selectSuggestion(T data) {
-    setState(() {
-      if (widget.maxChips == null || widget.maxChips > _chips.length) {
-        if (widget.allowChipEditing) {
-          var enteredText = _getNonReplacements() ?? '';
-          if (enteredText.isNotEmpty) _enteredTexts[data] = enteredText;
-        }
-        _chips.add(data);
-        _initFocusNode();
-        _updateTextInputState();
-        _suggestions = null;
-        _suggestionsStreamController.add(_suggestions);
-        if (widget.maxChips == _chips.length) _suggestionsBoxController.close();
-      } else
-        _suggestionsBoxController.close();
-    });
+    if (!_hasReachedMaxChips) {
+      if (widget.allowChipEditing) {
+        var enteredText = _value.normalCharactersText ?? '';
+        if (enteredText.isNotEmpty) _enteredTexts[data] = enteredText;
+      }
+      _chips.add(data);
+      _updateTextInputState(replaceText: true);
+      _suggestions = null;
+      _suggestionsStreamController.add(_suggestions);
+      if (widget.maxChips == _chips.length) _suggestionsBoxController.close();
+    } else
+      _suggestionsBoxController.close();
     widget.onChanged(_chips.toList(growable: false));
   }
 
   void deleteChip(T data) {
     if (widget.enabled) {
-      setState(() {
-        _chips.remove(data);
-        if (_enteredTexts.containsKey(data)) _enteredTexts.remove(data);
-        _updateTextInputState();
-      });
-      _initFocusNode();
+      _chips.remove(data);
+      if (_enteredTexts.containsKey(data)) _enteredTexts.remove(data);
+      _updateTextInputState();
       widget.onChanged(_chips.toList(growable: false));
     }
   }
 
   void _openInputConnection() {
     if (!_hasInputConnection) {
-      _connection = TextInput.attach(
-        this,
-        TextInputConfiguration(
-          inputType: widget.inputType,
-          obscureText: widget.obscureText,
-          autocorrect: widget.autocorrect,
-          actionLabel: widget.actionLabel,
-          inputAction: widget.inputAction,
-          keyboardAppearance: widget.keyboardAppearance,
-          textCapitalization: widget.textCapitalization,
-        ),
-      );
-      _connection.setEditingState(_value);
+      _textInputConnection = TextInput.attach(this, textInputConfiguration)
+        ..setEditingState(_value);
     }
-    _connection.show();
+    _textInputConnection.show();
     _recalculateSuggestionsBoxHeight();
 
     Future.delayed(Duration(milliseconds: 100), () {
@@ -275,13 +255,114 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     });
   }
 
+  void _onSearchChanged(String value) async {
+    final localId = ++_searchId;
+    final results = await widget.findSuggestions(value);
+    if (_searchId == localId && mounted) {
+      _suggestions = results
+          .where((profile) => !_chips.contains(profile))
+          .toList(growable: false);
+    }
+    _suggestionsStreamController.add(_suggestions);
+  }
+
   void _closeInputConnectionIfNeeded(bool recalculate) {
     if (_hasInputConnection) {
-      _connection.close();
-      _connection = null;
+      _textInputConnection.close();
+      _textInputConnection = null;
+      _receivedRemoteTextEditingValue = null;
     }
     if (recalculate) _recalculateSuggestionsBoxHeight();
   }
+
+  @override
+  void updateEditingValue(TextEditingValue value) {
+    print("updateEditingValue FIRED with ${value.text}");
+    _receivedRemoteTextEditingValue = value;
+    var _oldTextEditingValue = _value;
+    if (value.text != _oldTextEditingValue.text) {
+      setState(() {
+        _value = value;
+      });
+      if (value.replacementCharactersCount <
+          _oldTextEditingValue.replacementCharactersCount) {
+        var removedChip = _chips.last;
+        _chips = Set.from(_chips.take(value.replacementCharactersCount));
+        widget.onChanged(_chips.toList(growable: false));
+        var putText = '';
+        if (widget.allowChipEditing && _enteredTexts.containsKey(removedChip)) {
+          putText = _enteredTexts[removedChip];
+          _enteredTexts.remove(removedChip);
+        }
+        _updateTextInputState(putText: putText);
+      } else {
+        _updateTextInputState();
+      }
+      _onSearchChanged(_value.normalCharactersText);
+    }
+  }
+
+  void _updateTextInputState({replaceText = false, putText = ''}) {
+    final updatedText =
+        String.fromCharCodes(_chips.map((_) => kObjectReplacementChar)) +
+            "${replaceText ? '' : _value.normalCharactersText}" +
+            putText;
+    setState(() {
+      _value = _value.copyWith(
+        text: updatedText,
+        selection: TextSelection.collapsed(offset: updatedText.length),
+        //composing: TextRange(start: 0, end: text.length),
+      );
+    });
+
+    if (_textInputConnection == null) {
+      _textInputConnection = TextInput.attach(this, textInputConfiguration);
+    }
+    _textInputConnection.setEditingState(_value);
+    // _closeInputConnectionIfNeeded(false);
+  }
+
+  @override
+  void performAction(TextInputAction action) {
+    _effectiveFocusNode.unfocus();
+  }
+
+  @override
+  void didUpdateWidget(ChipsInput oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    /* if(widget.focusNode != oldWidget.focusNode){
+      oldWidget.focusNode.removeListener(_handleFocusChanged);
+      _focusAttachment?.detach();
+      _focusAttachment = widget.focusNode.attach(context);
+      widget.focusNode.addListener(_handleFocusChanged);
+    } */
+  }
+
+  @override
+  void dispose() {
+    _closeInputConnectionIfNeeded(false);
+    _suggestionsStreamController.close();
+    _suggestionsBoxController.close();
+    super.dispose();
+  }
+
+  @override
+  void updateFloatingCursor(RawFloatingCursorPoint point) {
+    // print(point);
+  }
+
+  @override
+  void connectionClosed() {
+    // print('TextInputClient.connectionClosed()');
+  }
+
+  @override
+  TextEditingValue get currentTextEditingValue => _value;
+
+  // @override
+  void showAutocorrectionPromptRect(int start, int end) {}
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -301,14 +382,16 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
             Flexible(
               flex: 1,
               child: Text(
-                text,
+                _value.normalCharactersText,
                 maxLines: 1,
-                overflow: this.textOverflow,
+                overflow: widget.textOverflow,
                 style: widget.textStyle ??
                     theme.textTheme.subhead.copyWith(height: 1.5),
               ),
             ),
-            Flexible(flex: 0, child: TextCursor(resumed: _focusNode.hasFocus)),
+            Flexible(
+                flex: 0,
+                child: TextCursor(resumed: _effectiveFocusNode.hasFocus)),
           ],
         ),
       ),
@@ -326,10 +409,12 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
           children: <Widget>[
             GestureDetector(
               behavior: HitTestBehavior.opaque,
-              onTap: requestKeyboard,
+              onTap: () {
+                FocusScope.of(context).requestFocus(_effectiveFocusNode);
+              },
               child: InputDecorator(
                 decoration: widget.decoration,
-                isFocused: _focusNode.hasFocus,
+                isFocused: _effectiveFocusNode.hasFocus,
                 isEmpty: _value.text.length == 0 && _chips.length == 0,
                 child: Wrap(
                   children: chipsChildren,
@@ -347,107 +432,4 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       ),
     );
   }
-
-  @override
-  void updateEditingValue(TextEditingValue value) {
-    final oldCount = _countReplacements(_value);
-    final newCount = _countReplacements(value);
-    if (newCount < oldCount) {
-      var removedChip = _chips.last;
-      _chips = Set.from(_chips.take(newCount));
-      if (widget.allowChipEditing && _enteredTexts.containsKey(removedChip)) {
-        _updateTextInputState(putText: _enteredTexts[removedChip]);
-        _enteredTexts.remove(removedChip);
-      }
-      widget.onChanged(_chips.toList(growable: false));
-    }
-    setState(() {
-      _value = value;
-    });
-    _onSearchChanged(text);
-  }
-
-  int _countReplacements(TextEditingValue value) {
-    return value.text.codeUnits
-        .where((ch) => ch == kObjectReplacementChar)
-        .length;
-  }
-
-  String _getNonReplacements() {
-    var charCodes = text.codeUnits.where((ch) => ch != kObjectReplacementChar);
-    return String.fromCharCodes(charCodes);
-  }
-
-  @override
-  void performAction(TextInputAction action) {
-    _focusNode.unfocus();
-  }
-
-  void _updateTextInputState({putText = ''}) {
-    final text =
-        String.fromCharCodes(_chips.map((_) => kObjectReplacementChar)) +
-            putText;
-    setState(() {
-      _value = _value.copyWith(
-        text: text,
-        selection: TextSelection.collapsed(offset: text.length),
-        //composing: TextRange(start: 0, end: text.length),
-      );
-    });
-    updateEditingValue(_value);
-
-    if (_connection == null) {
-      _connection = TextInput.attach(
-        this,
-        TextInputConfiguration(
-          inputType: widget.inputType,
-          obscureText: widget.obscureText,
-          autocorrect: widget.autocorrect,
-          actionLabel: widget.actionLabel,
-          inputAction: widget.inputAction,
-          keyboardAppearance: widget.keyboardAppearance,
-          textCapitalization: widget.textCapitalization,
-        ),
-      );
-    }
-    if (_connection.attached) {
-      _connection.setEditingState(_value);
-    }
-  }
-
-  void _onSearchChanged(String value) async {
-    final localId = ++_searchId;
-    final results = await widget.findSuggestions(value);
-    if (_searchId == localId && mounted) {
-      setState(() => _suggestions = results
-          .where((profile) => !_chips.contains(profile))
-          .toList(growable: false));
-    }
-    _suggestionsStreamController.add(_suggestions);
-  }
-
-  @override
-  void dispose() {
-    _focusNode?.dispose();
-    _closeInputConnectionIfNeeded(false);
-    _suggestionsStreamController.close();
-    _suggestionsBoxController.close();
-    super.dispose();
-  }
-
-  @override
-  void updateFloatingCursor(RawFloatingCursorPoint point) {
-    // print(point);
-  }
-
-  @override
-  void connectionClosed() {
-    print('TextInputClient.connectionClosed()');
-  }
-
-  @override
-  TextEditingValue get currentTextEditingValue => _value;
-
-  // @override
-  void showAutocorrectionPromptRect(int start, int end) {}
 }

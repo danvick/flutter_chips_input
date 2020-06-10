@@ -67,13 +67,15 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
+              TextField(),
+              TextField(),
               ChipsInput(
                 key: _chipKey,
                 initialValue: [
                   AppProfile('John Doe', 'jdoe@flutter.io',
                       'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg'),
                 ],
-                autofocus: true,
+                // autofocus: true,
                 // allowChipEditing: true,
                 keyboardAppearance: Brightness.dark,
                 textCapitalization: TextCapitalization.words,
@@ -89,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   // errorText: field.errorText,
                 ),
                 findSuggestions: (String query) {
-                  print("Query: '$query'");
+                  // print("Query: '$query'");
                   if (query.length != 0) {
                     var lowercaseQuery = query.toLowerCase();
                     return mockResults.where((profile) {
@@ -110,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   return mockResults;
                 },
                 onChanged: (data) {
-                  print(data);
+                  // print(data);
                 },
                 chipBuilder: (context, state, profile) {
                   return InputChip(

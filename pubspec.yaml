@@ -5,7 +5,7 @@ author: Danvick Miller <danvickmiller@gmail.com>
 homepage: https://github.com/danvick/flutter_chips_input
 
 environment:
-  sdk: ">=2.0.0 <3.0.0"
+  sdk: ">=2.6.0 <3.0.0"
 
 dependencies:
   flutter:
