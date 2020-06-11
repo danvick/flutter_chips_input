@@ -416,6 +416,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     return NotificationListener<SizeChangedLayoutNotification>(
       onNotification: (SizeChangedLayoutNotification val) {
         WidgetsBinding.instance.addPostFrameCallback((_) async {
+          debugPrint("SizeChangedLayoutNotification fired");
           _suggestionsBoxController.overlayEntry.markNeedsBuild();
         });
         return true;
@@ -427,6 +428,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
               behavior: HitTestBehavior.opaque,
               onTap: () {
                 FocusScope.of(context).requestFocus(_effectiveFocusNode);
+                _textInputConnection?.show();
               },
               child: InputDecorator(
                 decoration: widget.decoration,
