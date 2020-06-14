@@ -19,7 +19,7 @@ class SuggestionsBoxController {
   }
 
   close() {
-    debugPrint("Closing suggestion box");
+    // debugPrint("Closing suggestion box");
     if (!this._isOpened) return;
     assert(this.overlayEntry != null);
     this.overlayEntry.remove();
