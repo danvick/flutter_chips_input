@@ -407,7 +407,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                 maxLines: 1,
                 overflow: widget.textOverflow,
                 style: widget.textStyle ??
-                    theme.textTheme.subhead.copyWith(height: 1.5),
+                    theme.textTheme.subtitle1.copyWith(height: 1.5),
               ),
             ),
             Flexible(

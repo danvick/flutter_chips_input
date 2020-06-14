@@ -7,6 +7,8 @@ Flutter library for building input fields with InputChips as input options.
 ### Installation
 Follow installation instructions [here](https://pub.dartlang.org/packages/flutter_chips_input#-installing-tab-)
 
+**NOTE:** For anyone on pre-release Flutter channels, kindly prefer the [pre-release versions of the package](https://pub.dev/packages/flutter_chips_input/versions#prerelease).
+
 ### Import
 ```dart
 import 'package:flutter_chips_input/flutter_chips_input.dart';
