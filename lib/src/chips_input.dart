@@ -165,12 +165,15 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         var size = renderBox.size;
         var renderBoxOffset = renderBox.localToGlobal(Offset.zero);
         var topAvailableSpace = renderBoxOffset.dy;
-        var bottomAvailableSpace = MediaQuery.of(context).size.height - MediaQuery.of(context).viewInsets.bottom - renderBoxOffset.dy - size.height;
+        var bottomAvailableSpace = MediaQuery.of(context).size.height -
+            MediaQuery.of(context).viewInsets.bottom -
+            renderBoxOffset.dy -
+            size.height;
         var _suggestionBoxHeight = max(topAvailableSpace, bottomAvailableSpace);
         var showTop = topAvailableSpace > bottomAvailableSpace;
         // print("showTop: $showTop" );
         var compositedTransformFollowerOffset = Offset.zero;
-        if(showTop){
+        if (showTop) {
           // compositedTransformFollowerOffset = Offset(0, -(topAvailableSpace + size.height));
           compositedTransformFollowerOffset = Offset(0, -size.height);
         }
@@ -211,9 +214,9 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                   child: !showTop
                       ? suggestionsListView
                       : FractionalTranslation(
-                    translation: Offset(0, -1),
-                    child: suggestionsListView,
-                  ),
+                          translation: Offset(0, -1),
+                          child: suggestionsListView,
+                        ),
                 ),
               );
             }
