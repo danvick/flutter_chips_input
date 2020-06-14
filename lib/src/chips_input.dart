@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -90,7 +91,6 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   List<T> _suggestions;
   StreamController<List<T>> _suggestionsStreamController;
   int _searchId = 0;
-  double _suggestionBoxHeight;
   TextEditingValue _value = TextEditingValue();
   TextEditingValue _receivedRemoteTextEditingValue;
   TextInputConnection _textInputConnection;
@@ -113,7 +113,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       _textInputConnection != null && _textInputConnection.attached;
 
   bool get _hasReachedMaxChips =>
-      (widget.maxChips == null && _chips.length < widget.maxChips);
+      (widget.maxChips != null && _chips.length < widget.maxChips);
 
   FocusAttachment _focusAttachment;
   FocusNode _focusNode;
@@ -150,7 +150,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       _openInputConnection();
       _suggestionsBoxController.open();
     } else {
-      _closeInputConnectionIfNeeded(true);
+      _closeInputConnectionIfNeeded();
       _suggestionsBoxController.close();
     }
     setState(() {
@@ -158,63 +158,67 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     });
   }
 
-  _recalculateSuggestionsBoxHeight() {
-    // setState(() {
-    _suggestionBoxHeight = MediaQuery.of(context).size.height -
-        MediaQuery.of(context).viewInsets.bottom;
-    // });
-  }
-
   void _initOverlayEntry() {
     // _suggestionsBoxController.close();
     _suggestionsBoxController.overlayEntry = OverlayEntry(
       builder: (context) {
         var size = renderBox.size;
-        var offset = renderBox.localToGlobal(Offset.zero);
-        var top = offset.dy + size.height + 5.0;
+        var renderBoxOffset = renderBox.localToGlobal(Offset.zero);
+        var topAvailableSpace = renderBoxOffset.dy;
+        var bottomAvailableSpace = MediaQuery.of(context).size.height - MediaQuery.of(context).viewInsets.bottom - renderBoxOffset.dy - size.height;
+        var _suggestionBoxHeight = max(topAvailableSpace, bottomAvailableSpace);
+        var showTop = topAvailableSpace > bottomAvailableSpace;
+        // print("showTop: $showTop" );
+        var compositedTransformFollowerOffset = Offset.zero;
+        if(showTop){
+          // compositedTransformFollowerOffset = Offset(0, -(topAvailableSpace + size.height));
+          compositedTransformFollowerOffset = Offset(0, -size.height);
+        }
 
-        return Positioned(
-          left: offset.dx,
-          top: top,
-          width: size.width,
-          child: StreamBuilder(
-            stream: _suggestionsStreamController.stream,
-            builder: (
-              BuildContext context,
-              AsyncSnapshot<List<dynamic>> snapshot,
-            ) {
-              if (snapshot.hasData && snapshot.data?.length != 0) {
-                return CompositedTransformFollower(
+        return StreamBuilder(
+          stream: _suggestionsStreamController.stream,
+          builder: (
+            BuildContext context,
+            AsyncSnapshot<List<dynamic>> snapshot,
+          ) {
+            if (snapshot.hasData && snapshot.data?.length != 0) {
+              var suggestionsListView = Material(
+                elevation: 4.0,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: _suggestionBoxHeight,
+                  ),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    padding: EdgeInsets.zero,
+                    itemCount: snapshot.data?.length ?? 0,
+                    itemBuilder: (BuildContext context, int index) {
+                      return widget.suggestionBuilder(
+                        context,
+                        this,
+                        _suggestions[index],
+                      );
+                    },
+                  ),
+                ),
+              );
+              return Positioned(
+                width: size.width,
+                child: CompositedTransformFollower(
                   link: _layerLink,
                   showWhenUnlinked: false,
-                  child: Material(
-                    elevation: 4.0,
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxHeight: widget.suggestionsBoxMaxHeight ??
-                            (_suggestionBoxHeight - top > 0
-                                ? _suggestionBoxHeight - top
-                                : 400),
-                      ),
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
-                        itemCount: snapshot.data?.length ?? 0,
-                        itemBuilder: (BuildContext context, int index) {
-                          return widget.suggestionBuilder(
-                            context,
-                            this,
-                            _suggestions[index],
-                          );
-                        },
-                      ),
-                    ),
+                  offset: compositedTransformFollowerOffset,
+                  child: !showTop
+                      ? suggestionsListView
+                      : FractionalTranslation(
+                    translation: Offset(0, -1),
+                    child: suggestionsListView,
                   ),
-                );
-              }
-              return Container();
-            },
-          ),
+                ),
+              );
+            }
+            return Container();
+          },
         );
       },
     );
@@ -251,7 +255,6 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         ..setEditingState(_value);
     }
     _textInputConnection.show();
-    _recalculateSuggestionsBoxHeight();
 
     Future.delayed(Duration(milliseconds: 100), () {
       WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -272,18 +275,17 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     _suggestionsStreamController.add(_suggestions);
   }
 
-  void _closeInputConnectionIfNeeded(bool recalculate) {
+  void _closeInputConnectionIfNeeded() {
     if (_hasInputConnection) {
       _textInputConnection.close();
       _textInputConnection = null;
       _receivedRemoteTextEditingValue = null;
     }
-    if (recalculate) _recalculateSuggestionsBoxHeight();
   }
 
   @override
   void updateEditingValue(TextEditingValue value) {
-    print("updateEditingValue FIRED with ${value.text}");
+    // print("updateEditingValue FIRED with ${value.text}");
     _receivedRemoteTextEditingValue = value;
     var _oldTextEditingValue = _value;
     if (value.text != _oldTextEditingValue.text) {
@@ -335,7 +337,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       case TextInputAction.go:
       case TextInputAction.send:
       case TextInputAction.search:
-        if(_suggestions != null && _suggestions.isNotEmpty){
+        if (_suggestions != null && _suggestions.isNotEmpty) {
           selectSuggestion(_suggestions.first);
         }
         // _effectiveFocusNode.unfocus();
@@ -358,7 +360,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
 
   @override
   void dispose() {
-    _closeInputConnectionIfNeeded(false);
+    _closeInputConnectionIfNeeded();
     _suggestionsStreamController.close();
     _suggestionsBoxController.close();
     super.dispose();
@@ -416,7 +418,6 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     return NotificationListener<SizeChangedLayoutNotification>(
       onNotification: (SizeChangedLayoutNotification val) {
         WidgetsBinding.instance.addPostFrameCallback((_) async {
-          debugPrint("SizeChangedLayoutNotification fired");
           _suggestionsBoxController.overlayEntry.markNeedsBuild();
         });
         return true;
@@ -444,7 +445,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
             CompositedTransformTarget(
               link: _layerLink,
               child: Container(),
-            )
+            ),
           ],
         ),
       ),
