@@ -1,3 +1,6 @@
+## [1.9.0-dev.2] - 14-Jun-2020
+* Merged in changes from v1.8.2
+
 ## [1.8.2] - 14-Jun-2020
 * Added `autofocus` feature. Closes #41
 * Allow user-entered text to be edited when chip is deleted with keyboard. Closes #38
