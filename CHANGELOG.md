@@ -1,3 +1,10 @@
+## [1.9.0-dev.3] - 15-Jun-2020
+* Added fixes from v1.8.3
+
+## [1.8.3] - 15-Jun-2020
+* Fixed bug in checking whether `maxChips` has been reached.
+* Fix `setState called on disposed widget`
+
 ## [1.9.0-dev.2] - 14-Jun-2020
 * Merged in changes from v1.8.2
 

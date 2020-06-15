@@ -71,10 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
               TextField(),
               ChipsInput(
                 key: _chipKey,
-                initialValue: [
+                /*initialValue: [
                   AppProfile('John Doe', 'jdoe@flutter.io',
                       'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg'),
-                ],
+                ],*/
                 // autofocus: true,
                 // allowChipEditing: true,
                 keyboardAppearance: Brightness.dark,
