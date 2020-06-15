@@ -153,9 +153,11 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       _closeInputConnectionIfNeeded();
       _suggestionsBoxController.close();
     }
-    setState(() {
-      /*rebuild so that _TextCursor is hidden.*/
-    });
+    if (mounted) {
+      setState(() {
+        /*rebuild so that _TextCursor is hidden.*/
+      });
+    }
   }
 
   void _initOverlayEntry() {

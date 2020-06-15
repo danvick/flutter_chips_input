@@ -1,3 +1,7 @@
+## [1.8.3] - 15-Jun-2020
+* Fixed bug in checking whether `maxChips` has been reached.
+* Fix `setState called on disposed widget`
+
 ## [1.8.2] - 14-Jun-2020
 * Added `autofocus` feature. Closes #41
 * Allow user-entered text to be edited when chip is deleted with keyboard. Closes #38
