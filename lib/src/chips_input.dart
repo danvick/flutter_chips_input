@@ -113,7 +113,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       _textInputConnection != null && _textInputConnection.attached;
 
   bool get _hasReachedMaxChips =>
-      (widget.maxChips != null && _chips.length < widget.maxChips);
+      widget.maxChips != null && _chips.length >= widget.maxChips;
 
   FocusAttachment _focusAttachment;
   FocusNode _focusNode;
@@ -229,17 +229,19 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
 
   void selectSuggestion(T data) {
     if (!_hasReachedMaxChips) {
+      _chips.add(data);
       if (widget.allowChipEditing) {
         var enteredText = _value.normalCharactersText ?? '';
         if (enteredText.isNotEmpty) _enteredTexts[data] = enteredText;
       }
-      _chips.add(data);
       _updateTextInputState(replaceText: true);
+
       _suggestions = null;
       _suggestionsStreamController.add(_suggestions);
       if (widget.maxChips == _chips.length) _suggestionsBoxController.close();
-    } else
+    } else {
       _suggestionsBoxController.close();
+    }
     widget.onChanged(_chips.toList(growable: false));
   }
 
@@ -271,9 +273,8 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     final localId = ++_searchId;
     final results = await widget.findSuggestions(value);
     if (_searchId == localId && mounted) {
-      _suggestions = results
-          .where((profile) => !_chips.contains(profile))
-          .toList(growable: false);
+      _suggestions =
+          results.where((r) => !_chips.contains(r)).toList(growable: false);
     }
     _suggestionsStreamController.add(_suggestions);
   }
@@ -325,6 +326,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         //composing: TextRange(start: 0, end: text.length),
       );
     });
+    print(_value);
 
     if (_textInputConnection == null) {
       _textInputConnection = TextInput.attach(this, textInputConfiguration);
