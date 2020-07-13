@@ -458,4 +458,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       ),
     );
   }
+
+  @override
+  AutofillScope get currentAutofillScope => throw UnimplementedError();
 }
