@@ -92,7 +92,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   StreamController<List<T>> _suggestionsStreamController;
   int _searchId = 0;
   TextEditingValue _value = TextEditingValue();
-  TextEditingValue _receivedRemoteTextEditingValue;
+  // TextEditingValue _receivedRemoteTextEditingValue;
   TextInputConnection _textInputConnection;
   SuggestionsBoxController _suggestionsBoxController;
   LayerLink _layerLink = LayerLink();
@@ -115,7 +115,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   bool get _hasReachedMaxChips =>
       widget.maxChips != null && _chips.length >= widget.maxChips;
 
-  FocusAttachment _focusAttachment;
+  // FocusAttachment _focusAttachment;
   FocusNode _focusNode;
 
   FocusNode get _effectiveFocusNode =>
@@ -127,7 +127,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   void initState() {
     super.initState();
     _chips.addAll(widget.initialValue);
-    _focusAttachment = _effectiveFocusNode.attach(context);
+    // _focusAttachment = _effectiveFocusNode.attach(context);
     _suggestionsBoxController = SuggestionsBoxController(context);
     _suggestionsStreamController = StreamController<List<T>>.broadcast();
     _effectiveFocusNode.addListener(_handleFocusChanged);
@@ -285,14 +285,14 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     if (_hasInputConnection) {
       _textInputConnection.close();
       _textInputConnection = null;
-      _receivedRemoteTextEditingValue = null;
+      // _receivedRemoteTextEditingValue = null;
     }
   }
 
   @override
   void updateEditingValue(TextEditingValue value) {
     // print("updateEditingValue FIRED with ${value.text}");
-    _receivedRemoteTextEditingValue = value;
+    // _receivedRemoteTextEditingValue = value;
     var _oldTextEditingValue = _value;
     if (value.text != _oldTextEditingValue.text) {
       setState(() {

@@ -1,12 +1,9 @@
-## [1.9.0-dev.3] - 15-Jun-2020
-* Added fixes from v1.8.3
+## [1.9.0] - 05-Aug-2020
+* Added support for Flutter v1.20
 
 ## [1.8.3] - 15-Jun-2020
 * Fixed bug in checking whether `maxChips` has been reached.
 * Fix `setState called on disposed widget`
-
-## [1.9.0-dev.2] - 14-Jun-2020
-* Merged in changes from v1.8.2
 
 ## [1.8.2] - 14-Jun-2020
 * Added `autofocus` feature. Closes #41
@@ -15,9 +12,6 @@
 * When TextInputAction (e.g Done) is tapped on Keyboard, select first suggestion. Fixes #21
 * Fixed bug where when keyboard is dismissed and focus retained, keyboard couldn't come back
 * Show overlay above field if more space available. Closes #24
-
-## [1.9.0-dev.1] - 24-Apr-2020
-* Fixed bug: `Missing implementations for TextInputClient.currentAutofillScope`. Closes #37
 
 ## [1.8.1] - 24-Apr-2020
 * Attempt to ensure to ensure field always visible. Closes #25
