@@ -1,3 +1,6 @@
+## [1.9.1] - 05-Aug-2020
+* Fix bug "Bad UTF-8 encoding found while decoding string". Closes #47
+
 ## [1.9.0] - 05-Aug-2020
 * Added support for Flutter v1.20
 
