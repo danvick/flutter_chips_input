@@ -1,3 +1,6 @@
+## [1.9.2] - 26-Aug-2020
+* Fixed keyboard hiding.
+
 ## [1.9.1] - 08-Aug-2020
 * Fix bug "Bad UTF-8 encoding found while decoding string". Closes #47
 

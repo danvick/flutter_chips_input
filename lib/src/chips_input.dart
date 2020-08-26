@@ -350,7 +350,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         }
         break;
       default:
-          _effectiveFocusNode.unfocus();
+        _effectiveFocusNode.unfocus();
         break;
     }
   }
