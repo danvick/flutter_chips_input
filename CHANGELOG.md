@@ -1,3 +1,6 @@
+## [1.9.3] - 26-Aug-2020
+* Include override for `TextInputClient.performPrivateCommand` prevents breakage in pre-release Flutter versions
+
 ## [1.9.2] - 26-Aug-2020
 * Fixed keyboard hiding.
 
