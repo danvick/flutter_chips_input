@@ -345,10 +345,12 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       case TextInputAction.search:
         if (_suggestions != null && _suggestions.isNotEmpty) {
           selectSuggestion(_suggestions.first);
+        } else {
+          _effectiveFocusNode.unfocus();
         }
-        // _effectiveFocusNode.unfocus();
         break;
       default:
+          _effectiveFocusNode.unfocus();
         break;
     }
   }
