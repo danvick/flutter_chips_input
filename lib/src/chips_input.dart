@@ -354,6 +354,11 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         break;
     }
   }
+  
+  @override
+  void performPrivateCommand(String action, Map<String, dynamic> data) {
+    //Todo
+  }
 
   @override
   void didUpdateWidget(ChipsInput oldWidget) {
