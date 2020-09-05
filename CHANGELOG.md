@@ -1,3 +1,6 @@
+## [1.9.4] - 05-Sept-2020
+* Fix bug where first chip disappears, replaced with typed character. Fixes #34
+
 ## [1.9.3] - 26-Aug-2020
 * Include override for `TextInputClient.performPrivateCommand` prevents breakage in pre-release Flutter versions
 

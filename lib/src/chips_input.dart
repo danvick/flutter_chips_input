@@ -328,7 +328,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         //composing: TextRange(start: 0, end: text.length),
       );
     });
-
+    _closeInputConnectionIfNeeded(); //Hack for #34 (https://github.com/danvick/flutter_chips_input/issues/34#issuecomment-684505282). TODO: Find permanent fix
     if (_textInputConnection == null) {
       _textInputConnection = TextInput.attach(this, textInputConfiguration);
     }
