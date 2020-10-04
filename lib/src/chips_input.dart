@@ -11,6 +11,9 @@ typedef ChipsInputSuggestions<T> = FutureOr<List<T>> Function(String query);
 typedef ChipSelected<T> = void Function(T data, bool selected);
 typedef ChipsBuilder<T> = Widget Function(
     BuildContext context, ChipsInputState<T> state, T data);
+typedef SuggestionListBuilder = Widget Function(BuildContext, Widget);
+
+Widget _defaultSuggestionListBuilder(context, child) => Material(child: child, elevation: 4.0);
 
 const kObjectReplacementChar = 0xFFFD;
 
@@ -24,32 +27,6 @@ extension on TextEditingValue {
       .toList(growable: false);
 
   int get replacementCharactersCount => replacementCharacters.length;
-}
-
-class MaterialDecoration {
-  final MaterialType type;
-  final double elevation;
-  final Color color;
-  final Color shadowColor;
-  final TextStyle textStyle;
-  final BorderRadius borderRadius;
-  final ShapeBorder shape;
-  final bool borderOnForeground;
-  final Clip clipBehavior;
-  final Duration animationDuration;
-
-  const MaterialDecoration({
-    this.type = MaterialType.canvas,
-    this.elevation = 0.0,
-    this.color,
-    this.shadowColor,
-    this.textStyle,
-    this.borderRadius,
-    this.shape,
-    this.borderOnForeground = true,
-    this.clipBehavior = Clip.none,
-    this.animationDuration = kThemeChangeDuration
-  });
 }
 
 class ChipsInput<T> extends StatefulWidget {
@@ -77,7 +54,7 @@ class ChipsInput<T> extends StatefulWidget {
     this.autofocus = false,
     this.allowChipEditing = false,
     this.focusNode,
-    this.materialDecoration = const MaterialDecoration(elevation: 4, type: MaterialType.canvas)
+    this.suggestionListBuilder = _defaultSuggestionListBuilder
   })  : assert(maxChips == null || initialValue.length <= maxChips),
         super(key: key);
 
@@ -103,7 +80,7 @@ class ChipsInput<T> extends StatefulWidget {
   final bool autofocus;
   final bool allowChipEditing;
   final FocusNode focusNode;
-  final MaterialDecoration materialDecoration;
+  final SuggestionListBuilder suggestionListBuilder;
 
   // final Color cursorColor;
 
@@ -215,18 +192,9 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
             AsyncSnapshot<List<dynamic>> snapshot,
           ) {
             if (snapshot.hasData && snapshot.data?.length != 0) {
-              var suggestionsListView = Material(
-                type: widget.materialDecoration.type,
-                elevation: widget.materialDecoration.elevation,
-                color: widget.materialDecoration.color,
-                shadowColor: widget.materialDecoration.shadowColor,
-                textStyle: widget.materialDecoration.textStyle,
-                borderRadius: widget.materialDecoration.borderRadius,
-                shape: widget.materialDecoration.shape,
-                borderOnForeground: widget.materialDecoration.borderOnForeground,
-                clipBehavior: widget.materialDecoration.clipBehavior,
-                animationDuration: widget.materialDecoration.animationDuration,
-                child: ConstrainedBox(
+              var suggestionsListView = widget.suggestionListBuilder(
+                context,
+                ConstrainedBox(
                   constraints: BoxConstraints(
                     maxHeight: _suggestionBoxHeight,
                   ),
@@ -242,7 +210,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                       );
                     },
                   ),
-                ),
+                )
               );
               return Positioned(
                 width: size.width,
