@@ -309,8 +309,6 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
           _enteredTexts.remove(removedChip);
         }
         _updateTextInputState(putText: putText);
-      } else {
-        _updateTextInputState();
       }
       _onSearchChanged(_value.normalCharactersText);
     }
