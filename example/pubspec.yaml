@@ -11,12 +11,12 @@ dependencies:
     sdk: flutter
 
   flutter_chips_input:
-      path: ../
+    path: ../
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  pedantic: ^1.9.2
 
 flutter:
   uses-material-design: true
-

@@ -27,7 +27,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  GlobalKey<ChipsInputState> _chipKey = GlobalKey();
+  final _chipKey = GlobalKey<ChipsInputState>();
   @override
   Widget build(BuildContext context) {
     const mockResults = <AppProfile>[
@@ -81,18 +81,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 textCapitalization: TextCapitalization.words,
                 enabled: true,
                 maxChips: 5,
-                textStyle:
-                    TextStyle(height: 1.5, fontFamily: "Roboto", fontSize: 16),
-                decoration: InputDecoration(
+                textStyle: const TextStyle(
+                    height: 1.5, fontFamily: 'Roboto', fontSize: 16),
+                decoration: const InputDecoration(
                   // prefixIcon: Icon(Icons.search),
                   // hintText: formControl.hint,
-                  labelText: "Select People",
+                  labelText: 'Select People',
                   // enabled: false,
                   // errorText: field.errorText,
                 ),
                 findSuggestions: (String query) {
                   // print("Query: '$query'");
-                  if (query.length != 0) {
+                  if (query.isNotEmpty) {
                     var lowercaseQuery = query.toLowerCase();
                     return mockResults.where((profile) {
                       return profile.name
