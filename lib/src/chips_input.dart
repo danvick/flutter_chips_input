@@ -172,6 +172,8 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
             renderBoxOffset.dy -
             size.height;
         var _suggestionBoxHeight = min(max(topAvailableSpace, bottomAvailableSpace), widget.suggestionsBoxMaxHeight);
+        if (null != widget.suggestionsBoxMaxHeight)
+            _suggestionBoxHeight = min(_suggestionBoxHeight, widget.suggestionsBoxMaxHeight);
         var showTop = topAvailableSpace > bottomAvailableSpace;
         // print("showTop: $showTop" );
         var compositedTransformFollowerOffset = Offset.zero;
