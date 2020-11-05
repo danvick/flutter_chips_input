@@ -57,7 +57,7 @@ class ChipsInput<T> extends StatefulWidget {
   final InputDecoration decoration;
   final TextStyle textStyle;
   final bool enabled;
-  final ChipsInputSuggestions findSuggestions;
+  final ChipsInputSuggestions<T> findSuggestions;
   final ValueChanged<List<T>> onChanged;
   @Deprecated('Will be removed in the next major version')
   final ValueChanged<T> onChipTapped;
@@ -177,12 +177,9 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         final compositedTransformFollowerOffset =
             showTop ? Offset(0, -size.height) : Offset.zero;
 
-        return StreamBuilder(
+        return StreamBuilder<List<T>>(
           stream: _suggestionsStreamController.stream,
-          builder: (
-            BuildContext context,
-            AsyncSnapshot<List<T>> snapshot,
-          ) {
+          builder: (context, snapshot) {
             if (snapshot.hasData && snapshot.data.isNotEmpty) {
               var suggestionsListView = Material(
                 elevation: 4.0,
