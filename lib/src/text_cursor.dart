@@ -33,7 +33,6 @@ class _TextCursorState extends State<TextCursor>
 
   @override
   void dispose() {
-    TextField();
     _timer.cancel();
     super.dispose();
   }
