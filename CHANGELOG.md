@@ -1,3 +1,13 @@
+## [1.9.5] - 08-Dec-2020
+
+- Fixed bug where `FocusNode` was not being properly disposed.
+- Applied `pedantic` rules and cleaned up code.
+  - Improved type safety.
+  - Removed unused `AlwaysDisabledFocusNode` class.
+- Added Continuous Integration and Code Coverage analysis.
+  - Builds against stable, beta, and dev channels.
+- Regenerated `example` app.
+
 ## [1.9.4] - 05-Sept-2020
 * Fix bug where first chip disappears, replaced with typed character. Fixes #34
 
