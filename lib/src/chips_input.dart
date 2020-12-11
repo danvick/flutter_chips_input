@@ -27,32 +27,32 @@ extension on TextEditingValue {
 }
 
 class ChipsInput<T> extends StatefulWidget {
-  const ChipsInput(
-      {Key key,
-      this.initialValue = const [],
-      this.decoration = const InputDecoration(),
-      this.enabled = true,
-      @required this.chipBuilder,
-      @required this.suggestionBuilder,
-      @required this.findSuggestions,
-      @required this.onChanged,
-      this.onChipTapped,
-      this.maxChips,
-      this.textStyle,
-      this.suggestionsBoxMaxHeight,
-      this.inputType = TextInputType.text,
-      this.textOverflow = TextOverflow.clip,
-      this.obscureText = false,
-      this.autocorrect = true,
-      this.actionLabel,
-      this.inputAction = TextInputAction.done,
-      this.keyboardAppearance = Brightness.light,
-      this.textCapitalization = TextCapitalization.none,
-      this.autofocus = false,
-      this.allowChipEditing = false,
-      this.focusNode,
-      this.initialSuggestions})
-      : assert(maxChips == null || initialValue.length <= maxChips),
+  const ChipsInput({
+    Key key,
+    this.initialValue = const [],
+    this.decoration = const InputDecoration(),
+    this.enabled = true,
+    @required this.chipBuilder,
+    @required this.suggestionBuilder,
+    @required this.findSuggestions,
+    @required this.onChanged,
+    this.onChipTapped,
+    this.maxChips,
+    this.textStyle,
+    this.suggestionsBoxMaxHeight,
+    this.inputType = TextInputType.text,
+    this.textOverflow = TextOverflow.clip,
+    this.obscureText = false,
+    this.autocorrect = true,
+    this.actionLabel,
+    this.inputAction = TextInputAction.done,
+    this.keyboardAppearance = Brightness.light,
+    this.textCapitalization = TextCapitalization.none,
+    this.autofocus = false,
+    this.allowChipEditing = false,
+    this.focusNode,
+    this.initialSuggestions,
+  })  : assert(maxChips == null || initialValue.length <= maxChips),
         super(key: key);
 
   final InputDecoration decoration;
@@ -77,7 +77,7 @@ class ChipsInput<T> extends StatefulWidget {
   final bool autofocus;
   final bool allowChipEditing;
   final FocusNode focusNode;
-  final List<dynamic> initialSuggestions;
+  final List<T> initialSuggestions;
 
   // final Color cursorColor;
 
