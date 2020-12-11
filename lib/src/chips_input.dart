@@ -160,7 +160,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   void _handleFocusChanged() {
     if (_focusNode.hasFocus) {
       _openInputConnection();
-      _suggestionsBoxController.open();
+      /* _suggestionsBoxController.open(); */
     } else {
       _closeInputConnectionIfNeeded();
       _suggestionsBoxController.close();
