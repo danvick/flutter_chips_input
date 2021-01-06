@@ -2,18 +2,31 @@
 
 Flutter library for building input fields with InputChips as input options.
 
+[![Pub Version](https://img.shields.io/pub/v/flutter_chips_input?style=for-the-badge)](https://pub.dev/packages/flutter_chips_input)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/danvick/flutter_chips_input/CI?style=for-the-badge)](https://github.com/danvick/flutter_chips_input/actions?query=workflow%3ACI)
+[![Codecov](https://img.shields.io/codecov/c/github/danvick/flutter_chips_input?style=for-the-badge)](https://codecov.io/gh/danvick/flutter_chips_input/)
+[![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/danvick/flutter_chips_input?style=for-the-badge)](https://www.codefactor.io/repository/github/danvick/flutter_chips_input)
+
+[![GitHub](https://img.shields.io/github/license/danvick/flutter_chips_input?style=for-the-badge)](https://github.com/danvick/flutter_chips_input/blob/master/LICENSE)
+[![OSS Lifecycle](https://img.shields.io/osslifecycle/danvick/flutter_chips_input?style=for-the-badge)](#support)
+[![Gitter](https://img.shields.io/gitter/room/danvick/flutter_form_builder?style=for-the-badge)](https://gitter.im/flutter_form_builder/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Usage
 
 ### Installation
+
 Follow installation instructions [here](https://pub.dartlang.org/packages/flutter_chips_input#-installing-tab-)
 
 ### Import
+
 ```dart
 import 'package:flutter_chips_input/flutter_chips_input.dart';
 ```
 
 ### Example
+
 #### ChipsInput
+
 ```dart
 ChipsInput(
     initialValue: [
@@ -66,10 +79,12 @@ ChipsInput(
 ```
 
 ## To-do list
-- [X] Ability to limit the number of chips
-- [X] Overlay doesn't move when input height changes i.e. when chips wrap
-- [ ] Create a `FormField` implementation (`ChipsInputField`) to be used within Flutter Form Widget 
+
+- [x] Ability to limit the number of chips
+- [x] Overlay doesn't move when input height changes i.e. when chips wrap
+- [ ] Create a `FormField` implementation (`ChipsInputField`) to be used within Flutter Form Widget
 
 ## Known Issues
-* Deleting chips with keyboard on IOS makes app to crush (Flutter Issue with special characters used as replacement characters). Already reported [#1](https://github.com/danvick/flutter_chips_input/issues/1)
-* For some reason Overlay floats above AppBar when scrolling
+
+- Deleting chips with keyboard on IOS makes app to crush (Flutter Issue with special characters used as replacement characters). Already reported [#1](https://github.com/danvick/flutter_chips_input/issues/1)
+- For some reason Overlay floats above AppBar when scrolling
