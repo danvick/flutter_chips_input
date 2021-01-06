@@ -1,3 +1,8 @@
+## [1.10.0] - 06-Jan-2021
+
+ - Fixed the support for `suggestionsBoxMaxHeight`.
+ - Added optional `initialSuggestions` parameter so that one can see the suggestions box as soon as the field gains focus, without typing in the keyboard.
+
 ## [1.9.5] - 08-Dec-2020
 
 - Fixed bug where `FocusNode` was not being properly disposed.
