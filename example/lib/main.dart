@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+  MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               TextField(),
               TextField(),
-              ChipsInput(
+              ChipsInput<AppProfile>(
                 key: _chipKey,
                 /*initialValue: [
                   AppProfile('John Doe', 'jdoe@flutter.io',
@@ -199,14 +199,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               ),*/
-              RaisedButton(
-                child: Text('Add Chip'),
+              ElevatedButton(
                 onPressed: () {
-                  _chipKey.currentState.selectSuggestion(AppProfile(
+                  _chipKey.currentState?.selectSuggestion(AppProfile(
                       'Gina',
                       'fred@flutter.io',
                       'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'));
                 },
+                child: Text('Add Chip'),
               ),
             ],
           ),
