@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class TextCursor extends StatefulWidget {
   const TextCursor({
-    Key key,
+    Key? key,
     this.duration = const Duration(milliseconds: 500),
     this.resumed = false,
   }) : super(key: key);
@@ -19,7 +19,7 @@ class TextCursor extends StatefulWidget {
 class _TextCursorState extends State<TextCursor>
     with SingleTickerProviderStateMixin {
   bool _displayed = false;
-  Timer _timer;
+  Timer? _timer;
 
   @override
   void initState() {
@@ -33,7 +33,7 @@ class _TextCursorState extends State<TextCursor>
 
   @override
   void dispose() {
-    _timer.cancel();
+    _timer?.cancel();
     super.dispose();
   }
 
