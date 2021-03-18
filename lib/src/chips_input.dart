@@ -335,17 +335,19 @@ class ChipsInputState<T> extends State<ChipsInput<T?>>
   }
 
   void _updateTextInputState({replaceText = false, putText = ''}) {
-    final updatedText =
-        String.fromCharCodes(_chips.map((_) => kObjectReplacementChar)) +
-            "${replaceText ? '' : _value.normalCharactersText}" +
-            putText;
-    setState(() {
-      _value = _value.copyWith(
-        text: updatedText,
-        selection: TextSelection.collapsed(offset: updatedText.length),
-        //composing: TextRange(start: 0, end: text.length),
-      );
-    });
+    if (replaceText || putText != '') {
+      final updatedText =
+          String.fromCharCodes(_chips.map((_) => kObjectReplacementChar)) +
+              "${replaceText ? '' : _value.normalCharactersText}" +
+              putText;
+      setState(() {
+        _value = _value.copyWith(
+          text: updatedText,
+          selection: TextSelection.collapsed(offset: updatedText.length),
+          //composing: TextRange(start: 0, end: text.length),
+        );
+      });
+    }
     _closeInputConnectionIfNeeded(); //Hack for #34 (https://github.com/danvick/flutter_chips_input/issues/34#issuecomment-684505282). TODO: Find permanent fix
     _textInputConnection ??= TextInput.attach(this, textInputConfiguration);
     _textInputConnection!.setEditingState(_value);
@@ -448,12 +450,14 @@ class ChipsInputState<T> extends State<ChipsInput<T?>>
           var text = _value.text;
           var selection = _value.selection;
           if (_value.selection.start == _value.selection.end) {
-            if (_value.selection.start > 1) {
-              text = _value.text.substring(0, _value.selection.start - 1) +
-                  _value.text.substring(_value.selection.start);
-              selection = _value.selection.copyWith(
-                  baseOffset: _value.selection.baseOffset - 1,
-                  extentOffset: _value.selection.extentOffset - 1);
+            final start = _value.selection.start < 0
+                ? _value.text.length
+                : _value.selection.start;
+
+            if (start > 0) {
+              text = _value.text.substring(0, start - 1) +
+                  _value.text.substring(start);
+              selection = TextSelection.collapsed(offset: text.length - 1);
             } else {
               updateEditingValue(TextEditingValue.empty);
               return;
@@ -466,21 +470,30 @@ class ChipsInputState<T> extends State<ChipsInput<T?>>
                 extentOffset: max(_value.selection.baseOffset - 1, 0));
           }
 
-          updateEditingValue(_value.copyWith(text: text, selection: selection));
+          updateEditingValue(
+              TextEditingValue(text: text, selection: selection));
         } else if (keyEvent.logicalKey == LogicalKeyboardKey.arrowLeft ||
             keyEvent.logicalKey == LogicalKeyboardKey.arrowUp) {
           if (_value.selection.start > 0) {
-            updateEditingValue(_value.copyWith(
+            updateEditingValue(
+              TextEditingValue(
+                text: _value.text,
                 selection: _value.selection.copyWith(
                     baseOffset: _value.selection.baseOffset - 1,
-                    extentOffset: _value.selection.baseOffset - 1)));
+                    extentOffset: _value.selection.baseOffset - 1),
+              ),
+            );
           } else if (keyEvent.logicalKey == LogicalKeyboardKey.arrowRight ||
               keyEvent.logicalKey == LogicalKeyboardKey.arrowDown) {
             if (_value.selection.start < _value.text.length - 1) {
-              updateEditingValue(_value.copyWith(
+              updateEditingValue(
+                TextEditingValue(
+                  text: _value.text,
                   selection: _value.selection.copyWith(
                       baseOffset: _value.selection.baseOffset + 1,
-                      extentOffset: _value.selection.baseOffset + 1)));
+                      extentOffset: _value.selection.baseOffset + 1),
+                ),
+              );
             }
           }
         }
