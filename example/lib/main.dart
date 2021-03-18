@@ -199,14 +199,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               ),*/
-              RaisedButton(
-                child: Text('Add Chip'),
+              ElevatedButton(
                 onPressed: () {
                   _chipKey.currentState!.selectSuggestion(AppProfile(
                       'Gina',
                       'fred@flutter.io',
                       'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'));
                 },
+                child: Text('Add Chip'),
               ),
             ],
           ),
