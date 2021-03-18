@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class SuggestionsBoxController {
   final BuildContext context;
 
-  OverlayEntry overlayEntry;
+  OverlayEntry? overlayEntry;
 
   bool _isOpened = false;
 
@@ -14,7 +14,7 @@ class SuggestionsBoxController {
   void open() {
     if (_isOpened) return;
     assert(overlayEntry != null);
-    Overlay.of(context).insert(overlayEntry);
+    Overlay.of(context)!.insert(overlayEntry!);
     _isOpened = true;
   }
 
@@ -22,7 +22,7 @@ class SuggestionsBoxController {
     // debugPrint("Closing suggestion box");
     if (!_isOpened) return;
     assert(overlayEntry != null);
-    overlayEntry.remove();
+    overlayEntry!.remove();
     _isOpened = false;
   }
 

@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+  MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onChanged: (data) {
                   // print(data);
                 },
-                chipBuilder: (context, state, profile) {
+                chipBuilder: (context, state, dynamic profile) {
                   return InputChip(
                     key: ObjectKey(profile),
                     label: Text(profile.name),
@@ -125,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   );
                 },
-                suggestionBuilder: (context, state, profile) {
+                suggestionBuilder: (context, state, dynamic profile) {
                   return ListTile(
                     key: ObjectKey(profile),
                     leading: CircleAvatar(
@@ -202,7 +202,7 @@ class _MyHomePageState extends State<MyHomePage> {
               RaisedButton(
                 child: Text('Add Chip'),
                 onPressed: () {
-                  _chipKey.currentState.selectSuggestion(AppProfile(
+                  _chipKey.currentState!.selectSuggestion(AppProfile(
                       'Gina',
                       'fred@flutter.io',
                       'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'));
