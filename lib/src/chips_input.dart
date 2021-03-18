@@ -455,9 +455,8 @@ class ChipsInputState<T> extends State<ChipsInput<T?>>
                   baseOffset: _value.selection.baseOffset - 1,
                   extentOffset: _value.selection.extentOffset - 1);
             } else {
-              text = '';
-              selection =
-                  _value.selection.copyWith(baseOffset: 0, extentOffset: 0);
+              updateEditingValue(TextEditingValue.empty);
+              return;
             }
           } else {
             text = _value.text.substring(0, _value.selection.start) +
@@ -468,6 +467,22 @@ class ChipsInputState<T> extends State<ChipsInput<T?>>
           }
 
           updateEditingValue(_value.copyWith(text: text, selection: selection));
+        } else if (keyEvent.logicalKey == LogicalKeyboardKey.arrowLeft ||
+            keyEvent.logicalKey == LogicalKeyboardKey.arrowUp) {
+          if (_value.selection.start > 0) {
+            updateEditingValue(_value.copyWith(
+                selection: _value.selection.copyWith(
+                    baseOffset: _value.selection.baseOffset - 1,
+                    extentOffset: _value.selection.baseOffset - 1)));
+          } else if (keyEvent.logicalKey == LogicalKeyboardKey.arrowRight ||
+              keyEvent.logicalKey == LogicalKeyboardKey.arrowDown) {
+            if (_value.selection.start < _value.text.length - 1) {
+              updateEditingValue(_value.copyWith(
+                  selection: _value.selection.copyWith(
+                      baseOffset: _value.selection.baseOffset + 1,
+                      extentOffset: _value.selection.baseOffset + 1)));
+            }
+          }
         }
       },
       child: NotificationListener<SizeChangedLayoutNotification>(

@@ -46,7 +46,9 @@ class _TextCursorState extends State<TextCursor>
         opacity: _displayed && widget.resumed ? 1.0 : 0.0,
         child: Container(
           width: 2.0,
-          color: theme.textSelectionTheme.cursorColor,
+          color: theme.textSelectionTheme.cursorColor ??
+              theme.textSelectionTheme.selectionColor ??
+              theme.primaryColor,
         ),
       ),
     );
