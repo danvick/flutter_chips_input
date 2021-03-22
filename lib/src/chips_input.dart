@@ -10,7 +10,7 @@ import 'text_cursor.dart';
 typedef ChipsInputSuggestions<T> = FutureOr<List<T>> Function(String query);
 typedef ChipSelected<T> = void Function(T data, bool selected);
 typedef ChipsBuilder<T> = Widget Function(
-    BuildContext context, ChipsInputState<T?> state, T? data);
+    BuildContext context, ChipsInputState<T> state, T data);
 
 const kObjectReplacementChar = 0xFFFD;
 
