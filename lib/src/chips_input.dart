@@ -353,7 +353,10 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       _value = _value.copyWith(
         text: updatedText,
         selection: TextSelection.collapsed(offset: textLength),
-        composing: TextRange.empty,
+        /*composing: TextRange(
+          start: textLength > 0 ? 0 : -1,
+          end: textLength > 0 ? textLength : -1,
+        ),*/
       );
     });
     _textInputConnection ??= TextInput.attach(this, textInputConfiguration);
