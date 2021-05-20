@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -352,10 +353,10 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       _value = _value.copyWith(
         text: updatedText,
         selection: TextSelection.collapsed(offset: textLength),
-        composing: (_chips.length == textLength)
+        composing: (Platform.isIOS || _value.replacementCharactersCount == textLength)
             ? TextRange.empty
             : TextRange(
-                start: _chips.length,
+                start: _value.replacementCharactersCount,
                 end: textLength,
               ),
       );
