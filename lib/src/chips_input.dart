@@ -183,7 +183,6 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   }
 
   void _initOverlayEntry() {
-    // _suggestionsBoxController.close();
     _suggestionsBoxController.overlayEntry = OverlayEntry(
       builder: (context) {
         final size = renderBox.size;
@@ -291,7 +290,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   }
 
   void _scrollToVisible() {
-    Future.delayed(const Duration(milliseconds: 100), () {
+    Future.delayed(const Duration(milliseconds: 300), () {
       WidgetsBinding.instance?.addPostFrameCallback((_) async {
         final renderBox = context.findRenderObject() as RenderBox;
         await Scrollable.of(context)?.position.ensureVisible(renderBox);
@@ -353,10 +352,12 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       _value = _value.copyWith(
         text: updatedText,
         selection: TextSelection.collapsed(offset: textLength),
-        composing: (_chips.length == textLength)? TextRange.empty : TextRange(
-          start: _chips.length,
-          end: textLength,
-        ),
+        composing: (_chips.length == textLength)
+            ? TextRange.empty
+            : TextRange(
+                start: _chips.length,
+                end: textLength,
+              ),
       );
     });
     _textInputConnection ??= TextInput.attach(this, textInputConfiguration);
@@ -460,7 +461,6 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
               behavior: HitTestBehavior.opaque,
               onTap: () {
                 requestKeyboard();
-                _scrollToVisible();
               },
               child: InputDecorator(
                 decoration: widget.decoration,
