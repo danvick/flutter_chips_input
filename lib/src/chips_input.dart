@@ -350,13 +350,14 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
             putText;
     setState(() {
       final textLength = updatedText.characters.length;
+      final replacedLength = _chips.length;
       _value = _value.copyWith(
         text: updatedText,
         selection: TextSelection.collapsed(offset: textLength),
-        composing: (Platform.isIOS || _value.replacementCharactersCount == textLength)
+        composing: (Platform.isIOS || replacedLength == textLength)
             ? TextRange.empty
             : TextRange(
-                start: _value.replacementCharactersCount,
+                start: replacedLength,
                 end: textLength,
               ),
       );
