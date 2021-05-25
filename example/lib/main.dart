@@ -77,8 +77,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 // allowChipEditing: true,
                 keyboardAppearance: Brightness.dark,
                 textCapitalization: TextCapitalization.words,
-                enabled: true,
-                maxChips: 5,
+                // enabled: false,
+                // maxChips: 5,
                 textStyle: const TextStyle(
                     height: 1.5, fontFamily: 'Roboto', fontSize: 16),
                 decoration: const InputDecoration(
@@ -135,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               ),
-              // TextField(),
+              TextField(),
               /*ChipsInput(
                 initialValue: [
                   AppProfile('John Doe', 'jdoe@flutter.io',
