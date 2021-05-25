@@ -309,7 +309,7 @@ class ChipsInputState<T> extends State<ChipsInput<T?>>
           results.where((r) => !_chips.contains(r)).toList(growable: false));
     }
     _suggestionsStreamController.add(_suggestions ?? []);
-    if(!_suggestionsBoxController.isOpened && !_hasReachedMaxChips){
+    if (!_suggestionsBoxController.isOpened && !_hasReachedMaxChips) {
       _suggestionsBoxController.open();
     }
   }
@@ -354,11 +354,11 @@ class ChipsInputState<T> extends State<ChipsInput<T?>>
               "${replaceText ? '' : _value.normalCharactersText}" +
               putText;
       setState(() => _value = _value.copyWith(
-          text: updatedText,
-          selection: TextSelection.collapsed(offset: updatedText.length),
-          //composing: TextRange(start: 0, end: text.length),
-          composing: TextRange.empty,
-        ));
+            text: updatedText,
+            selection: TextSelection.collapsed(offset: updatedText.length),
+            //composing: TextRange(start: 0, end: text.length),
+            composing: TextRange.empty,
+          ));
     }
     _closeInputConnectionIfNeeded(); //Hack for #34 (https://github.com/danvick/flutter_chips_input/issues/34#issuecomment-684505282). TODO: Find permanent fix
     _textInputConnection ??= TextInput.attach(this, textInputConfiguration);
