@@ -87,9 +87,9 @@ class ChipsInput<T> extends StatefulWidget {
   ChipsInputState<T> createState() => ChipsInputState<T>();
 }
 
-class ChipsInputState<T> extends State<ChipsInput<T?>>
+class ChipsInputState<T> extends State<ChipsInput<T>>
     implements TextInputClient {
-  Set<T?> _chips = <T>{};
+  Set<T> _chips = <T>{};
   List<T?>? _suggestions;
   final StreamController<List<T?>?> _suggestionsStreamController =
       StreamController<List<T>?>.broadcast();
@@ -156,11 +156,6 @@ class ChipsInputState<T> extends State<ChipsInput<T?>>
     super.dispose();
   }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
   void _handleFocusChanged() {
     if (_focusNode!.hasFocus) {
       _openInputConnection();
@@ -225,7 +220,7 @@ class ChipsInputState<T> extends State<ChipsInput<T?>>
                           ? widget.suggestionBuilder(
                               context,
                               this,
-                              _suggestions![index],
+                              _suggestions![index]!,
                             )
                           : Container();
                     },
