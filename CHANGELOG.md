@@ -1,8 +1,9 @@
-## [2.0.0] - 18-Mar-2021
+## [2.0.0-beta.0] - 25-May-2021
 
 - Enable Null Safety
 - Cursor color fallback if not defined in the Theme
-- Handle physical keyboard backspace and arrows
+- Fix bug where suggestion box never opens aftter maxChips reached
+- Fix bug where widget still works when enabled set to false
 
 ## [1.10.0] - 06-Jan-2021
 
