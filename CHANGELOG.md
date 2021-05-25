@@ -6,18 +6,17 @@
 
 ## [1.10.0] - 06-Jan-2021
 
-- Fixed the support for `suggestionsBoxMaxHeight`.
-- Added optional `initialSuggestions` parameter so that one can see the suggestions box as soon as the field gains focus, without typing in the keyboard.
+- Fixed the support for `suggestionsBoxMaxHeight`
+- Added optional `initialSuggestions` parameter so that one can see the suggestions box as soon as the field gains focus, without typing in the keyboard
 
 ## [1.9.5] - 08-Dec-2020
-
-- Fixed bug where `FocusNode` was not being properly disposed.
-- Applied `pedantic` rules and cleaned up code.
-  - Improved type safety.
-  - Removed unused `AlwaysDisabledFocusNode` class.
-- Added Continuous Integration and Code Coverage analysis.
-  - Builds against stable, beta, and dev channels.
-- Regenerated `example` app.
+- Fixed bug where `FocusNode` was not being properly disposed
+- Applied `pedantic` rules and cleaned up code
+- Improved type safety
+- Removed unused `AlwaysDisabledFocusNode` class
+- Added Continuous Integration and Code Coverage analysis
+- Builds against stable, beta, and dev channels
+- Regenerated `example` app
 
 ## [1.9.4] - 05-Sept-2020
 
