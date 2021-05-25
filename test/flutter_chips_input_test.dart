@@ -28,7 +28,7 @@ void main() {
             chipBuilder: (context, state, contact) {
               return InputChip(
                 key: ValueKey(contact),
-                label: Text(contact ?? ''),
+                label: Text(contact),
                 onDeleted: () => state.deleteChip(contact),
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               );
@@ -36,7 +36,7 @@ void main() {
             suggestionBuilder: (context, state, contact) {
               return ListTile(
                 key: ValueKey(contact),
-                title: Text(contact ?? ''),
+                title: Text(contact),
                 onTap: () => state.selectSuggestion(contact),
               );
             },
