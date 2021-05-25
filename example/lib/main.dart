@@ -67,8 +67,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
-              TextField(),
-              TextField(),
               ChipsInput(
                 key: _chipKey,
                 /*initialValue: [
