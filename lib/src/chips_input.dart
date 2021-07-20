@@ -32,6 +32,7 @@ class ChipsInput<T> extends StatefulWidget {
     Key? key,
     this.initialValue = const [],
     this.decoration = const InputDecoration(),
+    this.suggestionBoxDecoration,
     this.enabled = true,
     required this.chipBuilder,
     required this.suggestionBuilder,
@@ -57,6 +58,7 @@ class ChipsInput<T> extends StatefulWidget {
         super(key: key);
 
   final InputDecoration decoration;
+  final Decoration? suggestionBoxDecoration;
   final TextStyle? textStyle;
   final bool enabled;
   final ChipsInputSuggestions<T> findSuggestions;
@@ -215,17 +217,20 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                   constraints: BoxConstraints(
                     maxHeight: _suggestionBoxHeight,
                   ),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return widget.suggestionBuilder(
-                        context,
-                        this,
-                        _suggestions![index],
-                      );
-                    },
+                  child: Container(
+                    decoration: widget.suggestionBoxDecoration,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return widget.suggestionBuilder(
+                          context,
+                          this,
+                          _suggestions![index],
+                        );
+                      },
+                    ),
                   ),
                 ),
               );

@@ -71,6 +71,13 @@ class _MyHomePageState extends State<MyHomePage> {
               TextField(),
               ChipsInput(
                 key: _chipKey,
+                suggestionBoxDecoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.blue,
+                    width: 1.5,
+                  ),
+                  borderRadius: BorderRadius.circular(30),
+                ),
                 /*initialValue: [
                   AppProfile('John Doe', 'jdoe@flutter.io',
                       'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg'),
