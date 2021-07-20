@@ -235,6 +235,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                     maxHeight: _suggestionBoxHeight,
                   ),
                   child: Container(
+                    padding: EdgeInsets.zero,
                     margin: EdgeInsets.symmetric(
                         vertical: widget.suggestionBoxMargin),
                     decoration: widget.suggestionBoxDecoration,

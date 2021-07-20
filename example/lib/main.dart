@@ -141,15 +141,39 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
                 suggestionBuilder: (context, state, profile) {
-                  return ListTile(
-                    key: ObjectKey(profile),
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(profile.imageUrl),
-                    ),
-                    title: Text(profile.name),
-                    subtitle: Text(profile.email),
+                  return InkWell(
                     onTap: () => state.selectSuggestion(profile),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const SizedBox(width: 12),
+                          Container(
+                            height: 50,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 8, vertical: 0),
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              profile.name,
+                              overflow: TextOverflow.ellipsis,
+                              // style: lessgoTheme.textTheme.bodySmall,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   );
+                  // return ListTile(
+                  //   key: ObjectKey(profile),
+                  //   leading: CircleAvatar(
+                  //     backgroundImage: NetworkImage(profile.imageUrl),
+                  //   ),
+                  //   title: Text(profile.name),
+                  //   subtitle: Text(profile.email),
+                  //   onTap: () => state.selectSuggestion(profile),
+                  // );
                 },
               ),
               // TextField(),
