@@ -80,6 +80,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   borderRadius: BorderRadius.circular(30),
                 ),
+                suggestionTileSeperator: const Divider(
+                  color: Colors.black,
+                  endIndent: 2,
+                  height: 1,
+                  indent: 0,
+                ),
                 /*initialValue: [
                   AppProfile('John Doe', 'jdoe@flutter.io',
                       'https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX4057996.jpg'),

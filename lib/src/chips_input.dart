@@ -38,6 +38,7 @@ class ChipsInput<T> extends StatefulWidget {
     this.suggestionBoxDecoration,
     this.suggestionBoxPosition,
     this.suggestionBoxMargin = 0.0,
+    this.suggestionTileSeperator,
     this.enabled = true,
     required this.chipBuilder,
     required this.suggestionBuilder,
@@ -65,6 +66,7 @@ class ChipsInput<T> extends StatefulWidget {
   final InputDecoration decoration;
   final Decoration? suggestionBoxDecoration;
   final SuggestionBoxPosition? suggestionBoxPosition;
+  final Widget? suggestionTileSeperator;
   final double suggestionBoxMargin;
   final TextStyle? textStyle;
   final bool enabled;
@@ -237,7 +239,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                         ? EdgeInsets.only(bottom: widget.suggestionBoxMargin)
                         : EdgeInsets.only(top: widget.suggestionBoxMargin),
                     decoration: widget.suggestionBoxDecoration,
-                    child: ListView.builder(
+                    child: ListView.separated(
                       shrinkWrap: true,
                       padding: EdgeInsets.zero,
                       itemCount: snapshot.data!.length,
@@ -248,6 +250,10 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                           _suggestions![index],
                         );
                       },
+                      separatorBuilder: (context, index) =>
+                          widget.suggestionTileSeperator != null
+                              ? widget.suggestionTileSeperator!
+                              : const SizedBox(height: 0, width: 0),
                     ),
                   ),
                 ),
