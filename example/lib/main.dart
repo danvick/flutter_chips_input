@@ -71,6 +71,8 @@ class _MyHomePageState extends State<MyHomePage> {
               TextField(),
               ChipsInput(
                 key: _chipKey,
+                suggestionBoxMargin: 16.0,
+                suggestionBoxPosition: SuggestionBoxPosition.bottom,
                 suggestionBoxDecoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.blue,

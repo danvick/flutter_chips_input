@@ -4,10 +4,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_chips_input/flutter_chips_input.dart';
 
 import 'suggestions_box_controller.dart';
 import 'text_cursor.dart';
 
+//This will override the default behaviour of box position and forces to use the provided
+enum SuggestionBoxPosition { top, bottom }
 typedef ChipsInputSuggestions<T> = FutureOr<List<T>> Function(String query);
 typedef ChipSelected<T> = void Function(T data, bool selected);
 typedef ChipsBuilder<T> = Widget Function(
@@ -33,6 +36,8 @@ class ChipsInput<T> extends StatefulWidget {
     this.initialValue = const [],
     this.decoration = const InputDecoration(),
     this.suggestionBoxDecoration,
+    this.suggestionBoxPosition,
+    this.suggestionBoxMargin = 0.0,
     this.enabled = true,
     required this.chipBuilder,
     required this.suggestionBuilder,
@@ -59,6 +64,8 @@ class ChipsInput<T> extends StatefulWidget {
 
   final InputDecoration decoration;
   final Decoration? suggestionBoxDecoration;
+  final SuggestionBoxPosition? suggestionBoxPosition;
+  final double suggestionBoxMargin;
   final TextStyle? textStyle;
   final bool enabled;
   final ChipsInputSuggestions<T> findSuggestions;
@@ -197,11 +204,19 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
             renderBoxOffset.dy -
             size.height;
         var _suggestionBoxHeight = max(topAvailableSpace, bottomAvailableSpace);
+        var showTop = topAvailableSpace > bottomAvailableSpace;
+        //Forcing the position based on user choice
+        if (widget.suggestionBoxPosition == SuggestionBoxPosition.bottom) {
+          _suggestionBoxHeight = bottomAvailableSpace;
+          showTop = false;
+        } else {
+          _suggestionBoxHeight = topAvailableSpace;
+          showTop = true;
+        }
         if (null != widget.suggestionsBoxMaxHeight) {
           _suggestionBoxHeight =
               min(_suggestionBoxHeight, widget.suggestionsBoxMaxHeight!);
         }
-        final showTop = topAvailableSpace > bottomAvailableSpace;
         // print("showTop: $showTop" );
         final compositedTransformFollowerOffset =
             showTop ? Offset(0, -size.height) : Offset.zero;
@@ -218,6 +233,9 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                     maxHeight: _suggestionBoxHeight,
                   ),
                   child: Container(
+                    margin: showTop
+                        ? EdgeInsets.only(bottom: widget.suggestionBoxMargin)
+                        : EdgeInsets.only(top: widget.suggestionBoxMargin),
                     decoration: widget.suggestionBoxDecoration,
                     child: ListView.builder(
                       shrinkWrap: true,
