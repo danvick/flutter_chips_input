@@ -228,33 +228,30 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
           initialData: _suggestions,
           builder: (context, snapshot) {
             if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-              final suggestionsListView = Material(
-                elevation: 0,
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxHeight: _suggestionBoxHeight,
-                  ),
-                  child: Container(
+              final suggestionsListView = ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: _suggestionBoxHeight,
+                ),
+                child: Container(
+                  padding: EdgeInsets.zero,
+                  margin: EdgeInsets.symmetric(
+                      vertical: widget.suggestionBoxMargin),
+                  decoration: widget.suggestionBoxDecoration,
+                  child: ListView.separated(
+                    shrinkWrap: true,
                     padding: EdgeInsets.zero,
-                    margin: EdgeInsets.symmetric(
-                        vertical: widget.suggestionBoxMargin),
-                    decoration: widget.suggestionBoxDecoration,
-                    child: ListView.separated(
-                      shrinkWrap: true,
-                      padding: EdgeInsets.zero,
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return widget.suggestionBuilder(
-                          context,
-                          this,
-                          _suggestions![index],
-                        );
-                      },
-                      separatorBuilder: (context, index) =>
-                          widget.suggestionTileSeperator != null
-                              ? widget.suggestionTileSeperator!
-                              : const SizedBox(height: 0, width: 0),
-                    ),
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return widget.suggestionBuilder(
+                        context,
+                        this,
+                        _suggestions![index],
+                      );
+                    },
+                    separatorBuilder: (context, index) =>
+                        widget.suggestionTileSeperator != null
+                            ? widget.suggestionTileSeperator!
+                            : const SizedBox(height: 0, width: 0),
                   ),
                 ),
               );
