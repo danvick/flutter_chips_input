@@ -349,17 +349,11 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
             "${replaceText ? '' : _value.normalCharactersText}" +
             putText;
     setState(() {
-      final textLength = updatedText.characters.length;
-      final replacedLength = _chips.length;
+      final textLength = updatedText.length;
       _value = _value.copyWith(
         text: updatedText,
         selection: TextSelection.collapsed(offset: textLength),
-        composing: (Platform.isIOS || replacedLength == textLength)
-            ? TextRange.empty
-            : TextRange(
-                start: replacedLength,
-                end: textLength,
-              ),
+        composing: TextRange.empty,
       );
     });
     _textInputConnection ??= TextInput.attach(this, textInputConfiguration);
