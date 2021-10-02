@@ -60,7 +60,10 @@ class ChipsInput<T> extends StatefulWidget {
     this.allowChipEditing = false,
     this.focusNode,
     this.initialSuggestions,
+    this.sortFunction,
   })  : assert(maxChips == null || initialValue.length <= maxChips),
+        assert(!((sortFunction == null) ^ (initialSuggestions == null)),
+            'Provide sort function when initialSuggestions are used'),
         super(key: key);
 
   final InputDecoration decoration;
@@ -90,7 +93,7 @@ class ChipsInput<T> extends StatefulWidget {
   final bool allowChipEditing;
   final FocusNode? focusNode;
   final List<T>? initialSuggestions;
-
+  final int Function(T a, T b)? sortFunction;
   // final Color cursorColor;
 
   final TextCapitalization textCapitalization;
@@ -286,8 +289,12 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       }
       _updateTextInputState(replaceText: true);
 
-      _suggestions = null;
-      _suggestionsStreamController.add([]);
+      if (_suggestions != null && _suggestions!.isNotEmpty) {
+        _suggestions!.remove(data);
+        _suggestionsStreamController.add(_suggestions!);
+      } else {
+        _suggestionsStreamController.add([]);
+      }
       if (widget.maxChips == _chips.length) _suggestionsBoxController.close();
     } else {
       _suggestionsBoxController.close();
@@ -298,6 +305,11 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   void deleteChip(T data) {
     if (widget.enabled) {
       _chips.remove(data);
+      if (_suggestions != null) {
+        _suggestions!.add(data);
+        _suggestions!.sort(widget.sortFunction);
+        _suggestionsStreamController.add(_suggestions ?? []);
+      }
       if (_enteredTexts.containsKey(data)) _enteredTexts.remove(data);
       _updateTextInputState();
       widget.onChanged(_chips.toList(growable: false));
