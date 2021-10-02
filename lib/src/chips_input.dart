@@ -138,9 +138,8 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   void initState() {
     super.initState();
     _chips.addAll(widget.initialValue);
-    _suggestions = widget.initialSuggestions
-        ?.where((r) => !_chips.contains(r))
-        .toList(growable: false);
+    _suggestions =
+        widget.initialSuggestions?.where((r) => !_chips.contains(r)).toList();
     _suggestionsBoxController = SuggestionsBoxController(context);
 
     _focusNode = widget.focusNode ?? FocusNode();
