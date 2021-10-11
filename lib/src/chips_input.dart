@@ -364,6 +364,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     });
     _textInputConnection ??= TextInput.attach(this, textInputConfiguration);
     _textInputConnection?.setEditingState(_value);
+    _textInputConnection?.show();
   }
 
   @override
