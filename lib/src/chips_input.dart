@@ -405,7 +405,6 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   @override
   void performAction(TextInputAction action) {
     switch (action) {
-      case TextInputAction.done:
       case TextInputAction.go:
       case TextInputAction.send:
       case TextInputAction.search:
