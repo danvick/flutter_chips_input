@@ -485,4 +485,13 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       ),
     );
   }
+
+  @override
+  void showToolbar() {}
+
+  @override
+  void insertTextPlaceholder(Size size) {}
+
+  @override
+  void removeTextPlaceholder() {}
 }
