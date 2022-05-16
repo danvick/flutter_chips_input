@@ -91,7 +91,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   final StreamController<List<T?>?> _suggestionsStreamController =
       StreamController<List<T>?>.broadcast();
   int _searchId = 0;
-  TextEditingValue _value = TextEditingValue();
+  TextEditingValue _value = const TextEditingValue();
   TextInputConnection? _textInputConnection;
   late SuggestionsBoxController _suggestionsBoxController;
   final _layerLink = LayerLink();
@@ -186,10 +186,10 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
             mq.viewInsets.bottom -
             renderBoxOffset.dy -
             size.height;
-        var _suggestionBoxHeight = max(topAvailableSpace, bottomAvailableSpace);
+        var suggestionBoxHeight = max(topAvailableSpace, bottomAvailableSpace);
         if (null != widget.suggestionsBoxMaxHeight) {
-          _suggestionBoxHeight =
-              min(_suggestionBoxHeight, widget.suggestionsBoxMaxHeight!);
+          suggestionBoxHeight =
+              min(suggestionBoxHeight, widget.suggestionsBoxMaxHeight!);
         }
         final showTop = topAvailableSpace > bottomAvailableSpace;
         // print("showTop: $showTop" );
@@ -205,7 +205,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                 elevation: 0,
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
-                    maxHeight: _suggestionBoxHeight,
+                    maxHeight: suggestionBoxHeight,
                   ),
                   child: ListView.builder(
                     shrinkWrap: true,
@@ -216,7 +216,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                           ? widget.suggestionBuilder(
                               context,
                               this,
-                              _suggestions![index]!,
+                              _suggestions![index] as T,
                             )
                           : Container();
                     },
@@ -316,11 +316,11 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
   void updateEditingValue(TextEditingValue value) {
     //print("updateEditingValue FIRED with ${value.text}");
     // _receivedRemoteTextEditingValue = value;
-    final _oldTextEditingValue = _value;
-    if (value.text != _oldTextEditingValue.text) {
+    final oldTextEditingValue = _value;
+    if (value.text != oldTextEditingValue.text) {
       setState(() => _value = value);
       if (value.replacementCharactersCount <
-          _oldTextEditingValue.replacementCharactersCount) {
+          oldTextEditingValue.replacementCharactersCount) {
         final removedChip = _chips.last;
         setState(() =>
             _chips = Set.of(_chips.take(value.replacementCharactersCount)));
@@ -342,7 +342,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     if (replaceText || putText != '') {
       final updatedText =
           String.fromCharCodes(_chips.map((_) => kObjectReplacementChar)) +
-              "${replaceText ? '' : _value.normalCharactersText}" +
+              (replaceText ? '' : _value.normalCharactersText) +
               putText;
       setState(() => _value = _value.copyWith(
             text: updatedText,
@@ -364,7 +364,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       case TextInputAction.send:
       case TextInputAction.search:
         if (_suggestions?.isNotEmpty ?? false) {
-          selectSuggestion(_suggestions!.first!);
+          selectSuggestion(_suggestions!.first as T);
         } else {
           _effectiveFocusNode.unfocus();
         }
@@ -421,7 +421,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
     final theme = Theme.of(context);
 
     chipsChildren.add(
-      Container(
+      SizedBox(
         height: 30.0,
         child: Row(
           mainAxisSize: MainAxisSize.min,

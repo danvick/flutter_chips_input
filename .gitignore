@@ -73,3 +73,6 @@ pubspec.lock
 *.ipr
 *.iws
 .idea/
+
+# Old files
+*.old

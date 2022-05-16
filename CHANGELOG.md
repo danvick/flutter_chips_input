@@ -1,12 +1,12 @@
-## [2.0.0-beta.0] - 25-May-2021
+## [2.0.0] - 16-May-2022
+* Flutter 3 compatibility 
 
-- Enable Null Safety
+## [1.10.0] - 25-May-2021
 - Cursor color fallback if not defined in the Theme
 - Fix bug where suggestion box never opens aftter maxChips reached
 - Fix bug where widget still works when enabled set to false
-
-## [1.10.0] - 06-Jan-2021
-
+- Added null-safety
+- Fixed lack of implementation for suggestionsBoxMaxHeight
 - Fixed the support for `suggestionsBoxMaxHeight`
 - Added optional `initialSuggestions` parameter so that one can see the suggestions box as soon as the field gains focus, without typing in the keyboard
 

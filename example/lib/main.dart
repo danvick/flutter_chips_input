@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_chips_input/flutter_chips_input.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -14,13 +15,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         // brightness: Brightness.dark,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -28,6 +29,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final _chipKey = GlobalKey<ChipsInputState>();
+
   @override
   Widget build(BuildContext context) {
     const mockResults = <AppProfile>[
@@ -58,12 +60,10 @@ class _MyHomePageState extends State<MyHomePage> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter Chips Input Example'),
-      ),
+      appBar: AppBar(title: const Text('Flutter Chips Input Example')),
       resizeToAvoidBottomInset: false,
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -135,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               ),
-              TextField(),
+              const TextField(),
               /*ChipsInput(
                 initialValue: [
                   AppProfile('John Doe', 'jdoe@flutter.io',
@@ -199,12 +199,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),*/
               ElevatedButton(
                 onPressed: () {
-                  _chipKey.currentState!.selectSuggestion(AppProfile(
+                  _chipKey.currentState!.selectSuggestion(const AppProfile(
                       'Gina',
                       'fred@flutter.io',
                       'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'));
                 },
-                child: Text('Add Chip'),
+                child: const Text('Add Chip'),
               ),
             ],
           ),
