@@ -114,7 +114,8 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       widget.maxChips != null && _chips.length >= widget.maxChips!;
 
   FocusNode? _focusNode;
-  FocusNode get _effectiveFocusNode => widget.focusNode ?? (_focusNode ??= FocusNode());
+  FocusNode get _effectiveFocusNode =>
+      widget.focusNode ?? (_focusNode ??= FocusNode());
   late FocusAttachment _nodeAttachment;
 
   RenderBox? get renderBox => context.findRenderObject() as RenderBox?;
