@@ -364,7 +364,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
         _closeInputConnectionIfNeeded(); //Hack for #34 (https://github.com/danvick/flutter_chips_input/issues/34#issuecomment-684505282). TODO: Find permanent fix
     }
     _textInputConnection ??= TextInput.attach(this, textInputConfiguration);
-    if(_textInputConnection?.attached) _textInputConnection?.setEditingState(_value);
+    if(_textInputConnection?.attached ?? false) _textInputConnection?.setEditingState(_value);
   }
 
   @override
