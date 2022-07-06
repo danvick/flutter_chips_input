@@ -1,3 +1,6 @@
+## [2.0.1] - 06-Jul-2022
+- Added Suggestions Box Elevation option
+
 ## [2.0.0] - 16-May-2022
 * Flutter 3 compatibility 
 
