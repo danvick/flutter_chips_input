@@ -52,6 +52,7 @@ class ChipsInput<T> extends StatefulWidget {
     this.focusNode,
     this.initialSuggestions,
     this.suggestionsBoxElevation = 0,
+    this.suggestionsBoxDecoration = const BoxDecoration(),
   })  : assert(maxChips == null || initialValue.length <= maxChips),
         super(key: key);
 
@@ -77,6 +78,7 @@ class ChipsInput<T> extends StatefulWidget {
   final FocusNode? focusNode;
   final List<T>? initialSuggestions;
   final double suggestionsBoxElevation;
+  final BoxDecoration suggestionsBoxDecoration;
 
   // final Color cursorColor;
 
@@ -210,19 +212,22 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
                   constraints: BoxConstraints(
                     maxHeight: suggestionBoxHeight,
                   ),
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return _suggestions != null
-                          ? widget.suggestionBuilder(
-                              context,
-                              this,
-                              _suggestions![index] as T,
-                            )
-                          : Container();
-                    },
+                  child: DecoratedBox(
+                    decoration: widget.suggestionsBoxDecoration,
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return _suggestions != null
+                            ? widget.suggestionBuilder(
+                                context,
+                                this,
+                                _suggestions![index] as T,
+                              )
+                            : Container();
+                      },
+                    ),
                   ),
                 ),
               );

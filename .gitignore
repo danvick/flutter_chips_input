@@ -76,3 +76,4 @@ pubspec.lock
 
 # Old files
 *.old
+.vscode/settings.json
