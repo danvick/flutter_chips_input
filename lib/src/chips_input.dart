@@ -492,4 +492,7 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
 
   @override
   void removeTextPlaceholder() {}
+
+  @override
+  void performSelector(String selectorName) {}
 }
