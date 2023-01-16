@@ -43,6 +43,7 @@ class ChipsInput<T> extends StatefulWidget {
     this.textOverflow = TextOverflow.clip,
     this.obscureText = false,
     this.autocorrect = true,
+    this.ensureVisible = true,
     this.actionLabel,
     this.inputAction = TextInputAction.done,
     this.keyboardAppearance = Brightness.light,
@@ -72,6 +73,7 @@ class ChipsInput<T> extends StatefulWidget {
   final TextInputAction inputAction;
   final Brightness keyboardAppearance;
   final bool autofocus;
+  final bool ensureVisible;
   final bool allowChipEditing;
   final FocusNode? focusNode;
   final List<T>? initialSuggestions;
@@ -281,7 +283,9 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
       _textInputConnection?.show();
     }
 
-    _scrollToVisible();
+    if (widget.ensureVisible) {
+      _scrollToVisible();
+    }
   }
 
   void _scrollToVisible() {
