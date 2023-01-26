@@ -13,7 +13,7 @@ class TextCursor extends StatefulWidget {
   final bool resumed;
 
   @override
-  _TextCursorState createState() => _TextCursorState();
+  State<TextCursor> createState() => _TextCursorState();
 }
 
 class _TextCursorState extends State<TextCursor>
