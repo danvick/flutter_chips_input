@@ -492,4 +492,14 @@ class ChipsInputState<T> extends State<ChipsInput<T>>
 
   @override
   void removeTextPlaceholder() {}
+
+  @override
+  void didChangeInputControl(TextInputControl? oldControl, TextInputControl? newControl) {
+    // TODO: implement didChangeInputControl
+  }
+
+  @override
+  void performSelector(String selectorName) {
+    // TODO: implement performSelector
+  }
 }
