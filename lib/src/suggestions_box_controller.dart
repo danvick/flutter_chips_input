@@ -14,7 +14,7 @@ class SuggestionsBoxController {
   void open() {
     if (_isOpened) return;
     assert(overlayEntry != null);
-    Overlay.of(context)!.insert(overlayEntry!);
+    Overlay.of(context).insert(overlayEntry!);
     _isOpened = true;
   }
 

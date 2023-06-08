@@ -13,10 +13,10 @@ class TextCursor extends StatefulWidget {
   final bool resumed;
 
   @override
-  _TextCursorState createState() => _TextCursorState();
+  TextCursorState createState() => TextCursorState();
 }
 
-class _TextCursorState extends State<TextCursor>
+class TextCursorState extends State<TextCursor>
     with SingleTickerProviderStateMixin {
   bool _displayed = false;
   late Timer _timer;
